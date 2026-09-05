@@ -26,7 +26,7 @@
   <section id="tips" class="view"><div class="grid"><div class="card span6 tips"><h2>高频易错点</h2><ul><li><b>整数除法：</b><code>7/2</code> 得3；至少一个操作数为浮点数才得3.5。</li><li><b>自增：</b><code>i++</code> 先使用后加；<code>++i</code> 先加后使用。复杂表达式尽量拆开。</li><li><b>逻辑优先级：</b><code>!</code> 高于 <code>&&</code>，高于 <code>||</code>；拿不准就加括号。</li><li><b>循环边界：</b><code>i&lt;n</code> 与 <code>i&lt;=n</code> 相差一次；手算首、末、次数。</li><li><b>死循环：</b>检查循环变量是否真的向终止条件靠近。</li><li><b>嵌套循环：</b>总次数不是简单相加；内层每次都会重新执行。</li><li><b>字符与数字：</b><code>'7'</code>不是整数7；转数字用<code>'7'-'0'</code>。</li><li><b>类型转换：</b>强转只作用于指定表达式；先乘再除可减少整除截断。</li><li><b>数学函数：</b><code>ceil</code>向上取整，<code>floor</code>向下取整；负数尤其易错。</li><li><b>分支覆盖：</b>多个独立<code>if</code>可能同时执行；互斥情况用<code>if/else if/else</code>。</li></ul></div><div class="card span6 tips"><h2>客观题稳分技巧</h2><ol><li>先圈出题目问的是“正确”还是“不正确”。</li><li>代码题建变量表，一行一行写值，不凭感觉跳步。</li><li>循环先算执行次数，再算每次变化；嵌套循环画两列。</li><li>遇到ASCII，牢牢记住数字、大写、小写各自连续，<code>'0'=48</code>。</li><li>判断题出现“总是、一定、任何”时，主动找反例。</li><li>不会的先标记，客观题每题最多停留约1.5分钟。</li></ol><h3>编程题拿分清单</h3><p class="muted">读输入输出 → 手算样例 → 写边界 → 选合适类型 → 完成后测最小值、最大值、临界值。先写能得部分分的正确循环，不要空题。</p></div></div></section>
   <footer class="footer">依据 CCF GESP 官方等级大纲与二级样题结构整理。题目为原创训练题，不是对未来真题的预测。学习记录保存在当前浏览器中。 · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1008/10012.html" target="_blank">官方大纲</a> · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1011/10058.html" target="_blank">官方二级样题</a></footer>
 </main><script>
-const topics={k1:'变量、数据类型与运算符',k2:'if与多分支判断',k3:'for循环与边界步长',k4:'while循环与死循环',k5:'嵌套循环',k6:'字符串基础操作',k7:'数组基础',k8:'阅读程序写结果',k9:'程序填空',k10:'累加、计数与最值'};
+const topics={k1:'变量、数据类型与运算符',k2:'if与多分支判断',k3:'for循环与边界步长',k4:'while循环与死循环',k5:'嵌套循环',k6:'字符串基础操作',k7:'数组基础',k8:'阅读程序写结果',k9:'程序填空',k10:'累加、计数与最值',k11:'ASCII码与字符运算',k12:'随机函数 rand 与 srand',k13:'IP地址基础',k14:'网络拓扑结构'};
 const bank=[
 ['base','单选','1KB通常等于多少字节？',['1000','1024','8','2048'],1,'计算机存储容量通常按2的幂换算，1KB=1024B。'],
 ['base','判断','编译器可以把C++源程序转换成计算机可执行的程序。',['正确','错误'],0,'C++通常先编译，再运行生成的可执行程序。'],
@@ -107,12 +107,55 @@ for(let n=3;n<=10;n++){
  bank.push(['k6','单选题',`string s="code${n}"; s.size()的值是？`,[String(n),String(4),String(5),String(6)],2,'code有4个字符，再加1个数字字符，共5个字符。']);
 }
 for(let i=bank.length-1;i>=0;i--)if(bank[i][1]==='判断')bank.splice(i,1);
+// 四个新专项：每题选项均人工核对，答案位置有变化，避免靠位置猜题。
+bank.push(
+['k11','单选题',"ASCII码中，字符'A'对应的十进制数是？",['65','97','48','32'],0,"常用ASCII码要记住：'A'=65，'a'=97，'0'=48。"],
+['k11','单选题',"已知 char c='C'; 表达式 c-'A' 的值是？",['1','2','3','67'],1,'大写字母连续编码，C比A大2。'],
+['k11','单选题',"若 char c='7'; 哪个表达式能得到整数7？",["c-'0'","c-0","c+'0'","c-'7'"],0,"数字字符减去字符'0'，才能得到对应整数。"],
+['k11','单选题',"下列字符中，ASCII码最大的是？",["'Z'","'0'","'a'","'A'"],2,"数字、大写、小写依次排列；'a'=97，大于'Z'=90。"],
+['k11','阅读程序题',"char c='d';\ncout << char(c-3);",['a','b','c','g'],0,'小写字母连续，d向前3个字符是a。'],
+['k11','阅读程序题',"char c='5';\ncout << c-'0'+2;",['5','6','7','55'],2,"'5'-'0'=5，再加2得到7。"],
+['k11','单选题',"判断字符c是小写英文字母的正确条件是？",["c>='a' && c<='z'","c>'a' && c<'z'","c>=97 || c<=122","'a'<=c<='z'"],0,'区间两端都要包含，并用&&连接两个比较。'],
+['k11','程序填空题',"把小写字母c转换成对应大写字母，应填写：\nc = c ____;",["+ 32","- 32","- '0'","+ 'A'"],1,'ASCII中小写字母比对应大写字母大32。'],
+
+['k12','单选题','使用 rand() 前，通常需要包含哪个头文件？',['<cstdlib>','<iostream>','<string>','<iomanip>'],0,'rand和srand声明在cstdlib中。'],
+['k12','单选题','表达式 rand()%10 可能产生的整数范围是？',['0到9','1到10','0到10','1到9'],0,'对10取余，余数只能是0到9。'],
+['k12','单选题','要生成1到6之间的随机整数，正确表达式是？',['rand()%6','rand()%6+1','rand()%7','rand()%5+1'],1,'rand()%6得到0到5，再加1得到1到6。'],
+['k12','单选题','srand()的主要作用是什么？',['直接返回随机数','设置随机数种子','限制随机数上限','把随机数清零'],1,'srand设置种子，rand根据种子产生伪随机序列。'],
+['k12','单选题','程序中只调用一次 srand(time(0))，通常应放在哪里？',['每次rand之前','循环内部','程序开始生成随机数之前','程序结束之后'],2,'种子通常只设置一次；反复快速设置可能得到相同种子。'],
+['k12','阅读程序题','若某次 rand() 返回23，则 rand()%5 的结果是？',['2','3','4','5'],1,'23除以5的余数是3。'],
+['k12','程序填空题','生成20到29之间的随机整数：\nint x = rand()%10 ____;', ['- 20','+ 10','+ 20','+ 29'],2,'rand()%10得到0到9，加20后是20到29。'],
+['k12','单选题','使用 srand(time(0)) 时，time通常需要哪个头文件？',['<cmath>','<ctime>','<vector>','<algorithm>'],1,'time函数通常声明在ctime中。'],
+
+['k13','单选题','IPv4地址由多少个二进制位组成？',['16位','32位','64位','128位'],1,'IPv4由32位组成，通常写成4段十进制数。'],
+['k13','单选题','下列哪一个是格式正确的IPv4地址？',['192.168.1.8','192.168.1.256','10.0.0','172.16.-1.5'],0,'IPv4有4段，每段必须是0到255的整数。'],
+['k13','单选题','IPv4地址的每一段十进制数允许的范围是？',['0到127','0到255','1到256','0到999'],1,'每段占8位，因此范围是0到255。'],
+['k13','单选题','家庭路由器常见的私有IPv4地址是？',['192.168.1.1','8.8.8.8','1.1.1.1','255.255.255.255'],0,'192.168.x.x是常见私有地址范围。'],
+['k13','单选题','IP地址在网络中的主要作用是？',['给设备提供网络标识','提高显示器分辨率','保存程序源代码','控制键盘输入'],0,'IP地址用来标识网络中的设备和位置。'],
+['k13','单选题','关于IP地址与域名，下列说法正确的是？',['域名便于人记忆，可解析为IP地址','域名只能由数字组成','IP地址就是电脑密码','两者完全没有关系'],0,'DNS可以把便于记忆的域名解析为IP地址。'],
+['k13','单选题','下列哪一个不是合法IPv4地址？',['10.10.10.10','0.0.0.0','223.5.5.5','192.168.300.1'],3,'最后一个地址含300，超过单段最大值255。'],
+['k13','单选题','IPv6地址长度通常是多少位？',['32位','48位','64位','128位'],3,'IPv6使用128位地址空间。'],
+
+['k14','单选题','所有设备都连接到一个中心设备，这种拓扑是？',['总线型','星型','环型','网状型'],1,'星型拓扑以交换机等中心设备为连接中心。'],
+['k14','单选题','星型拓扑中，中心交换机损坏通常会怎样？',['整个网络可能无法通信','只影响一台电脑','网络速度一定变快','自动变成环型'],0,'中心设备是关键点，损坏可能影响整个网络。'],
+['k14','单选题','设备首尾相连形成一个闭合圆环，属于哪种拓扑？',['树型','星型','环型','总线型'],2,'首尾相连形成闭合通路是环型拓扑。'],
+['k14','单选题','多台设备共用一条主干通信线路，属于哪种拓扑？',['总线型','网状型','星型','树型'],0,'总线型拓扑的设备共享一条主干线路。'],
+['k14','单选题','哪种拓扑通常具有较多备用路径、可靠性较高？',['网状型','总线型','单点连接','直线型'],0,'网状型存在多条连接路径，但成本也较高。'],
+['k14','单选题','学校机房的电脑分别连接到交换机，最接近哪种拓扑？',['环型','星型','总线型','无拓扑'],1,'交换机位于中心，各电脑分别连接，属于星型。'],
+['k14','单选题','树型拓扑可以看成哪种结构的分层扩展？',['星型','环型','总线型','点对点型'],0,'树型常由多个星型结构分层连接而成。'],
+['k14','单选题','比较星型与网状型拓扑，下列说法正确的是？',['网状型通常线路更多、成本更高','星型不需要中心设备','网状型只有一条通信路径','两者结构完全相同'],0,'网状型为提供多路径需要更多连接，建设成本通常更高。']
+);
+
+// 题库质量门禁：规范化后有相同选项的题目不会进入考试或专项训练。
+function hasDuplicateOptions(q){let seen=new Set(q[3].map(x=>String(x).trim()));return seen.size!==q[3].length}
+for(let i=bank.length-1;i>=0;i--)if(hasDuplicateOptions(bank[i]))bank.splice(i,1);
+if(bank.some(hasDuplicateOptions))throw new Error('题库检查失败：仍存在重复选项');
 let state=JSON.parse(localStorage.getItem('gesp2State')||'{"stats":{},"wrong":[],"answered":0,"best":null,"food":0,"petXp":0,"rewards":0}');state.food??=0;state.petXp??=0;state.birdXp??=state.petXp;state.turtleXp??=0;state.activePet??='bird';state.petNames??={bird:'小飞羽',turtle:'小慢慢'};state.rewards??=0;let exam=[],idx=0,answers=[],seconds=0,timer=null,drillQ=null;
 function save(){localStorage.setItem('gesp2State',JSON.stringify(state));updateDash()}
 function switchView(v){document.querySelectorAll('.view,.tab').forEach(e=>e.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelector(`[data-view="${v}"]`).classList.add('active')}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
 function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function startExam(mode){clearInterval(timer);exam=shuffle(bank).slice(0,20);idx=0;answers=Array(exam.length).fill(null);seconds=60*60;switchView('exam');document.getElementById('examIntro').classList.add('hidden');document.getElementById('examBox').classList.remove('hidden');timer=setInterval(()=>{seconds--;if(seconds<=0){clearInterval(timer);finishExam()}else renderTimer()},1000);renderExam()}
+function startExam(mode){clearInterval(timer);let focus=['k11','k12','k13','k14'].map(t=>shuffle(bank.filter(q=>q[0]===t))[0]);let rest=shuffle(bank.filter(q=>!focus.includes(q))).slice(0,16);exam=shuffle([...focus,...rest]);if(exam.some(hasDuplicateOptions))throw new Error('抽卷失败：检测到重复选项');idx=0;answers=Array(exam.length).fill(null);seconds=60*60;switchView('exam');document.getElementById('examIntro').classList.add('hidden');document.getElementById('examBox').classList.remove('hidden');timer=setInterval(()=>{seconds--;if(seconds<=0){clearInterval(timer);finishExam()}else renderTimer()},1000);renderExam()}
 function renderTimer(){let e=document.getElementById('timer');if(e)e.textContent=`${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`}
 function renderExam(){let q=exam[idx],a=answers[idx];document.getElementById('examBox').innerHTML=`<div class="examtop"><span class="tag">${q[1]} · 第${idx+1}/20题</span><span id="timer" class="timer"></span></div><div class="question">${esc(q[2])}</div><div class="options">${q[3].map((o,i)=>`<button class="option ${a?(i===q[4]?'correct':i===a.pick?'wrong':''):''}" onclick="pick(${i})" ${a?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>${a?`<div class="feedback"><b>${a.ok?'回答正确，做得很好！':'这道题答错了。'}</b><br>正确答案：${String.fromCharCode(65+q[4])}。${q[5]}<br><small>归属知识点：${topics[q[0]]}</small></div><div class="actions" style="margin-top:14px"><button class="primary" onclick="move(1)">${idx===19?'查看总成绩':'下一题'}</button></div>`:'<p class="muted">选择答案后，系统再公布判分和解析。</p>'}`;renderTimer()}
 function esc(s){return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\n','<br>')}
