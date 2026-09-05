@@ -26,7 +26,7 @@
   <section id="tips" class="view"><div class="grid"><div class="card span6 tips"><h2>高频易错点</h2><ul><li><b>整数除法：</b><code>7/2</code> 得3；至少一个操作数为浮点数才得3.5。</li><li><b>自增：</b><code>i++</code> 先使用后加；<code>++i</code> 先加后使用。复杂表达式尽量拆开。</li><li><b>逻辑优先级：</b><code>!</code> 高于 <code>&&</code>，高于 <code>||</code>；拿不准就加括号。</li><li><b>循环边界：</b><code>i&lt;n</code> 与 <code>i&lt;=n</code> 相差一次；手算首、末、次数。</li><li><b>死循环：</b>检查循环变量是否真的向终止条件靠近。</li><li><b>嵌套循环：</b>总次数不是简单相加；内层每次都会重新执行。</li><li><b>字符与数字：</b><code>'7'</code>不是整数7；转数字用<code>'7'-'0'</code>。</li><li><b>类型转换：</b>强转只作用于指定表达式；先乘再除可减少整除截断。</li><li><b>数学函数：</b><code>ceil</code>向上取整，<code>floor</code>向下取整；负数尤其易错。</li><li><b>分支覆盖：</b>多个独立<code>if</code>可能同时执行；互斥情况用<code>if/else if/else</code>。</li></ul></div><div class="card span6 tips"><h2>客观题稳分技巧</h2><ol><li>先圈出题目问的是“正确”还是“不正确”。</li><li>代码题建变量表，一行一行写值，不凭感觉跳步。</li><li>循环先算执行次数，再算每次变化；嵌套循环画两列。</li><li>遇到ASCII，牢牢记住数字、大写、小写各自连续，<code>'0'=48</code>。</li><li>判断题出现“总是、一定、任何”时，主动找反例。</li><li>不会的先标记，客观题每题最多停留约1.5分钟。</li></ol><h3>编程题拿分清单</h3><p class="muted">读输入输出 → 手算样例 → 写边界 → 选合适类型 → 完成后测最小值、最大值、临界值。先写能得部分分的正确循环，不要空题。</p></div></div></section>
   <footer class="footer">依据 CCF GESP 官方等级大纲与二级样题结构整理。题目为原创训练题，不是对未来真题的预测。学习记录保存在当前浏览器中。 · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1008/10012.html" target="_blank">官方大纲</a> · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1011/10058.html" target="_blank">官方二级样题</a></footer>
 </main><script>
-const topics={k1:'变量、数据类型与运算符',k2:'if与多分支判断',k3:'for循环与边界步长',k4:'while循环与死循环',k5:'嵌套循环',k6:'字符串基础操作',k7:'数组基础',k8:'阅读程序写结果',k9:'程序填空',k10:'累加、计数与最值',k11:'ASCII码与字符运算',k12:'随机函数 rand 与 srand',k13:'IP地址基础',k14:'网络拓扑结构'};
+const topics={k1:'变量、数据类型与运算符',k2:'if与多分支判断',k3:'for循环与边界步长',k4:'while循环与死循环',k5:'嵌套循环',k6:'字符串基础操作',k7:'数组基础',k8:'阅读程序写结果',k9:'程序填空',k10:'累加、计数与最值',k11:'ASCII码与字符运算',k12:'随机函数 rand 与 srand',k13:'IP地址基础',k14:'网络拓扑结构',k15:'变量初始化与关键字',k16:'数学函数与浮点数比较',k17:'计算机与编程基础常识'};
 const bank=[
 ['base','单选','1KB通常等于多少字节？',['1000','1024','8','2048'],1,'计算机存储容量通常按2的幂换算，1KB=1024B。'],
 ['base','判断','编译器可以把C++源程序转换成计算机可执行的程序。',['正确','错误'],0,'C++通常先编译，再运行生成的可执行程序。'],
@@ -146,6 +146,60 @@ bank.push(
 ['k14','单选题','比较星型与网状型拓扑，下列说法正确的是？',['网状型通常线路更多、成本更高','星型不需要中心设备','网状型只有一条通信路径','两者结构完全相同'],0,'网状型为提供多路径需要更多连接，建设成本通常更高。']
 );
 
+bank.push(
+['k15','单选题','以下哪个不是C++语言的关键字？',['return','max','else','case'],1,'return、else和case是关键字；max通常是函数名，不是关键字。'],
+['k15','单选题','代码的输出结果是什么？\nint sum;\nfor(int i=1;i<=5;i++) sum+=i;\ncout<<sum;',['15','0','5','不确定的值'],3,'局部变量sum没有初始化，直接累加会使用不确定的初始值。'],
+['k15','单选题','要正确计算1到10的和，变量s应怎样定义？',['int s;','int s=0;','double s;','char s=0;'],1,'累加器必须先初始化为0。'],
+['k15','阅读程序题','int cnt=0;\nfor(int i=0;i<10;i++) cnt+=i;\ncout<<cnt;', ['45','55','10','不确定的值'],0,'cnt已初始化为0，累加0到9，结果为45。'],
+['k15','单选题','下面哪种写法会让变量x一开始就等于0？',['int x;','int x==0;','int x=0;','x int=0;'],2,'定义变量时用一个等号赋初值：int x=0。'],
+['k15','程序填空题','统计数组中正数的个数，应补充：\nint count ____;\nfor(int i=0;i<n;i++) if(a[i]>0) count++;',['= 0','= 1','+= 0','== 0'],0,'计数器从0开始，因此定义时应写count=0。'],
+['k15','单选题','关于局部变量 int a;，下列说法正确的是？',['a一定等于0','a一定等于1','a的初始值不确定','a不能被赋值'],2,'未初始化的普通局部变量，其值是不确定的。'],
+['k15','阅读程序题','int product=1;\nfor(int i=1;i<=4;i++) product*=i;\ncout<<product;', ['10','16','24','不确定的值'],2,'乘法累积器应从1开始，1×2×3×4=24。'],
+['k15','单选题','计算最大值时，较稳妥的初始化方法是？',['int m=0;','int m=a[0];','int m;','int m=n;'],1,'数组可能全是负数，用第一个元素初始化最大值最稳妥。'],
+['k15','单选题','下列哪一项是C++关键字？',['include','main','while','cout'],2,'while是循环关键字；其余都不是C++关键字。']
+);
+
+bank.push(
+['k16','单选题','表达式 sqrt(49) 的值和结果类型通常是？',['7，int类型','7，double类型','49，double类型','7，bool类型'],1,'sqrt返回浮点类型，即使显示为7，结果通常也是double。'],
+['k16','单选题','下列哪个表达式的结果不是整数8？',['abs(-8)','min(max(8,9),10)','int(8.88)','sqrt(64)'],1,'min(max(8,9),10)=min(9,10)=9；其余数值都是8。'],
+['k16','单选题','若要判断两个float数a、b近似相等，较合适的是？',['a==b','a-b<0.000001','abs(a-b)<=0.000001','sqrt(a-b)==0'],2,'浮点数比较要看差的绝对值是否不超过允许误差。'],
+['k16','单选题','表达式 int(sqrt(20)) 的值是？',['4','4.47','5','20'],0,'sqrt(20)约为4.47，转成int后截去小数得到4。'],
+['k16','单选题','若 int a=10,b=25,c=18;，max(max(a,b),c) 的值是？',['10','18','25','53'],2,'先求max(10,25)=25，再与18比较，仍为25。'],
+['k16','单选题','表达式 min(6, max(3,9)) 的值是？',['3','6','9','12'],1,'先算max(3,9)=9，再算min(6,9)=6。'],
+['k16','单选题','fabs(-5.8) 的结果是？',['-5.8','5','5.8','6'],2,'fabs求浮点数绝对值，结果是5.8。'],
+['k16','阅读程序题','double x=sqrt(81);\ncout<<(x==9);', ['0','1','9','81'],1,'sqrt(81)得到9.0，这里比较成立，布尔真输出1。'],
+['k16','单选题','若 sqrt(a)==abs(a)，且a为实数，下列哪个值一定满足？',['-1','0','1和0都满足','所有正数'],2,'a=0时两边为0；a=1时两边为1，因此不只0满足。'],
+['k16','单选题','判断正整数N是完全平方数，较可靠的表达式是？',['sqrt(N)==N','int(sqrt(N))*int(sqrt(N))==N','sqrt(N)*2==N','int(N)==sqrt(N)'],1,'先取平方根的整数部分，再平方与N比较。'],
+['k16','程序填空题','补全代码，输出三个数中的最小值：\ncout << ____(a, min(b,c));',['abs','sqrt','max','min'],3,'先求b、c较小者，再与a取最小值。'],
+['k16','单选题','使用sqrt、fabs等数学函数，通常应包含哪个头文件？',['<ctime>','<cmath>','<cstdlib>','<string>'],1,'sqrt和fabs等数学函数通常声明在cmath中。'],
+
+['k11','单选题','关于ASCII码，下列说法正确的是？',['每个键盘按键都有唯一ASCII码','ASCII可以表示全世界所有文字','常用字符用数字编码表示','ASCII码由IPv6升级而来'],2,'ASCII用数值编码常用英文字符和控制字符，不能覆盖所有文字。'],
+['k11','单选题',"已知'A'=65，则'M'的ASCII码是？",['75','76','77','78'],2,'M是从A开始的第13个字母，编码为65+12=77。'],
+['k11','阅读程序题',"char a='1';\na=a+3;\ncout<<a;",['1','3','4','49'],2,"字符'1'的编码加3后对应字符'4'。"],
+['k11','单选题',"若 int a=1，哪个表达式的值是字符'3'？",["a+2","a+'2'","'a'+2","char(a+'2')"],3,"1加字符'2'的编码得到字符'3'的编码，再转成char。"],
+['k1','单选题','若int变量a的值为2，执行哪条语句后a仍为2？',['a=a+1;','a+1;','a++;','++a;'],1,'a+1只计算表达式，没有把结果赋回a。'],
+['k1','单选题','下列哪条语句不符合C++语法？',['b=a+1;','b=a++;','b=a--;','b=a++;+'],3,'末尾多出的加号使表达式不完整，不符合语法。']
+);
+
+bank.push(
+['k17','单选题','C++源程序通常需要经过什么步骤才能由计算机执行？',['编译并生成可执行程序','直接交给CPU','改成图片文件','连接互联网'],0,'CPU不能直接执行C++源代码，通常要先编译。'],
+['k17','单选题','Dev-C++更准确的说法是？',['操作系统','编程开发环境','网络浏览器','计算机硬件'],1,'Dev-C++是帮助编写、编译和运行程序的开发环境，不是操作系统。'],
+['k17','单选题','下列哪一个属于操作系统？',['Windows','C++','Dev-C++','GESP'],0,'Windows是操作系统；C++是语言，Dev-C++是开发环境。'],
+['k17','单选题','在Windows中复制和粘贴通常依次使用？',['Ctrl+X、Ctrl+Z','Ctrl+C、Ctrl+V','Ctrl+S、Ctrl+P','Ctrl+A、Ctrl+F'],1,'Ctrl+C复制，Ctrl+V粘贴。'],
+['k17','单选题','关于GESP编程能力等级认证，下列说法正确的是？',['考级内容与所选编程语言有关','任何语言各级内容完全相同','只考打字速度','必须联网才能考试'],0,'不同语言的语法和知识要求不同，考试内容与所选语言有关。'],
+['k17','单选题','C++是一种什么类型的语言？',['高级程序设计语言','机器指令编号','操作系统名称','图片格式'],0,'C++是高级程序设计语言。'],
+['k17','单选题','计算机内部存储和处理数据，最基本采用的是？',['二进制','八进制','十进制','十六进制'],0,'数字计算机底层使用0和1表示数据。'],
+['k17','单选题','1GB通常等于多少MB？',['100MB','512MB','1024MB','2048MB'],2,'常见存储容量换算中1GB=1024MB。'],
+['k17','单选题','下列哪项是输入设备？',['显示器','打印机','键盘','音箱'],2,'键盘把信息输入计算机，其余主要是输出设备。'],
+['k17','单选题','程序出现语法错误时，通常首先由谁给出错误提示？',['编译器','鼠标','显示器外壳','路由器'],0,'编译器检查程序语法并报告编译错误。'],
+
+['k1','单选题','把整数变量a的值改为3，正确语句是？',['a==3;','a=3;','3=a;','a:=3;'],1,'一个等号是赋值；两个等号用于比较是否相等。'],
+['k1','单选题','bool(-1) 的结果是？',['false','true','-1','编译错误'],1,'数值转换为bool时，0为false，非0为true。'],
+['k1','单选题','下列哪个定义能保存小数1.0？',['int a=1.0;','bool a=1.0;','double a=1.0;','char a=1.0;'],2,'double适合保存带小数的数值。'],
+['k11','单选题',"判断字符a是小写字母，正确写法是？",["'a'<=a && a<='z'","'a'<=a<='z'","a>='A' && a<='Z'","a-'a'<='z'"],0,'C++中要把两个比较用&&连接，不能写连续比较。'],
+['k11','阅读程序题',"char ch='A';\nfor(int i=0;i<4;i++) cout<<char(ch+i);",['ABCD','BCDE','AAAA','65 66 67 68'],0,'字符编码连续，每次输出A的编码加i对应的字符。']
+);
+
 // 题库质量门禁：规范化后有相同选项的题目不会进入考试或专项训练。
 function hasDuplicateOptions(q){let seen=new Set(q[3].map(x=>String(x).trim()));return seen.size!==q[3].length}
 for(let i=bank.length-1;i>=0;i--)if(hasDuplicateOptions(bank[i]))bank.splice(i,1);
@@ -155,7 +209,7 @@ function save(){localStorage.setItem('gesp2State',JSON.stringify(state));updateD
 function switchView(v){document.querySelectorAll('.view,.tab').forEach(e=>e.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelector(`[data-view="${v}"]`).classList.add('active')}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
 function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function startExam(mode){clearInterval(timer);let focus=['k11','k12','k13','k14'].map(t=>shuffle(bank.filter(q=>q[0]===t))[0]);let rest=shuffle(bank.filter(q=>!focus.includes(q))).slice(0,16);exam=shuffle([...focus,...rest]);if(exam.some(hasDuplicateOptions))throw new Error('抽卷失败：检测到重复选项');idx=0;answers=Array(exam.length).fill(null);seconds=60*60;switchView('exam');document.getElementById('examIntro').classList.add('hidden');document.getElementById('examBox').classList.remove('hidden');timer=setInterval(()=>{seconds--;if(seconds<=0){clearInterval(timer);finishExam()}else renderTimer()},1000);renderExam()}
+function startExam(mode){clearInterval(timer);let focus=['k11','k12','k13','k14','k15','k16','k17'].map(t=>shuffle(bank.filter(q=>q[0]===t))[0]);let rest=shuffle(bank.filter(q=>!focus.includes(q))).slice(0,13);exam=shuffle([...focus,...rest]);if(exam.some(hasDuplicateOptions))throw new Error('抽卷失败：检测到重复选项');idx=0;answers=Array(exam.length).fill(null);seconds=60*60;switchView('exam');document.getElementById('examIntro').classList.add('hidden');document.getElementById('examBox').classList.remove('hidden');timer=setInterval(()=>{seconds--;if(seconds<=0){clearInterval(timer);finishExam()}else renderTimer()},1000);renderExam()}
 function renderTimer(){let e=document.getElementById('timer');if(e)e.textContent=`${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`}
 function renderExam(){let q=exam[idx],a=answers[idx];document.getElementById('examBox').innerHTML=`<div class="examtop"><span class="tag">${q[1]} · 第${idx+1}/20题</span><span id="timer" class="timer"></span></div><div class="question">${esc(q[2])}</div><div class="options">${q[3].map((o,i)=>`<button class="option ${a?(i===q[4]?'correct':i===a.pick?'wrong':''):''}" onclick="pick(${i})" ${a?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>${a?`<div class="feedback"><b>${a.ok?'回答正确，做得很好！':'这道题答错了。'}</b><br>正确答案：${String.fromCharCode(65+q[4])}。${q[5]}<br><small>归属知识点：${topics[q[0]]}</small></div><div class="actions" style="margin-top:14px"><button class="primary" onclick="move(1)">${idx===19?'查看总成绩':'下一题'}</button></div>`:'<p class="muted">选择答案后，系统再公布判分和解析。</p>'}`;renderTimer()}
 function esc(s){return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\n','<br>')}
