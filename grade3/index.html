@@ -624,7 +624,7 @@ for(let i=0;i<24;i++){
 // 2026秋目录已调整：删除旧版中不再属于本册的诗句题，避免教材错配。
 const outdatedZh=['一年好景君须记','最是橙黄橘绿时','荷尽已无擎雨盖','菊残犹有傲霜枝','意欲捕鸣蝉','忽然闭口立'];
 for(let i=bank.length-1;i>=0;i--){let q=bank[i],text=[q[2],...q[3]].join('');if(q[0][0]==='z'&&outdatedZh.some(s=>text.includes(s)))bank.splice(i,1)}
-const zhAnswerNo={2:0,4:0};bank.filter(q=>q[0][0]==='z'&&(q[3].length===2||q[3].length===4)).forEach(q=>{let n=q[3].length,target=zhAnswerNo[n]++%n;if(q[4]!==target){[q[3][q[4]],q[3][target]]=[q[3][target],q[3][q[4]]];q[4]=target}});
+const answerNo={z:{2:0,4:0},e:{2:0,4:0},m:{2:0,4:0}};bank.filter(q=>answerNo[q[0][0]]&&(q[3].length===2||q[3].length===4)).forEach(q=>{let n=q[3].length,target=answerNo[q[0][0]][n]++%n;if(q[4]!==target){[q[3][q[4]],q[3][target]]=[q[3][target],q[3][q[4]]];q[4]=target}});
 function optionKey(v,q){let s=String(v).trim().toLowerCase();return /标点/.test(q[1]+q[2])?s:s.replace(/[\s，,。.!！？?、；;：“”"'‘’（）()\-—_]/g,'')}
 function hasDup(q){return new Set(q[3].map(x=>optionKey(x,q))).size!==q[3].length}
 let seenQuestion=new Set;for(let i=bank.length-1;i>=0;i--){let q=bank[i],key=String(q[2]).trim().toLowerCase().replace(/\s+/g,' ');if(hasDup(q)||![1,2,4].includes(q[3].length)||seenQuestion.has(key))bank.splice(i,1);else seenQuestion.add(key)}
