@@ -15,10 +15,11 @@
 <section id="map" class="view"><div class="card" style="margin-bottom:16px"><div class="eyebrow">2026 秋 · 教材全册知识地图</div><h2>按单元学习，也按能力查缺补漏</h2><p class="muted">已依据上传教材逐页核对。点击单元可查看课文/主题和本单元训练重点。</p><div id="bookMap" class="grid"></div></div><div id="mapGrid" class="grid"></div></section>
 <footer class="footer">学习数据只保存在当前浏览器，无需注册登录。教材词汇依据家长提供的课内字词表和单词表整理。</footer>
 </main><script>
-const topics={z1:'语文·拼音与字形',z2:'语文·词语理解与搭配',z3:'语文·近反义词',z4:'语文·句子与标点',z5:'语文·古诗与积累',z6:'语文·阅读理解',z7:'语文·习作表达',e1:'英语·单词认读',e2:'英语·单词拼写',e3:'英语·重点句型',e4:'英语·情景交际',e5:'英语·语法基础',e6:'英语·阅读理解',e7:'英语·听音辨词替代训练',m1:'数学·数与运算',m2:'数学·图形与测量',m3:'数学·分数与小数初步',m4:'数学·统计与解决问题'};
+const topics={z1:'语文·拼音与字形',z2:'语文·词语理解与搭配',z3:'语文·近反义词',z4:'语文·句子与标点',z5:'语文·古诗与积累',z6:'语文·阅读理解',z7:'语文·习作表达',e1:'英语·单词认读',e2:'英语·单词拼写',e3:'英语·重点句型',e4:'英语·情景交际',e5:'英语·语法基础',e6:'英语·阅读理解',e7:'英语·听音辨词替代训练',m1:'数学·口算与简便运算',m2:'数学·图形、周长与面积',m3:'数学·分数与小数初步',m4:'数学·统计与基础应用',m5:'数学·和差倍与线段图',m6:'数学·平均数与归一',m7:'数学·植树、间隔与周期',m8:'数学·年龄、排队与重叠',m9:'数学·等式、虫食算与数字谜',m10:'数学·盈亏问题',m11:'数学·行程、相遇与追及',m12:'数学·鸡兔同笼与除法余数'};
 let bank=[];
 function add(t,type,q,opts,ans,why,priority=false){bank.push([t,type,q,opts,ans,why,priority])}
 function addPriority(t,type,q,opts,ans,why){add(t,type,q,opts,ans,why,true)}
+function addText(t,type,q,answer,why,priority=true){add(t,type,q,[String(answer)],0,why,priority)}
 const zhChars=[['晨','chén','早晨'],['绒','róng','绒球'],['球','qiú','足球'],['汉','hàn','汉字'],['艳','yàn','鲜艳'],['服','fú','衣服'],['装','zhuāng','服装'],['扮','bàn','打扮'],['读','dú','读书'],['静','jìng','安静'],['停','tíng','停止'],['粗','cū','粗壮'],['影','yǐng','影子'],['落','luò','落叶'],['荒','huāng','荒野'],['笛','dí','竹笛'],['罚','fá','处罚'],['假','jià','放假'],['互','hù','互相'],['所','suǒ','所以'],['够','gòu','能够'],['猜','cāi','猜想'],['扬','yáng','飘扬'],['臂','bì','手臂'],['寒','hán','寒冷'],['径','jìng','小径'],['赠','zèng','赠送'],['橙','chéng','橙子'],['盖','gài','瓶盖'],['菊','jú','菊花']];
 const py=zhChars.map(x=>x[1]),words=zhChars.map(x=>x[2]);
 zhChars.forEach((x,i)=>{let o=[x[1],py[(i+5)%py.length],py[(i+11)%py.length],py[(i+17)%py.length]];add('z1','单选题',`“${x[0]}”的正确读音是？`,o,0,`“${x[0]}”读${x[1]}，可组成“${x[2]}”。`);let w=[x[2],words[(i+7)%words.length],words[(i+13)%words.length],words[(i+19)%words.length]];add('z2','单选题',`下面哪个词语含有“${x[0]}”字？`,w,0,`“${x[0]}”可以组成“${x[2]}”。`) });
@@ -82,6 +83,17 @@ en:[
 ['Unit 4 Fun with numbers','How many…? / One to twelve','1—12、数量、简单统计'],
 ['Unit 5 We’re family','Who’s he/she? / This is my…','家庭成员、人物介绍'],
 ['Unit 6 My sweet home','Where is…? / It’s in/on/under…','房间、家具、方位介词']
+],
+math:[
+['第1层·计算地基','整数加减乘除、凑整、乘25/125、乘法速算','先保证口算正确，再学习简便方法；理解方法比背答案重要','m1'],
+['第2层·关系建模','和差、和倍、差倍、三量和倍','画线段图；找1倍量；多减少加；变化后再倒推','m5'],
+['第3层·量与图形','周长、面积、整体与差不变','分清长度与面积；复杂图形先找不变量','m2'],
+['第4层·平均与归一','平均数、单一量、总量与份数','平均数=总量÷份数；先求一份再求多份','m6'],
+['第5层·间隔计数','植树、锯木、爬楼、敲钟、周期','先分清点数与段数，再判断两端和是否封闭','m7'],
+['第6层·生活模型','年龄、排队、重叠、盈亏','找不变量，画图标清位置，统一比较标准','m8'],
+['第7层·符号推理','等式加减、虫食算、数字谜','保持等式平衡，从个位和进退位处突破','m9'],
+['第8层·速度模型','路程、速度、时间、相遇与追及','相遇用速度和，追及用速度差','m11'],
+['第9层·综合模型','鸡兔同笼、被除数除数商余数','假设法；被除数=除数×商+余数','m12']
 ]};
 const exactLessons=[
 ['慈地倒不了的老屋','预测故事时，既看题目和插图，也找前文线索'],['犟龟','遇到困难仍朝目标前进'],['小狗学叫','故事有不同结局，可以根据线索预测'],['宝葫芦的秘密（节选）','体会奇妙想象，并分清愿望与现实'],['一块奶酪','关注蚂蚁队长的语言和行动'],['香港，璀璨的明珠','围绕中心意思写出香港的特点'],['读不完的大书','大自然中处处有好玩的事物'],['一定要争气','通过具体事件表现人物品质'],['手术台就是阵地','抓住危险环境和人物行动理解品质'],['一个粗瓷大碗','从物品背后的故事体会人物品质']];
@@ -143,30 +155,132 @@ const focusEnMean=focusEn.map(x=>x[1]),focusEnSpell=focusEn.map(x=>x[0]);focusEn
 ['Stand','up, please.'],['Sit','down, please.'],['Open','your book.'],['Close','the door.'],
 ['My name','is Sam.'],['We are','good friends.'],['Let’s play','together!'],['Sing with','me.']
 ].forEach(x=>addPriority('e3','重点填空题',`补全教材句子：${x[0]} ____`,[x[1],'a happy school','nine pencils','the UK teacher'],0,`完整句子是：${x[0]} ${x[1]}`));
-function hasDup(q){return new Set(q[3].map(x=>String(x).trim().toLowerCase())).size!==q[3].length}for(let i=bank.length-1;i>=0;i--)if(hasDup(bank[i])||bank[i][3].length!==4)bank.splice(i,1);
+// 数学重点知识体系：从计算基础逐步迁移到模型应用与思维拓展。
+[
+['36+78+64',178,'先把36和64凑成100，再加78。'],['45+99',144,'把99看成100，多加1要减1。'],
+['132-98',34,'先减100，再加回2。'],['234-(34+58)',142,'先用234-34得到200，再减58。'],
+['25×32',800,'把32拆成4×8，25×4=100。'],['125×24',3000,'把24拆成8×3，125×8=1000。'],
+['24×5',120,'乘5可以先乘10再除以2。'],['24×15',360,'24×(10+5)=240+120。'],
+['11×19',209,'十位相同、个位和为10：1×2写前面，1×9写09。'],['23×27',621,'十位相同、个位和为10：2×3=6，3×7=21。'],
+['42×48',2016,'十位相同、个位和为10：4×5=20，2×8=16。'],['65×65',4225,'几十五自乘：6×7写42，末尾写25。'],
+['360÷4÷9',10,'连续除可以改成除以4×9。'],['2400÷25',96,'被除数和除数同乘4，变成9600÷100。']
+].forEach(x=>addText('m1','口算题',`口算：${x[0]}＝`,x[1],x[2]));
+[
+['25×4＝____。','100'],['125×8＝____。','1000'],['计算48×52时，前半部分4×5＝____。','20'],
+['37×5＝____。','185'],['一个数连续除以4和5，相当于除以____。','20'],['78+46+22可以先算78+____。','22']
+].forEach(x=>addText('m1','填空题',x[0],x[1],'先观察数字特点，选择凑整或拆分。'));
+[
+['计算25×36时，可以把36拆成4×9。','正确','25×4=100，再乘9，计算更简便。'],
+['45+99可以算成45+100+1。','错误','多加了1应当减去1。'],
+['360÷4÷9与360÷(4×9)的结果相同。','正确','连续除法可合并为除以两个除数的积。'],
+['35×35的结果是1025。','错误','3×4=12，后面写25，结果是1225。']
+].forEach(x=>addPriority('m1','判断题',x[0],['正确','错误'],x[1]==='正确'?0:1,x[2]));
+[
+['小明和爸爸年龄和是44岁，相差28岁。爸爸多少岁？',36,'大数=(和+差)÷2=(44+28)÷2。'],
+['甲乙两数和80，甲比乙多10。乙数是多少？',35,'小数=(和-差)÷2=(80-10)÷2。'],
+['苹果和梨共46千克，苹果比梨多6千克。苹果多少千克？',26,'大数=(46+6)÷2。'],
+['两班共88人，一班调4人到二班后相等。原来一班多少人？',48,'转移4人后相等，原来的差是8；大数=(88+8)÷2。'],
+['上下层共100本，上层拿10本给下层后还多4本。原来上层多少本？',62,'原来的差是10×2+4=24；大数=(100+24)÷2。'],
+['红花黄花共60朵，红花是黄花5倍。黄花多少朵？',10,'总份数1+5=6，60÷6=10。'],
+['两数和72，大数是小数8倍。大数是多少？',64,'一份是72÷9=8，大数8×8=64。'],
+['足球篮球共76个，篮球比足球3倍多4个。足球多少个？',18,'多4先从总和减4，再除以1+3。'],
+['故事书科技书共62本，故事书比科技书3倍少2本。科技书多少本？',16,'少2先给总和加2，再除以4。'],
+['甲乙丙和140，甲是乙2倍，丙是乙4倍。乙是多少？',20,'乙是1份，总份数1+2+4=7。'],
+['甲乙丙和130，乙是甲2倍，丙比甲4倍少10。甲是多少？',20,'少10先加10，140÷(1+2+4)=20。']
+].forEach(x=>addText('m5','应用题',x[0],x[1],x[2]));
+[
+['和差问题中，较小数＝（和－____）÷2。','差'],['甲给乙5本后两人相等，原来甲比乙多____本。','10'],
+['和倍问题中，“是”后面的量通常看作____倍量。','1'],['比3倍多4，调整总和时应先____4。','减去'],
+['比3倍少2，调整总和时应先____2。','加上'],['三量和倍要先把三个量都统一成同一个____倍量。','1']
+].forEach(x=>addText('m5','填空题',x[0],x[1],'先找1倍量，再调整总和并计算总份数。'));
+[
+['两个数和是50、差是10，较大数是30。','正确'],['甲给乙6本后相等，原来甲只比乙多6本。','错误'],
+['甲比乙的4倍少3，求一份量前应把总和加3。','正确'],['三量和倍中可以给每个量选择不同的1倍量。','错误']
+].forEach(x=>addPriority('m5','判断题',x[0],['正确','错误'],x[1]==='正确'?0:1,'和差倍问题先画线段图并统一比较标准。'));
+[
+['四次数学成绩分别为86、92、90、88，平均分是多少？',89,'总分356÷4=89。'],
+['5箱苹果共重40千克，照这样8箱重多少千克？',64,'先求一箱40÷5=8千克，再算8×8。'],
+['3支钢笔18元，买7支需要多少元？',42,'一支18÷3=6元，7支6×7=42元。'],
+['四个数平均数是25，它们的总和是多少？',100,'总和=平均数×个数。'],
+['小华前3次口算平均90分，第4次得94分，4次平均多少分？',91,'前三次总分270，加94得364，再除以4。']
+].forEach(x=>addText('m6','应用题',x[0],x[1],x[2]));
+[['平均数＝总数量÷____。','总份数'],['总数量＝平均数×____。','总份数'],['解决归一问题时，通常先求____份的数量。','1']].forEach(x=>addText('m6','填空题',x[0],x[1],'平均数和归一问题都先找到总量、份数和每份量。'));
+[
+['一条路长100米，每隔10米栽一棵，两端都栽，共栽多少棵？',11,'100÷10=10段，两端都栽，棵数=段数+1。'],
+['一条路分成8段，只在内部连接点放标志，需要多少个？',7,'两端都不放，点数=段数-1。'],
+['一个圆形花坛一周分成12段，每个连接点种一棵，共多少棵？',12,'封闭图形点数=段数。'],
+['一根木料锯成6段，需要锯多少次？',5,'锯的次数比段数少1。'],
+['小明从1楼走到8楼，一共走几层楼梯？',7,'楼层差8-1=7。'],
+['钟敲6下用了10秒，相邻两下间隔多少秒？',2,'6下有5个间隔，10÷5=2秒。'],
+['按红、黄、蓝、绿循环排列，第18个是什么颜色？','黄','18÷4余2，对应第2种颜色。']
+].forEach(x=>addText('m7','应用题',x[0],x[1],x[2]));
+[
+['直线两端都植树时，棵数比间隔数多1。','正确'],['封闭图形上的点数比段数多1。','错误'],
+['锯木头的次数与得到的段数相同。','错误'],['周期问题先确定一个完整周期有几个元素。','正确']
+].forEach(x=>addPriority('m7','判断题',x[0],['正确','错误'],x[1]==='正确'?0:1,'先判断是否封闭、两端是否有点，再确定点数与段数关系。'));
+[
+['爸爸今年36岁，小明8岁。几年后爸爸年龄是小明的3倍？',6,'年龄差不变为28岁；3倍时差是2份，一份14岁，小明还需6年。'],
+['小红排第7，小明排第15，两人之间有多少人？',7,'15-7-1=7。'],
+['从前往后小刚第8，从后往前第6，这一队共多少人？',13,'8+6-1=13，小刚被重复计算一次。'],
+['两根绳子接起来重叠5厘米，总长原来共80厘米，接好后长多少厘米？',75,'重叠部分只计算一次，要减5厘米。']
+].forEach(x=>addText('m8','应用题',x[0],x[1],x[2]));
+[['两人年龄差会随着年份增加而变大。','错误'],['求两人之间人数时要用名次差减1。','正确'],['N个物体依次重叠，一般会重叠N次。','错误']].forEach(x=>addPriority('m8','判断题',x[0],['正确','错误'],x[1]==='正确'?0:1,'年龄差不变；排队注意是否含端点；N个物体相连通常重叠N-1次。'));
+[
+['如果△+△+○=26，△+○=18，那么△是多少？',8,'两个等式相减，剩下一个△=8。'],
+['如果□+○=15，□-○=3，那么□是多少？',9,'两式相加得2个□=18。'],
+['算式 4□+27=75，□里填几？',8,'75-27=48，所以个位是8。'],
+['算式 □3+29=72，□里填几？',4,'72-29=43，所以十位是4。']
+].forEach(x=>addText('m9','填空题',x[0],x[1],x[2]));
+[
+['给每人5本还差8本，给每人4本多6本，共有多少人？',14,'每人少发1本，差额从缺8变多6，共14本，对应14人。'],
+['每组坐6人少3个座位，每组坐7人多5个座位，共有多少组？',8,'每组增加1个座位，总差3+5=8，对应8组。']
+].forEach(x=>addText('m10','应用题',x[0],x[1],x[2]));
+[
+['小明每分钟走60米，15分钟走多少米？',900,'路程=速度×时间。'],
+['家到学校480米，走8分钟，每分钟走多少米？',60,'速度=路程÷时间。'],
+['汽车每小时60千米，行360千米需要几小时？',6,'时间=路程÷速度。'],
+['甲每分50米、乙每分40米，相向走8分钟相遇，两地相距多少米？',720,'相遇路程=(50+40)×8。'],
+['甲每分70米追乙每分50米，乙领先120米，几分钟追上？',6,'追及时间=路程差÷速度差=120÷20。']
+].forEach(x=>addText('m11','应用题',x[0],x[1],x[2]));
+[['相遇问题通常使用速度和。','正确'],['追及问题通常使用速度和。','错误'],['时间＝路程÷速度。','正确']].forEach(x=>addPriority('m11','判断题',x[0],['正确','错误'],x[1]==='正确'?0:1,'相向相遇看速度和，同向追及看速度差。'));
+[
+['鸡兔共10只，共有28条腿。兔有多少只？',4,'全按鸡算有20条腿，多8条；每只兔多2条腿，所以兔4只。'],
+['鸡兔共15只，共有42条腿。鸡有多少只？',9,'全按鸡算30条，多12条，对应6只兔，所以鸡9只。'],
+['一个数除以7，商是8，余数是3，这个数是多少？',59,'被除数=7×8+3。'],
+['两数相除商5余5，被除数、除数、商、余数和75，除数是多少？',10,'先减商和余数，再减被除数中多出的余数，60÷6=10。']
+].forEach(x=>addText('m12','应用题',x[0],x[1],x[2]));
+[['被除数＝除数×商＋余数。','正确'],['余数可以等于除数。','错误'],['鸡兔同笼可先假设全是鸡。','正确']].forEach(x=>addPriority('m12','判断题',x[0],['正确','错误'],x[1]==='正确'?0:1,'余数必须小于除数；鸡兔同笼常用假设法。'));
+function hasDup(q){return new Set(q[3].map(x=>String(x).trim().toLowerCase())).size!==q[3].length}for(let i=bank.length-1;i>=0;i--)if(hasDup(bank[i])||![1,2,4].includes(bank[i][3].length))bank.splice(i,1);
 let state=JSON.parse(localStorage.getItem('grade3LangState')||'{"stats":{},"wrong":[],"answered":0,"best":null,"food":0,"reinforceStreak":0,"rabbitXp":0,"pandaXp":0,"turtleXp":0,"mantisXp":0,"activePet":"rabbit","names":{"rabbit":"小团子","panda":"圆滚滚","turtle":"慢慢","mantis":"小刀"}}');state.stats??={};state.wrong??=[];state.food??=0;state.reinforceStreak??=0;state.rabbitXp??=0;state.pandaXp??=0;state.turtleXp??=0;state.mantisXp??=0;state.activePet??='rabbit';state.names??={rabbit:'小团子',panda:'圆滚滚',turtle:'慢慢',mantis:'小刀'};state.names.turtle??='慢慢';state.names.mantis??='小刀';let exam=[],idx=0,answers=[],drillQ=null,drill={n:0,c:0,seen:[]},review={source:null,n:0,c:0,seen:[],q:null,passes:0};
 function save(){localStorage.setItem('grade3LangState',JSON.stringify(state));updateDash()}
 function esc(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\n','<br>')}
 function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function placeAnswer(q,target=Math.floor(Math.random()*4)){let correct=q[3][q[4]],wrong=shuffle(q[3].filter((_,i)=>i!==q[4])),opts=[...wrong];opts.splice(target,0,correct);return [q[0],q[1],q[2],opts,target,q[5],q[6]]}
+function isText(q){return q[3].length===1}
+function normAnswer(v){return String(v).trim().toLowerCase().replace(/[，,。\s]/g,'')}
+function placeAnswer(q,target=Math.floor(Math.random()*q[3].length)){if(isText(q))return [...q];let correct=q[3][q[4]],wrong=shuffle(q[3].filter((_,i)=>i!==q[4])),opts=[...wrong];target=target%q[3].length;opts.splice(target,0,correct);return [q[0],q[1],q[2],opts,target,q[5],q[6]]}
 function switchView(v){document.querySelectorAll('.view,.tab').forEach(x=>x.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelector(`[data-view="${v}"]`).classList.add('active');if(v==='mistakes')renderMistakes();if(v==='report')renderReport();if(v==='pet')renderPet()}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
 function startExam(mode){let pool=mode==='both'?bank:bank.filter(q=>q[0][0]===mode[0]),groups=Object.keys(topics).filter(t=>mode==='both'||t[0]===mode[0]),weak=new Set(groups.filter(t=>(state.stats[t]?.w||0)>=2||state.wrong.some(x=>x.t===t&&!x.mastered))),focus=groups.map(t=>shuffle(pool.filter(q=>q[0]===t))[0]).filter(Boolean),rest=pool.filter(q=>!focus.includes(q)).map(q=>({q,rank:Math.random()+(q[6]?.8:0)+(weak.has(q[0])?12:0)})).sort((a,b)=>b.rank-a.rank).slice(0,20-focus.length).map(x=>x.q),picked=shuffle([...focus,...rest]).slice(0,20),positions=shuffle(Array.from({length:20},(_,i)=>i%4));exam=picked.map((q,i)=>placeAnswer(q,positions[i]));idx=0;answers=Array(exam.length).fill(null);switchView('exam');document.getElementById('examIntro').classList.add('hidden');document.getElementById('examBox').classList.remove('hidden');renderExam()}
 function stars(q){let t=String(q[1]||'')+String(q[2]||'');return t.includes('阅读')||t.includes('填空')?'★★★':(t.includes('解决')||t.includes('统计')?'★★★':'★★');}
-function renderExam(){let q=exam[idx],a=answers[idx];document.getElementById('examBox').innerHTML=`<div class="examtop"><span class="tag">${topics[q[0]]} · 第${idx+1}/${exam.length}题</span><b>${q[1]} · ${stars(q)}</b></div><div class="question"><span class="tag">难度 ${stars(q)}</span><br>${esc(q[2])}</div><div class="options">${q[3].map((o,i)=>`<button class="option ${a?(i===q[4]?'correct':i===a.pick?'wrong':''):''}" onclick="pick(${i})" ${a?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>${a?`<div class="feedback"><b>${a.ok?'答对了，真棒！':'这道题需要再想一想'}</b><br>正确答案：${String.fromCharCode(65+q[4])}。${esc(q[5])}<br><small>知识点：${topics[q[0]]}</small></div><button class="primary" style="margin-top:12px" onclick="nextExam()">${idx===exam.length-1?'查看成绩':'下一题'}</button>`:'<p class="muted">选择后立即判分。</p>'}`}
+function renderExam(){let q=exam[idx],a=answers[idx],area=isText(q)?`<div class="actions"><input id="examText" inputmode="text" placeholder="请输入答案" value="${a?esc(a.typed):''}" ${a?'disabled':''}><button class="primary" onclick="submitExamText()" ${a?'disabled':''}>提交答案</button></div>`:`<div class="options">${q[3].map((o,i)=>`<button class="option ${a?(i===q[4]?'correct':i===a.pick?'wrong':''):''}" onclick="pick(${i})" ${a?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>`;document.getElementById('examBox').innerHTML=`<div class="examtop"><span class="tag">${topics[q[0]]} · 第${idx+1}/${exam.length}题</span><b>${q[1]} · ${stars(q)}</b></div><div class="question"><span class="tag">难度 ${stars(q)}</span>${q[6]?'<span class="tag warn">本周重点</span>':''}<br>${esc(q[2])}</div>${area}${a?`<div class="feedback"><b>${a.ok?'答对了，真棒！':'这道题需要再想一想'}</b><br>正确答案：${esc(q[3][q[4]])}。${esc(q[5])}<br><small>知识点：${topics[q[0]]}</small></div><button class="primary" style="margin-top:12px" onclick="nextExam()">${idx===exam.length-1?'查看成绩':'下一题'}</button>`:'<p class="muted">作答后立即判分。</p>'}`}
 function pick(i){if(answers[idx])return;let q=exam[idx],ok=i===q[4],s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:q[3][i],a:q[3][q[4]],e:q[5],t:q[0],at,mastered:false})}state.answered++;answers[idx]={pick:i,ok};save();renderExam()}
+function submitExamText(){if(answers[idx])return;let input=document.getElementById('examText'),typed=input.value.trim();if(!typed){input.focus();return}let q=exam[idx],ok=normAnswer(typed)===normAnswer(q[3][q[4]]),s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:typed,a:q[3][q[4]],e:q[5],t:q[0],at,mastered:false})}state.answered++;answers[idx]={pick:null,ok,typed};save();renderExam()}
 function nextExam(){if(idx===exam.length-1){finishExam();return}idx++;renderExam()}
 function finishExam(){let score=answers.filter(x=>x?.ok).length*5;if(score>=90){state.food+=3}state.best=Math.max(state.best||0,score);save();let weak=Object.keys(topics).filter(t=>(state.stats[t]?.w||0)>=2);document.getElementById('examBox').innerHTML=`<div class="big">${score}分</div><h2>${score>=90?'达到目标，获得3颗星星！':'找到弱项就是进步的开始'}</h2><h3>薄弱知识点</h3>${weak.length?weak.map(t=>`<div class="topic">${topics[t]} <button onclick="setDrill('${t}')">立即强化</button></div>`).join(''):'<p class="muted">暂未发现累计错2次的知识点。</p>'}<button onclick="startExam('both')">再测一次</button>`}
 function accuracy(t){let s=state.stats[t];return s?.n?Math.round(s.c/s.n*100):null}
 function rewardReinforcement(ok){state.reinforceStreak=ok?state.reinforceStreak+1:0;if(state.reinforceStreak&&state.reinforceStreak%10===0){state.food++;return true}return false}
 function setDrill(t){switchView('drill');document.getElementById('topicSelect').value=t;drill={n:0,c:0,seen:[]};renderDrillIntro()}
 function renderDrillIntro(){let t=document.getElementById('topicSelect').value,p=accuracy(t);document.getElementById('drillBox').innerHTML=`<p class="muted">${p==null?'还没有答题记录。':`目前正确率${p}%。`} 每组4题必须全部正确，否则换一组继续。</p><button class="primary" onclick="nextDrill()">开始专项训练</button>`}
-function nextDrill(){let t=document.getElementById('topicSelect').value,all=bank.filter(q=>q[0]===t),c=all.filter(q=>!drill.seen.includes(q[2]));if(!c.length){drill.seen=[];c=all}let source=c[Math.floor(Math.random()*c.length)];drill.seen.push(source[2]);drillQ=placeAnswer(source);document.getElementById('drillBox').innerHTML=`<div class="question">${esc(drillQ[2])}</div><div class="options">${drillQ[3].map((o,i)=>`<button class="option" onclick="answerDrill(${i},this)"><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div><div id="drillFeedback"></div>`}
-function answerDrill(i,el){let q=drillQ,ok=i===q[4];document.querySelectorAll('#drillBox .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(!ok)el.classList.add('wrong');drill.n++;drill.c+=ok?1:0;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:q[3][i],a:q[3][q[4]],e:q[5],t:q[0],at,mastered:false})}state.answered++;let rewarded=rewardReinforcement(ok);save();let done=drill.n===4,pass=done&&drill.c===4;document.getElementById('drillFeedback').innerHTML=`<div class="feedback"><b>${ok?'答对了！':'正确答案：'+esc(q[3][q[4]])}</b><br>${esc(q[5])}<br>本组${drill.c}/${drill.n}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(pass?'<button class="primary" onclick="startExam(\'both\')">4题全对，回到综合测验</button>':'<button class="primary" onclick="drill={n:0,c:0,seen:[]};nextDrill()">再练4道新题直到全对</button>'):'<button class="primary" onclick="nextDrill()">下一题</button>'}`}
+function nextDrill(){let t=document.getElementById('topicSelect').value,all=bank.filter(q=>q[0]===t),c=all.filter(q=>!drill.seen.includes(q[2]));if(!c.length){drill.seen=[];c=all}let priority=c.filter(q=>q[6]),choices=priority.length&&Math.random()<.75?priority:c,source=choices[Math.floor(Math.random()*choices.length)];drill.seen.push(source[2]);drillQ=placeAnswer(source);let area=isText(drillQ)?'<div class="actions"><input id="drillText" placeholder="请输入答案"><button class="primary" onclick="answerDrillText()">提交答案</button></div>':`<div class="options">${drillQ[3].map((o,i)=>`<button class="option" onclick="answerDrill(${i},this)"><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>`;document.getElementById('drillBox').innerHTML=`<div class="question">${drillQ[6]?'<span class="tag warn">重点强化</span><br>':''}${esc(drillQ[2])}</div>${area}<div id="drillFeedback"></div>`}
+function answerDrill(i,el){answerDrillCore(i,el,null)}
+function answerDrillText(){let el=document.getElementById('drillText'),v=el.value.trim();if(!v){el.focus();return}answerDrillCore(null,el,v)}
+function answerDrillCore(i,el,typed){let q=drillQ,ok=typed!==null?normAnswer(typed)===normAnswer(q[3][q[4]]):i===q[4];document.querySelectorAll('#drillBox .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(typed!==null)el.disabled=true;else if(!ok)el.classList.add('wrong');drill.n++;drill.c+=ok?1:0;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:typed!==null?typed:q[3][i],a:q[3][q[4]],e:q[5],t:q[0],at,mastered:false})}state.answered++;let rewarded=rewardReinforcement(ok);save();let done=drill.n===4,pass=done&&drill.c===4;document.getElementById('drillFeedback').innerHTML=`<div class="feedback"><b>${ok?'答对了！':'正确答案：'+esc(q[3][q[4]])}</b><br>${esc(q[5])}<br>本组${drill.c}/${drill.n}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(pass?'<button class="primary" onclick="startExam(\'both\')">4题全对，回到综合测验</button>':'<button class="primary" onclick="drill={n:0,c:0,seen:[]};nextDrill()">再练4道新题直到全对</button>'):'<button class="primary" onclick="nextDrill()">下一题</button>'}`}
 function renderMistakes(){let total=state.wrong.length,done=state.wrong.filter(x=>x.mastered).length;document.getElementById('mistakeStats').innerHTML=`<div class="stat"><div class="big">${total}</div><small>累计错题</small></div><div class="stat"><div class="big">${done}</div><small>已掌握</small></div><div class="stat"><div class="big">${total-done}</div><small>待巩固</small></div>`;document.getElementById('mistakePractice').innerHTML='';document.getElementById('mistakeList').innerHTML=total?state.wrong.map((x,i)=>`<div class="mistake"><div class="topichead"><span class="tag ${x.mastered?'':'danger'}">${x.mastered?'已掌握':'待巩固'}</span><small>${topics[x.t]}</small></div><div class="question">${esc(x.q)}</div><div style="color:var(--red)"><b>上次错误答案：</b>${esc(x.p)}</div><div style="color:var(--green)"><b>正确答案：</b>${esc(x.a)}</div><p class="muted">${esc(x.e)}</p><button class="${x.mastered?'':'primary'}" onclick="startReview(${i})">${x.mastered?'再次挑战':'举一反三 · 练3题'}</button></div>`).join(''):'<div class="feedback">还没有错题，继续保持！</div>'}
 function startReview(i){review={source:i,n:0,c:0,seen:[],q:null,passes:0};document.getElementById('mistakeList').innerHTML='';nextReview()}
-function nextReview(){let x=state.wrong[review.source],all=bank.filter(q=>q[0]===x.t&&q[2]!==x.q),c=all.filter(q=>!review.seen.includes(q[2]));if(!c.length){review.seen=[];c=all}let source=c[Math.floor(Math.random()*c.length)];review.seen.push(source[2]);review.q=placeAnswer(source);let q=review.q;document.getElementById('mistakePractice').innerHTML=`<div class="eyebrow">举一反三 ${review.n+1}/3</div><div class="question"><span class="tag">难度 ${stars(q)}</span><br>${esc(q[2])}</div><div class="options">${q[3].map((o,i)=>`<button class="option" onclick="answerReview(${i},this)"><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div><div id="reviewFeedback"></div>`}
-function answerReview(i,el){let q=review.q,ok=i===q[4];document.querySelectorAll('#mistakePractice .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(!ok)el.classList.add('wrong');review.n++;review.c+=ok?1:0;state.answered++;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok)s.w++;let rewarded=rewardReinforcement(ok),done=review.n===3,pass=done&&review.c===3;if(done){review.passes=pass?review.passes+1:0;if(pass&&review.passes>=2)state.wrong[review.source].mastered=true}save();let mastered=done&&pass&&review.passes>=2;document.getElementById('reviewFeedback').innerHTML=`<div class="feedback">${ok?'答对了！':'正确答案：'+esc(q[3][q[4]])}<br>${esc(q[5])}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(mastered?'<button class="primary" onclick="renderMistakes()">连续两组全对，确认掌握</button>':pass?'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">第一组全对，再过一组确认掌握</button>':'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">未全对，继续练3道</button>'):'<button class="primary" onclick="nextReview()">下一题</button>'}`}
+function nextReview(){let x=state.wrong[review.source],all=bank.filter(q=>q[0]===x.t&&q[2]!==x.q),c=all.filter(q=>!review.seen.includes(q[2]));if(!c.length){review.seen=[];c=all}let priority=c.filter(q=>q[6]),choices=priority.length&&Math.random()<.75?priority:c,source=choices[Math.floor(Math.random()*choices.length)];review.seen.push(source[2]);review.q=placeAnswer(source);let q=review.q,area=isText(q)?'<div class="actions"><input id="reviewText" placeholder="请输入答案"><button class="primary" onclick="answerReviewText()">提交答案</button></div>':`<div class="options">${q[3].map((o,i)=>`<button class="option" onclick="answerReview(${i},this)"><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>`;document.getElementById('mistakePractice').innerHTML=`<div class="eyebrow">举一反三 ${review.n+1}/3</div><div class="question"><span class="tag">难度 ${stars(q)}</span>${q[6]?'<span class="tag warn">同类重点</span>':''}<br>${esc(q[2])}</div>${area}<div id="reviewFeedback"></div>`}
+function answerReview(i,el){answerReviewCore(i,el,null)}
+function answerReviewText(){let el=document.getElementById('reviewText'),v=el.value.trim();if(!v){el.focus();return}answerReviewCore(null,el,v)}
+function answerReviewCore(i,el,typed){let q=review.q,ok=typed!==null?normAnswer(typed)===normAnswer(q[3][q[4]]):i===q[4];document.querySelectorAll('#mistakePractice .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(typed!==null)el.disabled=true;else if(!ok)el.classList.add('wrong');review.n++;review.c+=ok?1:0;state.answered++;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok)s.w++;let rewarded=rewardReinforcement(ok),done=review.n===3,pass=done&&review.c===3;if(done){review.passes=pass?review.passes+1:0;if(pass&&review.passes>=2)state.wrong[review.source].mastered=true}save();let mastered=done&&pass&&review.passes>=2;document.getElementById('reviewFeedback').innerHTML=`<div class="feedback">${ok?'答对了！':'正确答案：'+esc(q[3][q[4]])}<br>${esc(q[5])}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(mastered?'<button class="primary" onclick="renderMistakes()">连续两组全对，确认掌握</button>':pass?'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">第一组全对，再过一组确认掌握</button>':'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">未全对，继续练3道</button>'):'<button class="primary" onclick="nextReview()">下一题</button>'}`}
 function reportRows(){return Object.keys(topics).map(t=>{let s=state.stats[t]||{n:0,c:0,w:0},pending=state.wrong.filter(x=>x.t===t&&!x.mastered).length,rate=s.n?Math.round(s.c/s.n*100):null,level=rate==null?'未测试':pending||rate<60?'薄弱':rate<80?'待巩固':rate<90?'良好':'掌握';return {t,name:topics[t],...s,pending,rate,level}})}
 function renderReport(){let rows=reportRows(),tested=rows.filter(x=>x.rate!=null),avg=tested.length?Math.round(tested.reduce((a,x)=>a+x.rate,0)/tested.length):0;document.getElementById('reportSummary').innerHTML=`<div class="stat"><div class="big">${avg}%</div><small>平均正确率</small></div><div class="stat"><div class="big">${rows.filter(x=>x.level==='掌握').length}/${rows.length}</div><small>已掌握知识点</small></div><div class="stat"><div class="big">${rows.filter(x=>x.level==='薄弱').length}</div><small>薄弱知识点</small></div>`;document.getElementById('reportTable').innerHTML=`<table style="width:100%;border-collapse:collapse;margin-top:15px"><tr>${['知识点','答题','答对','正确率','错题','待巩固','状态','行动'].map(x=>`<th style="padding:9px;border-bottom:1px solid var(--line);text-align:left">${x}</th>`).join('')}</tr>${rows.map(x=>`<tr><td>${x.name}</td><td>${x.n}</td><td>${x.c}</td><td>${x.rate==null?'—':x.rate+'%'}</td><td>${x.w}</td><td>${x.pending}</td><td><span class="tag ${x.level==='薄弱'?'danger':''}">${x.level}</span></td><td><button onclick="setDrill('${x.t}')">强化</button></td></tr>`).join('')}</table>`}
 function downloadReport(type){let rows=reportRows(),data=[['知识点','答题数','答对数','正确率','错题数','待巩固','状态'],...rows.map(x=>[x.name,x.n,x.c,x.rate==null?'未测试':x.rate+'%',x.w,x.pending,x.level])];if(type==='csv'){download('\ufeff'+data.map(r=>r.map(v=>`"${v}"`).join(',')).join('\n'),'三年级语文英语掌握报告.csv','text/csv');return}let trs=data.map((r,i)=>`<tr>${r.map(v=>`<${i?'td':'th'}>${v}</${i?'td':'th'}>`).join('')}</tr>`).join('');download(`<!doctype html><meta charset="utf-8"><title>掌握报告</title><style>body{font:15px system-ui;margin:30px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:8px}th{background:#eef5fb}</style><h1>三年级语文英语掌握报告</h1><p>生成时间：${new Date().toLocaleString()}　累计答题：${state.answered}　最好成绩：${state.best??'—'}</p><table>${trs}</table><p>建议优先完成“薄弱”和“待巩固”知识点的全对训练。</p><button onclick="print()">打印或保存PDF</button>`,'三年级语文英语掌握报告.html','text/html')}
@@ -174,7 +288,7 @@ function download(c,n,t){let u=URL.createObjectURL(new Blob([c],{type:t})),a=doc
 const petData={rabbit:[['🥚','暖暖蛋',0],['🐇','小白兔',5],['🐰🌱','跳跳兔',15],['🐰📮','森林邮差',30],['🐰📖','阅读达人',50],['🐰✏️','词语高手',75],['🐰📚','故事大王',105],['🐰🛡️','知识骑士',140],['🐰🎓','智慧学者',180],['🐰👑','星光冠军',225]],panda:[['🥚','神秘蛋',0],['🐼','熊猫宝宝',5],['🐼🎋','竹林学徒',15],['🐼⭐','单词新星',30],['🐼🗣️','双语能手',50],['🐼📖','阅读队长',75],['🐼🧭','知识探险家',105],['🐼🛡️','智慧守护者',140],['🐼🎓','国宝学者',180],['🐼👑','成长大师',225]],turtle:[['🥚','碧波蛋',0],['🐢','乌龟宝宝',5],['🐢🌱','慢跑学徒',15],['🐢🪷','荷塘探险家',30],['🐢🔤','背词小能手',50],['🐢⛵','阅读小船长',75],['🐢🛡️','知识守护龟',105],['🐢🧭','智慧航海家',140],['🐢🎓','翡翠大学士',180],['🐢👑','长寿知识王',225]],mantis:[['🥚','翠叶蛋',0],['🌱','螳螂宝宝',5],['🌿⚔️','小刀学徒',15],['🌿🔎','花园侦察兵',30],['🌿⭐','单词小猎手',50],['🌿📖','阅读小先锋',75],['🌿🛡️','知识绿骑士',105],['🌿🌳','智慧守林员',140],['🌿🎓','翡翠大学士',180],['🌿👑','昆虫知识王',225]]};
 function choosePet(k){state.activePet=k;save();renderPet();petInteract('hello')}function savePetName(){let v=document.getElementById('petNameInput').value.trim();if(!v)return;state.names[state.activePet]=v.slice(0,8);save();document.getElementById('nameNote').textContent='名字保存成功！';petInteract('name')}function petInteract(action='hello'){let k=state.activePet,name=state.names[k],lines={hello:[`你好呀，我是${name}！`,`准备好一起学习了吗？`,`今天也要进步一点点！`],touch:[`好舒服呀，谢谢你！`,`${name}最喜欢你啦！`,`再摸一下，我会更有精神！`],play:['我们一起跳一跳！','答对题目，我为你庆祝！','出发，去知识乐园探险！'],feed:['真好吃！我又长大一点啦！','谢谢你的星星大餐！','吃饱啦，陪你继续学习！'],name:[`我喜欢这个新名字！`,`以后请叫我${name}！`]},arr=lines[action]||lines.hello,b=document.getElementById('petBubble'),e=document.getElementById('petEmoji');if(b)b.textContent=arr[Math.floor(Math.random()*arr.length)];if(e){e.classList.remove('react');void e.offsetWidth;e.classList.add('react');setTimeout(()=>e.classList.remove('react'),1400)}}function feedPet(){if(!state.food)return;state.food--;state[state.activePet+'Xp']++;save();petInteract('feed')}
 function renderPet(){let k=state.activePet,xp=state[k+'Xp'],stages=petData[k],s=stages[0];stages.forEach(x=>{if(xp>=x[2])s=x});let next=stages.find(x=>x[2]>xp),base=next?stages[stages.indexOf(next)-1][2]:225,p=next?Math.round((xp-base)/(next[2]-base)*100):100,name=state.names[k],emoji=document.getElementById('petEmoji');emoji.textContent=s[0];emoji.className=`pet ${k==='mantis'&&s[2]===0?'':k}`;document.getElementById('petName').textContent=`${name} · ${s[1]}`;document.getElementById('petMood').textContent=state.food?`${name}正在等你投喂！`:`考到90分，为${name}带回星星吧。`;document.getElementById('petNameInput').value=name;document.getElementById('foodCount').textContent=`⭐ × ${state.food}`;document.getElementById('petXp').textContent=next?`${xp}/${next[2]}`:`${xp}·满级`;document.getElementById('petBar').style.width=p+'%';document.getElementById('feedBtn').disabled=!state.food;document.getElementById('pickRabbit').textContent=`🐰 ${state.names.rabbit}`;document.getElementById('pickPanda').textContent=`🐼 ${state.names.panda}`;document.getElementById('pickTurtle').textContent=`🐢 ${state.names.turtle}`;document.getElementById('pickMantis').textContent=`🌿 ${state.names.mantis}`;document.getElementById('albumTitle').textContent=`${name}成长图鉴 · 10级`;document.getElementById('petUnlocks').innerHTML=stages.map(x=>`<div class="${xp>=x[2]?'open':''}"><div style="font-size:30px">${xp>=x[2]?(k==='mantis'&&x[2]>0?'🌿':x[0]):'🔒'}</div><b>${x[1]}</b><small><br>${x[2]}成长值</small></div>`).join('')}
-function topicBar(t,p){return `<div class="topic"><div class="topichead"><span>${topics[t]}</span><b>${p}%</b></div><div class="bar"><i style="width:${p}%"></i></div></div>`}function renderMap(){document.getElementById('bookMap').innerHTML=[...curriculum.zh,...curriculum.en].map((x,i)=>`<details class="card s4"><summary><b>${esc(x[0])}</b></summary><p>${esc(x[1])}</p><small class="muted">训练重点：${esc(x[2])}</small><p><button onclick="setDrill('${i<curriculum.zh.length?'z6':'e4'}')">练本单元能力</button></p></details>`).join('');document.getElementById('mapGrid').innerHTML=Object.keys(topics).map(t=>{let p=accuracy(t),weak=(state.stats[t]?.w||0)>=2;return `<div class="card s4"><div class="topichead"><h3>${topics[t]}</h3><span class="tag ${weak?'danger':''}">${weak?'薄弱':p==null?'未测试':p+'%'}</span></div><p class="muted">累计错题：${state.stats[t]?.w||0}</p><button onclick="setDrill('${t}')">专项练习</button></div>`}).join('')}
+function topicBar(t,p){return `<div class="topic"><div class="topichead"><span>${topics[t]}</span><b>${p}%</b></div><div class="bar"><i style="width:${p}%"></i></div></div>`}function renderMap(){let units=[...curriculum.zh.map(x=>[...x,'z6']),...curriculum.en.map(x=>[...x,'e4']),...curriculum.math.map(x=>[x[0],x[1],x[2],x[3]])];document.getElementById('bookMap').innerHTML=units.map(x=>`<details class="card s4"><summary><b>${esc(x[0])}</b></summary><p>${esc(x[1])}</p><small class="muted">训练重点：${esc(x[2])}</small><p><button onclick="setDrill('${x[3]}')">练这一层</button></p></details>`).join('');document.getElementById('mapGrid').innerHTML=Object.keys(topics).map(t=>{let p=accuracy(t),weak=(state.stats[t]?.w||0)>=2;return `<div class="card s4"><div class="topichead"><h3>${topics[t]}</h3><span class="tag ${weak?'danger':''}">${weak?'薄弱':p==null?'未测试':p+'%'}</span></div><p class="muted">累计错题：${state.stats[t]?.w||0}</p><button onclick="setDrill('${t}')">专项练习</button></div>`}).join('')}
 function updateDash(){document.getElementById('best').textContent=state.best==null?'—':state.best;document.getElementById('answered').textContent=state.answered;document.getElementById('homeFood').textContent=`⭐ × ${state.food}`;let vals=Object.keys(topics).map(t=>[t,accuracy(t)]),weak=Object.keys(topics).filter(t=>(state.stats[t]?.w||0)>=2);document.getElementById('weakCount').textContent=weak.length;let done=vals.filter(x=>x[1]!=null);document.getElementById('miniTopics').innerHTML=done.length?done.sort((a,b)=>a[1]-b[1]).slice(0,5).map(x=>topicBar(x[0],x[1])).join(''):'完成测试后显示。';renderMap();renderPet()}
 document.getElementById('topicSelect').innerHTML=Object.entries(topics).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');renderDrillIntro();updateDash();
 </script></body></html>
