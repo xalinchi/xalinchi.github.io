@@ -23,7 +23,7 @@ function addText(t,type,q,answer,why,priority=true){add(t,type,q,[String(answer)
 const zhChars=[['晨','chén','早晨'],['绒','róng','绒球'],['球','qiú','足球'],['汉','hàn','汉字'],['艳','yàn','鲜艳'],['服','fú','衣服'],['装','zhuāng','服装'],['扮','bàn','打扮'],['读','dú','读书'],['静','jìng','安静'],['停','tíng','停止'],['粗','cū','粗壮'],['影','yǐng','影子'],['落','luò','落叶'],['荒','huāng','荒野'],['笛','dí','竹笛'],['罚','fá','处罚'],['假','jià','放假'],['互','hù','互相'],['所','suǒ','所以'],['够','gòu','能够'],['猜','cāi','猜想'],['扬','yáng','飘扬'],['臂','bì','手臂'],['寒','hán','寒冷'],['径','jìng','小径'],['赠','zèng','赠送'],['橙','chéng','橙子'],['盖','gài','瓶盖'],['菊','jú','菊花']];
 const py=zhChars.map(x=>x[1]),words=zhChars.map(x=>x[2]);
 zhChars.forEach((x,i)=>{let o=[x[1],py[(i+5)%py.length],py[(i+11)%py.length],py[(i+17)%py.length]];add('z1','单选题',`“${x[0]}”的正确读音是？`,o,0,`“${x[0]}”读${x[1]}，可组成“${x[2]}”。`);let w=[x[2],words[(i+7)%words.length],words[(i+13)%words.length],words[(i+19)%words.length]];add('z2','单选题',`下面哪个词语含有“${x[0]}”字？`,w,0,`“${x[0]}”可以组成“${x[2]}”。`) });
-[['安静','热闹'],['寒冷','温暖'],['粗壮','细小'],['认真','马虎'],['美丽','丑陋'],['喜欢','讨厌'],['打开','关闭'],['勇敢','胆小']].forEach((x,i)=>add('z3','单选题',`“${x[0]}”的反义词是？`,[x[1],['开心','整齐','明亮','迅速'][i%4],['洁白','许多','经常','仔细'][(i+1)%4],['平展','湿润','摇晃','辽阔'][(i+2)%4]],0,`${x[0]}与${x[1]}意思相反。`));
+[['安静','热闹'],['寒冷','温暖'],['粗壮','细小'],['认真','马虎'],['美丽','丑陋'],['喜欢','讨厌'],['打开','关闭'],['勇敢','胆小']].forEach((x,i)=>add('z3','单选题',`词语“${x[0]}”在本组语境中的反义词是？`,[x[1],['开心','整齐','明亮','迅速'][i%4],['洁白','许多','经常','仔细'][(i+1)%4],['平展','湿润','摇晃','辽阔'][(i+2)%4]],0,`${x[0]}与${x[1]}意思相反。`));
 [['金黄的','叶子'],['明朗的','天空'],['湿润的','东风'],['鲜艳的','服装'],['粗壮的','枝干'],['香甜的','气味'],['安静的','教室'],['辽阔的','草原']].forEach((x,i)=>add('z2','单选题',`选择合适的搭配：“${x[0]}____”`,[x[1],'跑步','唱歌','认真'],0,`常见搭配是“${x[0]}${x[1]}”。`));
 [['妈妈问','“你写完作业了吗？”'],['秋天到了','，树叶慢慢变黄了。'],['多么美丽的校园','！'],['我最喜欢的水果有','：苹果、香蕉和葡萄。'],['小鸟在枝头唱歌','。']].forEach(x=>add('z4','程序填空题',`给句子选择合适的后半部分：${x[0]}____`,[x[1],'；','——','……'],0,'根据句子的语气和结构选择标点。'));
 [['停车坐爱枫林晚','霜叶红于二月花'],['一年好景君须记','最是橙黄橘绿时'],['萧萧梧叶送寒声','江上秋风动客情'],['意欲捕鸣蝉','忽然闭口立']].forEach(x=>add('z5','程序填空题',`补充诗句：${x[0]}，____。`,[x[1],'白云生处有人家','荷尽已无擎雨盖','夜深篱落一灯明'],0,`完整诗句是“${x[0]}，${x[1]}”。`));
@@ -177,11 +177,11 @@ function addZhMatched(t,type,q,correct,wrong,why){let opts=wrong.slice(0,3),pos=
 ['z2','选词填空','选词填空：这场大雨（持续/继续）了两个小时。','持续',['继续','陆续','连续'],'表示延续了一段时间，用“持续”。']
 ].forEach(x=>addZhMatched(...x));
 [
-['z2','照样子写词语','照样子写AABB式词语：急急忙忙——____','安安静静','AABB式是两个相同的字分别重叠。'],
-['z2','照样子写词语','照样子写ABAC式词语：一摇一晃——____','自言自语','ABAC式第一、三字相同。'],
-['z2','照样子写词语','照样子写“又×又×”式词语：又松又软——____','又香又甜','“又×又×”可同时写出事物的两个特点。'],
-['z2','照样子写词语','照样子写含身体部位的词语：摇头晃脑——____','眼疾手快','词语中“眼、手”都是身体部位。'],
-['z2','照样子写词语','照样子写带数字的词语：四面八方——____','七上八下','“七上八下”是含数字的四字词语。']
+['z2','照样子写词语','照样子写AABB式词语：急急忙忙——____','安安静静||干干净净||整整齐齐||高高兴兴','AABB式是两个相同的字分别重叠，系统接受多种合理答案。'],
+['z2','照样子写词语','照样子写ABAC式词语：一摇一晃——____','自言自语||自由自在||一心一意||无边无际','ABAC式第一、三字相同，系统接受多种合理答案。'],
+['z2','照样子写词语','照样子写“又×又×”式词语：又松又软——____','又香又甜||又大又圆||又高又壮||又白又嫩','答案要同时写出事物的两个特点，系统接受多种合理答案。'],
+['z2','照样子写词语','照样子写含身体部位的词语：摇头晃脑——____','眼疾手快||手忙脚乱||面红耳赤||张牙舞爪','答案中要含身体部位，系统接受多种合理答案。'],
+['z2','照样子写词语','照样子写带数字的词语：四面八方——____','七上八下||五湖四海||三心二意||一心一意','答案中要含数字，系统接受多种合理答案。']
 ].forEach(x=>addText(...x));
 [
 ['z4','把字句与被字句转换','改成“把”字句：东方升起的红太阳照亮了美丽的土地。','东方升起的红太阳把美丽的土地照亮了。','改写后施动者、动作和对象不能改变。'],
@@ -191,10 +191,10 @@ function addZhMatched(t,type,q,correct,wrong,why){let opts=wrong.slice(0,3),pos=
 ['z4','把字句与被字句转换','改成“把”字句：翠鸟衔走了水里的小鱼。','翠鸟把水里的小鱼衔走了。','“翠鸟”是施动者，“小鱼”是动作对象。']
 ].forEach(x=>addText(...x));
 [
-['z4','仿写比喻句','仿照“银杏叶像一把把小扇子”补全比喻句：弯弯的月亮像____。','一只小船','比喻要找到形状或特点相似的事物。'],
-['z4','仿写比喻句','仿照例句补全：秋天的田野像____。','金色的海洋','田野一片金黄，与“金色的海洋”有相似点。'],
-['z4','仿写拟人句','仿照“花儿在风中跳舞”补全拟人句：小鸟在枝头____。','唱歌','把小鸟的叫声写成人的“唱歌”，就是拟人。'],
-['z4','仿写拟人句','仿照例句补全：秋风一吹，树叶____。','离开了大树妈妈','赋予树叶人的动作和感情，句子更生动。'],
+['z4','仿写比喻句','仿照“银杏叶像一把把小扇子”补全比喻句：弯弯的月亮像____。','一只小船||一把镰刀||弯弯的小船','比喻要找到形状或特点相似的事物，系统接受列出的合理表达。'],
+['z4','仿写比喻句','仿照例句补全：秋天的田野像____。','金色的海洋||金色的地毯||一片金色的海洋','田野一片金黄，可以联想到海洋或地毯。'],
+['z4','仿写拟人句','仿照“花儿在风中跳舞”补全拟人句：小鸟在枝头____。','唱歌||快乐地唱歌||放声歌唱','把小鸟的叫声写成人的“唱歌”，就是拟人。'],
+['z4','仿写拟人句','仿照例句补全：秋风一吹，树叶____。','离开了大树妈妈||跳起了舞||依依不舍地告别大树妈妈','赋予树叶人的动作和感情，句子更生动。'],
 ['z4','辨析修辞','“湿润的东风走过荒野，在竹林中吹着风笛。”使用了什么修辞？','拟人',['比喻','排比','反问'],'“走过、吹着风笛”赋予东风人的动作。']
 ].forEach((x,i)=>i===4?addZhMatched(...x):addText(...x));
 [
@@ -237,7 +237,7 @@ function addZhMatched(t,type,q,correct,wrong,why){let opts=wrong.slice(0,3),pos=
 const enMore=[['boy','男孩'],['girl','女孩'],['Mr','先生'],['Ms','女士'],['too','也'],['open','打开'],['close','关闭'],['blackboard','黑板'],['orange','橙色'],['purple','紫色'],['pink','粉色'],['brown','棕色'],['eleven','十一'],['twelve','十二'],['hat','帽子'],['cap','便帽'],['ball','球'],['kite','风筝'],['monster','怪物'],['family','家庭'],['head','头'],['arm','胳膊'],['hand','手'],['leg','腿'],['foot','脚'],['nose','鼻子'],['mouth','嘴'],['eye','眼睛'],['ear','耳朵'],['pupil','小学生'],['English','英语'],['many','许多'],['your','你的'],['my','我的'],['his','他的']];
 const emm=enMore.map(x=>x[1]),ems=enMore.map(x=>x[0]);enMore.forEach((x,i)=>{add('e1','单选题',`教材单词“${x[0]}”的中文意思是？`,[x[1],emm[(i+7)%emm.length],emm[(i+17)%emm.length],emm[(i+29)%emm.length]],0,`${x[0]} 的意思是“${x[1]}”。`);let w=x[0].length>3?x[0].slice(0,-1):x[0]+'e';add('e2','单选题',`“${x[1]}”的正确英文拼写是？`,[x[0],w,ems[(i+11)%ems.length],ems[(i+23)%ems.length]],0,`正确拼写是 ${x[0]}。`)});
 [['Hello, I’m Lingling.','Hello, Lingling.'],['Good afternoon.','Good afternoon.'],['What’s your name?','I’m Daming.'],['How are you?','I’m fine, thank you.'],['Point to the door.','OK.'],['Please stand up.','OK.'],['How many boys?','Three boys.'],['Happy birthday!','Thank you!'],['What’s this?','It’s a schoolbag.'],['Is it a monster?','No, it isn’t.'],['Is it a cat?','Yes, it is.'],['Who is she?','She is my mother.'],['Who is he?','He is my father.'],['What colour is it?','It’s green.']].forEach(x=>add('e4','情景交际题',`大连地区常见情景题：${x[0]}`,[x[1],'I am a window.','It is eleven.','Good night, desk.'],0,`最自然的应答是“${x[1]}”。`));
-[['This is','my mother.'],['This is','his head.'],['Point to','the blackboard.'],['Open','the window.'],['Close','the door.'],['Stand up,','please.'],['Sit down,','please.'],['It is','a red ball.'],['Here is','your birthday present.'],['I am','a pupil.']].forEach(x=>add('e3','程序填空题',`补全教材重点句型：${x[0]} ____`,[x[1],'how many','goodbye school','yes no'],0,`完整句子是：${x[0]} ${x[1]}`));
+[['This is','my mother.','这是我的妈妈。'],['This is','his head.','这是他的头。'],['Point to','the blackboard.','指向黑板。'],['Open','the window.','打开窗户。'],['Close','the door.','关上门。'],['Stand up,','please.','请起立。'],['Sit down,','please.','请坐下。'],['It is','a red ball.','它是一个红色的球。'],['Here is','your birthday present.','这是你的生日礼物。'],['I am','a pupil.','我是一名小学生。']].forEach(x=>add('e3','程序填空题',`根据中文“${x[2]}”补全教材句型：${x[0]} ____`,[x[1],'how many','goodbye school','yes no'],0,`完整句子是：${x[0]} ${x[1]}`));
 const dlReads=[['Hello! I’m Sam. I’m nine. This is my blue schoolbag.','What colour is Sam’s schoolbag?',['Blue.','Red.','Green.','Yellow.']],['This is Amy’s family. This is her mother. That is her father.','Who is this?',['Amy’s mother.','Amy’s teacher.','Amy’s sister.','Amy’s friend.']],['There are twelve pupils. Six are boys and six are girls.','How many pupils are there?',['Twelve.','Six.','Eleven.','Ten.']],['Point to your head. Point to your arms. Clap your hands.','What should you point to first?',['Your head.','Your hands.','Your feet.','Your nose.']]];dlReads.forEach(x=>add('e6','阅读理解题',`${x[0]}\n${x[1]}`,x[2],0,'圈出问题关键词，再回原文寻找同一个词。'));
 // 依据用户上传的2026秋语文、2024新版外研英语教材逐页复核
 // 大连地区三年级上册常见数学题型：计算、应用题、图形、分数与统计。
@@ -553,25 +553,98 @@ const focusEnMean=focusEn.map(x=>x[1]),focusEnSpell=focusEn.map(x=>x[0]);focusEn
 ['e6','阅读短文判断对错','There are twelve pupils in the room. Six are boys and six are girls.\n判断：There are twelve pupils.',['正确','错误'],0,'6+6=12，与原文相符。'],
 ['e6','阅读短文判断对错','There are twelve pupils in the room. Six are boys and six are girls.\n判断：There are five girls.',['正确','错误'],1,'原文说有six girls。']
 ].forEach(x=>addPriority(x[0],x[1],x[2],x[3],x[4],x[5]));
+// 出版社配套资源扩充：保留教材范围，题目重新编写，不照搬受版权保护的整页练习。
+const publisherZh=[
+['早晨','zǎo chén','太阳刚升起的一段时间'],['穿戴','chuān dài','穿上衣物并戴上用品'],['鲜艳','xiān yàn','颜色明亮而美丽'],['敬爱','jìng ài','尊敬并热爱'],['飘扬','piāo yáng','在空中随风摆动'],['招引','zhāo yǐn','用动作或特点吸引'],
+['湿润','shī rùn','潮湿而润泽'],['荒野','huāng yě','荒凉的野外'],['狂欢','kuáng huān','尽情欢乐'],['碰触','pèng chù','接触或碰到'],['放假','fàng jià','停止学习或工作一段时间'],['戒尺','jiè chǐ','旧时教师使用的尺子'],
+['规则','guī zé','共同遵守的规定'],['排列','pái liè','按次序摆放'],['凌乱','líng luàn','不整齐，没有秩序'],['明朗','míng lǎng','光线充足、明亮'],['平展','píng zhǎn','平坦而展开'],['增添','zēng tiān','增加、添加'],
+['颜料','yán liào','使物体着色的材料'],['邮票','yóu piào','寄邮件时贴用的凭证'],['加紧','jiā jǐn','加快速度或提高紧张程度'],['留意','liú yì','注意、小心'],['准备','zhǔn bèi','事先安排或筹划'],['安心','ān xīn','心情安定'],
+['根本','gēn běn','从来或本来'],['偶尔','ǒu ěr','间或，有时候'],['发愁','fā chóu','因为为难而忧愁'],['旅行','lǚ xíng','到较远地方游览或办事'],['救命','jiù mìng','援救生命'],['拼命','pīn mìng','尽最大的力量'],
+['吞咽','tūn yàn','把食物咽下去'],['悲哀','bēi āi','伤心难过'],['集合','jí hé','分散的人或事物聚集起来'],['队伍','duì wu','有组织的集体'],['照例','zhào lì','按照惯例'],['可惜','kě xī','值得惋惜'],
+['搭船','dā chuán','乘坐顺路的船'],['翠绿','cuì lǜ','像翡翠那样的绿色'],['观察','guān chá','仔细察看'],['合拢','hé lǒng','合到一起'],['富饶','fù ráo','物产丰富'],['海滨','hǎi bīn','海边'],
+['满载','mǎn zài','装满或载满'],['整洁','zhěng jié','整齐干净'],['演奏','yǎn zòu','用乐器表演'],['汇聚','huì jù','聚集在一起'],['激动','jī dòng','感情受到触动而兴奋'],['沉思','chén sī','认真深入地思考']
+];
+const publisherZhPy=publisherZh.map(x=>x[1]),publisherZhMean=publisherZh.map(x=>x[2]);
+publisherZh.forEach((x,i)=>{
+ addZhMatched('z1','出版社同步·字音',`教材词语“${x[0]}”的正确读音是？`,x[1],[publisherZhPy[(i+7)%publisherZh.length],publisherZhPy[(i+19)%publisherZh.length],publisherZhPy[(i+31)%publisherZh.length]],`“${x[0]}”读作${x[1]}。`);
+ addZhMatched('z2','出版社同步·词义',`教材词语“${x[0]}”的意思最接近哪一项？`,x[2],[publisherZhMean[(i+9)%publisherZh.length],publisherZhMean[(i+21)%publisherZh.length],publisherZhMean[(i+35)%publisherZh.length]],`“${x[0]}”的意思是${x[2]}。`)
+});
+const publisherEn=[
+['hello','你好'],['goodbye','再见'],['morning','早晨'],['fine','很好'],['thank','感谢'],['teacher','老师'],['pupil','小学生'],['friend','朋友'],['name','名字'],['boy','男孩'],['girl','女孩'],['school','学校'],
+['classroom','教室'],['window','窗户'],['door','门'],['blackboard','黑板'],['desk','书桌'],['chair','椅子'],['book','书'],['pen','钢笔'],['pencil','铅笔'],['schoolbag','书包'],['ruler','尺子'],['crayon','蜡笔'],
+['red','红色'],['yellow','黄色'],['blue','蓝色'],['green','绿色'],['black','黑色'],['orange','橙色'],['purple','紫色'],['pink','粉色'],['brown','棕色'],['colour','颜色'],['rainbow','彩虹'],['colourful','色彩丰富的'],
+['one','一'],['two','二'],['three','三'],['four','四'],['five','五'],['six','六'],['seven','七'],['eight','八'],['nine','九'],['ten','十'],['eleven','十一'],['twelve','十二'],
+['mother','妈妈'],['father','爸爸'],['sister','姐姐或妹妹'],['brother','哥哥或弟弟'],['grandmother','祖母或外祖母'],['grandfather','祖父或外祖父'],['family','家庭'],['home','家'],['bedroom','卧室'],['kitchen','厨房'],['bathroom','浴室'],['living room','客厅'],
+['head','头'],['eye','眼睛'],['ear','耳朵'],['nose','鼻子'],['mouth','嘴'],['arm','胳膊'],['hand','手'],['leg','腿'],['foot','脚'],['body','身体'],['cat','猫'],['dog','狗']
+];
+const publisherEnWords=publisherEn.map(x=>x[0]),publisherEnMeans=publisherEn.map(x=>x[1]);
+publisherEn.forEach((x,i)=>{
+ addZhMatched('e1','外研社同步·认词',`教材单词“${x[0]}”的中文意思是？`,x[1],[publisherEnMeans[(i+11)%publisherEn.length],publisherEnMeans[(i+29)%publisherEn.length],publisherEnMeans[(i+47)%publisherEn.length]],`${x[0]}的意思是“${x[1]}”。`);
+ addZhMatched('e2','外研社同步·拼写',`根据中文“${x[1]}”选择正确的英文单词。`,x[0],[publisherEnWords[(i+13)%publisherEn.length],publisherEnWords[(i+31)%publisherEn.length],publisherEnWords[(i+53)%publisherEn.length]],`正确拼写是${x[0]}。`)
+});
+// 北师大版三上计算专项：覆盖混合运算、万以内加减、乘除法与小数初步。
+for(let i=0;i<70;i++){
+ let a=120+(i*37)%680,b=60+(i*29)%190;
+ addText('m1','北师大同步·口算加法',`直接写得数：${a}+${b}`,a+b,`把相同数位对齐相加：${a}+${b}=${a+b}。`,false);
+}
+for(let i=0;i<70;i++){
+ let b=40+(i*23)%260,d=80+(i*31)%420,a=b+d;
+ addText('m1','北师大同步·口算减法',`直接写得数：${a}-${b}`,d,`被减数减去减数等于${d}。`,false);
+}
+for(let i=0;i<45;i++){
+ let a=2+i%8,b=2+(i*3)%8;
+ addText('m1','北师大同步·乘法口算',`直接写得数：${a}×${b}`,a*b,`根据乘法口诀，${a}×${b}=${a*b}。`,false);
+ let product=a*b;
+ addText('m1','北师大同步·除法口算',`直接写得数：${product}÷${a}`,b,`想乘法算除法：${a}×${b}=${product}。`,false);
+}
+for(let i=0;i<45;i++){
+ let a=235+(i*41)%560,b=106+(i*27)%190;
+ addText('m1','北师大同步·竖式计算',`请列竖式计算并输入结果：${a}+${b}`,a+b,'相同数位对齐，从个位加起；满十向前一位进1。',false);
+}
+for(let i=0;i<45;i++){
+ let b=125+(i*33)%360,d=210+(i*19)%390,a=b+d;
+ addText('m1','北师大同步·竖式计算',`请列竖式计算并输入结果：${a}-${b}`,d,'相同数位对齐，从个位减起；不够减向前一位借1。',false);
+}
+for(let i=0;i<50;i++){
+ let a=3+i%7,b=4+(i*2)%8,c=5+(i*7)%30,ans=a*b+c;
+ addText('m1','北师大同步·混合运算',`脱式计算：${a}×${b}+${c}`,ans,`先算乘法${a}×${b}，再加${c}。`,false);
+}
+for(let i=0;i<30;i++){
+ let boxes=2+i%7,each=4+(i*3)%8,more=1+(i*5)%6,ans=boxes*each+more;
+ addText('m4','北师大同步·生活应用',`${boxes}个盒子，每盒装${each}个球，盒外还有${more}个，一共有多少个球？`,ans,`先算盒中${boxes}×${each}，再加盒外${more}个。`,false);
+}
+for(let i=0;i<24;i++){
+ let len=5+i%10,wid=2+(i*3)%5,ans=(len+wid)*2;
+ addText('m2','北师大同步·周长应用',`一个长方形长${len}厘米、宽${wid}厘米，它的周长是多少厘米？`,ans,`长方形周长=（长+宽）×2=${ans}厘米。`,false);
+}
+for(let i=0;i<24;i++){
+ let one=2+i%7,n=3+(i*5)%8,total=one*n;
+ addText('m6','北师大同步·归一问题',`${n}本同样的练习本共${total}元，每本多少元？`,one,`总价÷数量=单价：${total}÷${n}=${one}元。`,false);
+}
 // 2026秋目录已调整：删除旧版中不再属于本册的诗句题，避免教材错配。
 const outdatedZh=['一年好景君须记','最是橙黄橘绿时','荷尽已无擎雨盖','菊残犹有傲霜枝','意欲捕鸣蝉','忽然闭口立'];
 for(let i=bank.length-1;i>=0;i--){let q=bank[i],text=[q[2],...q[3]].join('');if(q[0][0]==='z'&&outdatedZh.some(s=>text.includes(s)))bank.splice(i,1)}
 const zhAnswerNo={2:0,4:0};bank.filter(q=>q[0][0]==='z'&&(q[3].length===2||q[3].length===4)).forEach(q=>{let n=q[3].length,target=zhAnswerNo[n]++%n;if(q[4]!==target){[q[3][q[4]],q[3][target]]=[q[3][target],q[3][q[4]]];q[4]=target}});
-function hasDup(q){return new Set(q[3].map(x=>String(x).trim().toLowerCase())).size!==q[3].length}for(let i=bank.length-1;i>=0;i--)if(hasDup(bank[i])||![1,2,4].includes(bank[i][3].length))bank.splice(i,1);
+function optionKey(v,q){let s=String(v).trim().toLowerCase();return /标点/.test(q[1]+q[2])?s:s.replace(/[\s，,。.!！？?、；;：“”"'‘’（）()\-—_]/g,'')}
+function hasDup(q){return new Set(q[3].map(x=>optionKey(x,q))).size!==q[3].length}
+let seenQuestion=new Set;for(let i=bank.length-1;i>=0;i--){let q=bank[i],key=String(q[2]).trim().toLowerCase().replace(/\s+/g,' ');if(hasDup(q)||![1,2,4].includes(q[3].length)||seenQuestion.has(key))bank.splice(i,1);else seenQuestion.add(key)}
 let state=JSON.parse(localStorage.getItem('grade3LangState')||'{"stats":{},"wrong":[],"answered":0,"best":null,"food":0,"reinforceStreak":0,"rabbitXp":0,"pandaXp":0,"turtleXp":0,"mantisXp":0,"activePet":"rabbit","names":{"rabbit":"小团子","panda":"圆滚滚","turtle":"慢慢","mantis":"小刀"}}');state.stats??={};state.wrong??=[];state.food??=0;state.reinforceStreak??=0;state.rabbitXp??=0;state.pandaXp??=0;state.turtleXp??=0;state.mantisXp??=0;state.activePet??='rabbit';state.names??={rabbit:'小团子',panda:'圆滚滚',turtle:'慢慢',mantis:'小刀'};state.names.turtle??='慢慢';state.names.mantis??='小刀';let exam=[],idx=0,answers=[],drillQ=null,drill={n:0,c:0,seen:[]},review={source:null,n:0,c:0,seen:[],q:null,passes:0};
 function save(){localStorage.setItem('grade3LangState',JSON.stringify(state));updateDash()}
 function esc(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\n','<br>')}
 function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
 function isText(q){return q[3].length===1}
 function normAnswer(v){return String(v).trim().toLowerCase().replace(/[，,。.!！？?、；;：“”"'‘’（）()\s]/g,'')}
+function acceptedAnswers(q){return String(q[3][q[4]]).split('||').map(x=>x.trim()).filter(Boolean)}
+function correctAnswer(q){return acceptedAnswers(q)[0]||''}
+function matchesAnswer(typed,q){let value=normAnswer(typed);return acceptedAnswers(q).some(x=>normAnswer(x)===value)}
 function placeAnswer(q,target=Math.floor(Math.random()*q[3].length)){if(isText(q))return [...q];let correct=q[3][q[4]],wrong=shuffle(q[3].filter((_,i)=>i!==q[4])),opts=[...wrong];target=target%q[3].length;opts.splice(target,0,correct);return [q[0],q[1],q[2],opts,target,q[5],q[6]]}
 function switchView(v){document.querySelectorAll('.view,.tab').forEach(x=>x.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelector(`[data-view="${v}"]`).classList.add('active');if(v==='mistakes')renderMistakes();if(v==='report')renderReport();if(v==='pet')renderPet()}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
 function startExam(mode){let pool=mode==='both'?bank:bank.filter(q=>q[0][0]===mode[0]),groups=Object.keys(topics).filter(t=>mode==='both'||t[0]===mode[0]),weak=new Set(groups.filter(t=>(state.stats[t]?.w||0)>=2||state.wrong.some(x=>x.t===t&&!x.mastered))),focus=groups.map(t=>shuffle(pool.filter(q=>q[0]===t))[0]).filter(Boolean),rest=pool.filter(q=>!focus.includes(q)).map(q=>({q,rank:Math.random()+(q[6]?.8:0)+(weak.has(q[0])?12:0)})).sort((a,b)=>b.rank-a.rank).slice(0,20-focus.length).map(x=>x.q),picked=shuffle([...focus,...rest]).slice(0,20),positions=shuffle(Array.from({length:20},(_,i)=>i%4));exam=picked.map((q,i)=>placeAnswer(q,positions[i]));idx=0;answers=Array(exam.length).fill(null);switchView('exam');document.getElementById('examIntro').classList.add('hidden');document.getElementById('examBox').classList.remove('hidden');renderExam()}
 function stars(q){let t=String(q[1]||'')+String(q[2]||'');return t.includes('阅读')||t.includes('填空')?'★★★':(t.includes('解决')||t.includes('统计')?'★★★':'★★');}
-function renderExam(){let q=exam[idx],a=answers[idx],area=isText(q)?`<div class="actions"><input id="examText" inputmode="text" placeholder="请输入答案" value="${a?esc(a.typed):''}" ${a?'disabled':''}><button class="primary" onclick="submitExamText()" ${a?'disabled':''}>提交答案</button></div>`:`<div class="options">${q[3].map((o,i)=>`<button class="option ${a?(i===q[4]?'correct':i===a.pick?'wrong':''):''}" onclick="pick(${i})" ${a?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>`;document.getElementById('examBox').innerHTML=`<div class="examtop"><span class="tag">${topics[q[0]]} · 第${idx+1}/${exam.length}题</span><b>${q[1]} · ${stars(q)}</b></div><div class="question"><span class="tag">难度 ${stars(q)}</span>${q[6]?'<span class="tag warn">本周重点</span>':''}<br>${esc(q[2])}</div>${area}${a?`<div class="feedback"><b>${a.ok?'答对了，真棒！':'这道题需要再想一想'}</b><br>正确答案：${esc(q[3][q[4]])}。${esc(q[5])}<br><small>知识点：${topics[q[0]]}</small></div><button class="primary" style="margin-top:12px" onclick="nextExam()">${idx===exam.length-1?'查看成绩':'下一题'}</button>`:'<p class="muted">作答后立即判分。</p>'}`}
+function renderExam(){let q=exam[idx],a=answers[idx],area=isText(q)?`<div class="actions"><input id="examText" inputmode="text" placeholder="请输入答案" value="${a?esc(a.typed):''}" ${a?'disabled':''}><button class="primary" onclick="submitExamText()" ${a?'disabled':''}>提交答案</button></div>`:`<div class="options">${q[3].map((o,i)=>`<button class="option ${a?(i===q[4]?'correct':i===a.pick?'wrong':''):''}" onclick="pick(${i})" ${a?'disabled':''}><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>`;document.getElementById('examBox').innerHTML=`<div class="examtop"><span class="tag">${topics[q[0]]} · 第${idx+1}/${exam.length}题</span><b>${q[1]} · ${stars(q)}</b></div><div class="question"><span class="tag">难度 ${stars(q)}</span>${q[6]?'<span class="tag warn">本周重点</span>':''}<br>${esc(q[2])}</div>${area}${a?`<div class="feedback"><b>${a.ok?'答对了，真棒！':'这道题需要再想一想'}</b><br>参考答案：${esc(correctAnswer(q))}。${esc(q[5])}<br><small>知识点：${topics[q[0]]}</small></div><button class="primary" style="margin-top:12px" onclick="nextExam()">${idx===exam.length-1?'查看成绩':'下一题'}</button>`:'<p class="muted">作答后立即判分；开放题可匹配多种合理答案。</p>'}`}
 function pick(i){if(answers[idx])return;let q=exam[idx],ok=i===q[4],s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:q[3][i],a:q[3][q[4]],e:q[5],t:q[0],at,mastered:false})}state.answered++;answers[idx]={pick:i,ok};save();renderExam()}
-function submitExamText(){if(answers[idx])return;let input=document.getElementById('examText'),typed=input.value.trim();if(!typed){input.focus();return}let q=exam[idx],ok=normAnswer(typed)===normAnswer(q[3][q[4]]),s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:typed,a:q[3][q[4]],e:q[5],t:q[0],at,mastered:false})}state.answered++;answers[idx]={pick:null,ok,typed};save();renderExam()}
+function submitExamText(){if(answers[idx])return;let input=document.getElementById('examText'),typed=input.value.trim();if(!typed){input.focus();return}let q=exam[idx],ok=matchesAnswer(typed,q),s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:typed,a:correctAnswer(q),e:q[5],t:q[0],at,mastered:false})}state.answered++;answers[idx]={pick:null,ok,typed};save();renderExam()}
 function nextExam(){if(idx===exam.length-1){finishExam();return}idx++;renderExam()}
 function finishExam(){let score=answers.filter(x=>x?.ok).length*5;if(score>=90){state.food+=3}state.best=Math.max(state.best||0,score);save();let weak=Object.keys(topics).filter(t=>(state.stats[t]?.w||0)>=2);document.getElementById('examBox').innerHTML=`<div class="big">${score}分</div><h2>${score>=90?'达到目标，获得3颗星星！':'找到弱项就是进步的开始'}</h2><h3>薄弱知识点</h3>${weak.length?weak.map(t=>`<div class="topic">${topics[t]} <button onclick="setDrill('${t}')">立即强化</button></div>`).join(''):'<p class="muted">暂未发现累计错2次的知识点。</p>'}<button onclick="startExam('both')">再测一次</button>`}
 function accuracy(t){let s=state.stats[t];return s?.n?Math.round(s.c/s.n*100):null}
@@ -581,13 +654,13 @@ function renderDrillIntro(){let t=document.getElementById('topicSelect').value,p
 function nextDrill(){let t=document.getElementById('topicSelect').value,all=bank.filter(q=>q[0]===t),c=all.filter(q=>!drill.seen.includes(q[2]));if(!c.length){drill.seen=[];c=all}let priority=c.filter(q=>q[6]),choices=priority.length&&Math.random()<.75?priority:c,source=choices[Math.floor(Math.random()*choices.length)];drill.seen.push(source[2]);drillQ=placeAnswer(source);let area=isText(drillQ)?'<div class="actions"><input id="drillText" placeholder="请输入答案"><button class="primary" onclick="answerDrillText()">提交答案</button></div>':`<div class="options">${drillQ[3].map((o,i)=>`<button class="option" onclick="answerDrill(${i},this)"><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>`;document.getElementById('drillBox').innerHTML=`<div class="question">${drillQ[6]?'<span class="tag warn">重点强化</span><br>':''}${esc(drillQ[2])}</div>${area}<div id="drillFeedback"></div>`}
 function answerDrill(i,el){answerDrillCore(i,el,null)}
 function answerDrillText(){let el=document.getElementById('drillText'),v=el.value.trim();if(!v){el.focus();return}answerDrillCore(null,el,v)}
-function answerDrillCore(i,el,typed){let q=drillQ,ok=typed!==null?normAnswer(typed)===normAnswer(q[3][q[4]]):i===q[4];document.querySelectorAll('#drillBox .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(typed!==null)el.disabled=true;else if(!ok)el.classList.add('wrong');drill.n++;drill.c+=ok?1:0;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:typed!==null?typed:q[3][i],a:q[3][q[4]],e:q[5],t:q[0],at,mastered:false})}state.answered++;let rewarded=rewardReinforcement(ok);save();let done=drill.n===4,pass=done&&drill.c===4;document.getElementById('drillFeedback').innerHTML=`<div class="feedback"><b>${ok?'答对了！':'正确答案：'+esc(q[3][q[4]])}</b><br>${esc(q[5])}<br>本组${drill.c}/${drill.n}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(pass?'<button class="primary" onclick="startExam(\'both\')">4题全对，回到综合测验</button>':'<button class="primary" onclick="drill={n:0,c:0,seen:[]};nextDrill()">再练4道新题直到全对</button>'):'<button class="primary" onclick="nextDrill()">下一题</button>'}`}
+function answerDrillCore(i,el,typed){let q=drillQ,ok=typed!==null?matchesAnswer(typed,q):i===q[4];document.querySelectorAll('#drillBox .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(typed!==null)el.disabled=true;else if(!ok)el.classList.add('wrong');drill.n++;drill.c+=ok?1:0;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok){s.w++;let at=Date.now();state.wrong.unshift({id:`${at}-${state.wrong.length}`,q:q[2],p:typed!==null?typed:q[3][i],a:correctAnswer(q),e:q[5],t:q[0],at,mastered:false})}state.answered++;let rewarded=rewardReinforcement(ok);save();let done=drill.n===4,pass=done&&drill.c===4;document.getElementById('drillFeedback').innerHTML=`<div class="feedback"><b>${ok?'答对了！':'参考答案：'+esc(correctAnswer(q))}</b><br>${esc(q[5])}<br>本组${drill.c}/${drill.n}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(pass?'<button class="primary" onclick="startExam(\'both\')">4题全对，回到综合测验</button>':'<button class="primary" onclick="drill={n:0,c:0,seen:[]};nextDrill()">再练4道新题直到全对</button>'):'<button class="primary" onclick="nextDrill()">下一题</button>'}`}
 function renderMistakes(){let total=state.wrong.length,done=state.wrong.filter(x=>x.mastered).length;document.getElementById('mistakeStats').innerHTML=`<div class="stat"><div class="big">${total}</div><small>累计错题</small></div><div class="stat"><div class="big">${done}</div><small>已掌握</small></div><div class="stat"><div class="big">${total-done}</div><small>待巩固</small></div>`;document.getElementById('mistakePractice').innerHTML='';document.getElementById('mistakeList').innerHTML=total?state.wrong.map((x,i)=>`<div class="mistake"><div class="topichead"><span class="tag ${x.mastered?'':'danger'}">${x.mastered?'已掌握':'待巩固'}</span><small>${topics[x.t]}</small></div><div class="question">${esc(x.q)}</div><div style="color:var(--red)"><b>上次错误答案：</b>${esc(x.p)}</div><div style="color:var(--green)"><b>正确答案：</b>${esc(x.a)}</div><p class="muted">${esc(x.e)}</p><button class="${x.mastered?'':'primary'}" onclick="startReview(${i})">${x.mastered?'再次挑战':'举一反三 · 练3题'}</button></div>`).join(''):'<div class="feedback">还没有错题，继续保持！</div>'}
 function startReview(i){review={source:i,n:0,c:0,seen:[],q:null,passes:0};document.getElementById('mistakeList').innerHTML='';nextReview()}
 function nextReview(){let x=state.wrong[review.source],all=bank.filter(q=>q[0]===x.t&&q[2]!==x.q),c=all.filter(q=>!review.seen.includes(q[2]));if(!c.length){review.seen=[];c=all}let priority=c.filter(q=>q[6]),choices=priority.length&&Math.random()<.75?priority:c,source=choices[Math.floor(Math.random()*choices.length)];review.seen.push(source[2]);review.q=placeAnswer(source);let q=review.q,area=isText(q)?'<div class="actions"><input id="reviewText" placeholder="请输入答案"><button class="primary" onclick="answerReviewText()">提交答案</button></div>':`<div class="options">${q[3].map((o,i)=>`<button class="option" onclick="answerReview(${i},this)"><span class="letter">${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>`;document.getElementById('mistakePractice').innerHTML=`<div class="eyebrow">举一反三 ${review.n+1}/3</div><div class="question"><span class="tag">难度 ${stars(q)}</span>${q[6]?'<span class="tag warn">同类重点</span>':''}<br>${esc(q[2])}</div>${area}<div id="reviewFeedback"></div>`}
 function answerReview(i,el){answerReviewCore(i,el,null)}
 function answerReviewText(){let el=document.getElementById('reviewText'),v=el.value.trim();if(!v){el.focus();return}answerReviewCore(null,el,v)}
-function answerReviewCore(i,el,typed){let q=review.q,ok=typed!==null?normAnswer(typed)===normAnswer(q[3][q[4]]):i===q[4];document.querySelectorAll('#mistakePractice .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(typed!==null)el.disabled=true;else if(!ok)el.classList.add('wrong');review.n++;review.c+=ok?1:0;state.answered++;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok)s.w++;let rewarded=rewardReinforcement(ok),done=review.n===3,pass=done&&review.c===3;if(done){review.passes=pass?review.passes+1:0;if(pass&&review.passes>=2)state.wrong[review.source].mastered=true}save();let mastered=done&&pass&&review.passes>=2;document.getElementById('reviewFeedback').innerHTML=`<div class="feedback">${ok?'答对了！':'正确答案：'+esc(q[3][q[4]])}<br>${esc(q[5])}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(mastered?'<button class="primary" onclick="renderMistakes()">连续两组全对，确认掌握</button>':pass?'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">第一组全对，再过一组确认掌握</button>':'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">未全对，继续练3道</button>'):'<button class="primary" onclick="nextReview()">下一题</button>'}`}
+function answerReviewCore(i,el,typed){let q=review.q,ok=typed!==null?matchesAnswer(typed,q):i===q[4];document.querySelectorAll('#mistakePractice .option').forEach((x,j)=>{x.disabled=true;if(j===q[4])x.classList.add('correct')});if(typed!==null)el.disabled=true;else if(!ok)el.classList.add('wrong');review.n++;review.c+=ok?1:0;state.answered++;let s=state.stats[q[0]]??={n:0,c:0,w:0};s.n++;s.c+=ok?1:0;if(!ok)s.w++;let rewarded=rewardReinforcement(ok),done=review.n===3,pass=done&&review.c===3;if(done){review.passes=pass?review.passes+1:0;if(pass&&review.passes>=2)state.wrong[review.source].mastered=true}save();let mastered=done&&pass&&review.passes>=2;document.getElementById('reviewFeedback').innerHTML=`<div class="feedback">${ok?'答对了！':'参考答案：'+esc(correctAnswer(q))}<br>${esc(q[5])}${rewarded?'<br><b>连续答对10道，奖励1颗星星！</b>':''}</div>${done?(mastered?'<button class="primary" onclick="renderMistakes()">连续两组全对，确认掌握</button>':pass?'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">第一组全对，再过一组确认掌握</button>':'<button class="primary" onclick="review.n=0;review.c=0;nextReview()">未全对，继续练3道</button>'):'<button class="primary" onclick="nextReview()">下一题</button>'}`}
 function reportRows(){return Object.keys(topics).map(t=>{let s=state.stats[t]||{n:0,c:0,w:0},pending=state.wrong.filter(x=>x.t===t&&!x.mastered).length,rate=s.n?Math.round(s.c/s.n*100):null,level=rate==null?'未测试':pending||rate<60?'薄弱':rate<80?'待巩固':rate<90?'良好':'掌握';return {t,name:topics[t],...s,pending,rate,level}})}
 function renderReport(){let rows=reportRows(),tested=rows.filter(x=>x.rate!=null),avg=tested.length?Math.round(tested.reduce((a,x)=>a+x.rate,0)/tested.length):0;document.getElementById('reportSummary').innerHTML=`<div class="stat"><div class="big">${avg}%</div><small>平均正确率</small></div><div class="stat"><div class="big">${rows.filter(x=>x.level==='掌握').length}/${rows.length}</div><small>已掌握知识点</small></div><div class="stat"><div class="big">${rows.filter(x=>x.level==='薄弱').length}</div><small>薄弱知识点</small></div>`;document.getElementById('reportTable').innerHTML=`<table style="width:100%;border-collapse:collapse;margin-top:15px"><tr>${['知识点','答题','答对','正确率','错题','待巩固','状态','行动'].map(x=>`<th style="padding:9px;border-bottom:1px solid var(--line);text-align:left">${x}</th>`).join('')}</tr>${rows.map(x=>`<tr><td>${x.name}</td><td>${x.n}</td><td>${x.c}</td><td>${x.rate==null?'—':x.rate+'%'}</td><td>${x.w}</td><td>${x.pending}</td><td><span class="tag ${x.level==='薄弱'?'danger':''}">${x.level}</span></td><td><button onclick="setDrill('${x.t}')">强化</button></td></tr>`).join('')}</table>`}
 function downloadReport(type){let rows=reportRows(),data=[['知识点','答题数','答对数','正确率','错题数','待巩固','状态'],...rows.map(x=>[x.name,x.n,x.c,x.rate==null?'未测试':x.rate+'%',x.w,x.pending,x.level])];if(type==='csv'){download('\ufeff'+data.map(r=>r.map(v=>`"${v}"`).join(',')).join('\n'),'三年级语文英语掌握报告.csv','text/csv');return}let trs=data.map((r,i)=>`<tr>${r.map(v=>`<${i?'td':'th'}>${v}</${i?'td':'th'}>`).join('')}</tr>`).join('');download(`<!doctype html><meta charset="utf-8"><title>掌握报告</title><style>body{font:15px system-ui;margin:30px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:8px}th{background:#eef5fb}</style><h1>三年级语文英语掌握报告</h1><p>生成时间：${new Date().toLocaleString()}　累计答题：${state.answered}　最好成绩：${state.best??'—'}</p><table>${trs}</table><p>建议优先完成“薄弱”和“待巩固”知识点的全对训练。</p><button onclick="print()">打印或保存PDF</button>`,'三年级语文英语掌握报告.html','text/html')}
