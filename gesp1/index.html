@@ -262,7 +262,33 @@ bank.push(
 
 bank=[];
 // 1级专项题库：依据CCF大纲与历年真题考点整理，重点用于错题反复强化。
-bank.push(['k1','单选题','int a=7; 执行 a+=3*2 后a的值是？',['10','13','20','9'],1,'先算乘法3*2，再完成复合赋值。'],['k1','单选题','下列哪项能保存小数2.5？',['int x=2.5','double x=2.5','char x=2.5','bool x=2.5'],1,'double用于保存小数。'],['k2','阅读程序题','int x=4; if(x>5) cout<<"A"; else cout<<"B";',['A','B','AB','无输出'],1,'x不大于5，执行else。'],['k2','单选题','表示“x在1到9之间（含边界）”的是？',['x>=1 && x<=9','x>=1 || x<=9','1<=x<=9','x>1 && x<9'],0,'两个边界条件要用&&连接。'],['k3','单选题','for(int i=1;i<=5;i++)访问的最后一个i是？',['4','5','6','1'],1,'条件是i<=5，包含5。'],['k3','阅读程序题','int s=0; for(int i=0;i<5;i+=2)s+=i; cout<<s;',['4','6','10','8'],0,'访问0、2、4，和为6。'],['k4','单选题','while循环开始前条件为false时，循环体执行几次？',['至少1次','0次','2次','不确定'],1,'while先判断条件。'],['k4','阅读程序题','int n=5,c=0; while(n>0){n--;c++;} cout<<c;',['4','5','6','0'],1,'n从5减到0，共5次。'],['k5','阅读程序题','int c=0; for(int i=1;i<=3;i++) for(int j=1;j<=2;j++) c++; cout<<c;',['5','6','8','9'],1,'3*2=6次。'],['k5','程序填空题','输出三行，每行输出1到i：for(int i=1;i<=3;i++){for(int j=1;____;j++)cout<<j;}',['j<i','j<=i','j<3','j<=3'],1,'第i行要包含i。'],['k6','单选题',"字符'0'的ASCII码是？",['0','48','65','97'],1,'常用ASCII中字符0为48。'],['k8','阅读程序题','int x=2; x=x*3+1; cout<<x;',['6','7','8','9'],1,'先乘后加，2*3+1=7。'],['k9','程序填空题','计算1到n的和：int s=0; for(int i=1;i<=n;i++) ____;',['s=i','s+=i','i+=s','s++'],1,'每轮把i累加到s。'],['k10','单选题','求三个数最大值时，最稳妥的初值是？',['0','a[0]或第一个输入值','-1','100'],1,'避免所有数为负时出错。'],['k17','单选题','C++源程序通常先经过什么才能运行？',['编译','打印','截图','联网'],0,'源程序需要编译。']);
+bank.push(['k1','单选题','int a=7; 执行 a+=3*2 后a的值是？',['10','13','20','9'],1,'先算乘法3*2，再完成复合赋值。'],['k1','单选题','下列哪项能保存小数2.5？',['int x=2.5','double x=2.5','char x=2.5','bool x=2.5'],1,'double用于保存小数。'],['k2','阅读程序题','int x=4; if(x>5) cout<<"A"; else cout<<"B";',['A','B','AB','无输出'],1,'x不大于5，执行else。'],['k2','单选题','表示“x在1到9之间（含边界）”的是？',['x>=1 && x<=9','x>=1 || x<=9','1<=x<=9','x>1 && x<9'],0,'两个边界条件要用&&连接。'],['k3','单选题','for(int i=1;i<=5;i++)访问的最后一个i是？',['4','5','6','1'],1,'条件是i<=5，包含5。'],['k3','阅读程序题','int s=0; for(int i=0;i<5;i+=2)s+=i; cout<<s;',['4','6','10','8'],1,'访问0、2、4，和为6。'],['k4','单选题','while循环开始前条件为false时，循环体执行几次？',['至少1次','0次','2次','不确定'],1,'while先判断条件。'],['k4','阅读程序题','int n=5,c=0; while(n>0){n--;c++;} cout<<c;',['4','5','6','0'],1,'n从5减到0，共5次。'],['k5','阅读程序题','int c=0; for(int i=1;i<=3;i++) for(int j=1;j<=2;j++) c++; cout<<c;',['5','6','8','9'],1,'3*2=6次。'],['k5','程序填空题','输出三行，每行输出1到i：for(int i=1;i<=3;i++){for(int j=1;____;j++)cout<<j;}',['j<i','j<=i','j<3','j<=3'],1,'第i行要包含i。'],['k6','单选题',"字符'0'的ASCII码是？",['0','48','65','97'],1,'常用ASCII中字符0为48。'],['k8','阅读程序题','int x=2; x=x*3+1; cout<<x;',['6','7','8','9'],1,'先乘后加，2*3+1=7。'],['k9','程序填空题','计算1到n的和：int s=0; for(int i=1;i<=n;i++) ____;',['s=i','s+=i','i+=s','s++'],1,'每轮把i累加到s。'],['k10','单选题','求三个数最大值时，最稳妥的初值是？',['0','a[0]或第一个输入值','-1','100'],1,'避免所有数为负时出错。'],['k17','单选题','C++源程序通常先经过什么才能运行？',['编译','打印','截图','联网'],0,'源程序需要编译。']);
+// 依据一级考纲和公开真题考点补充原创变式题：只使用一级的基础、变量、输入输出、运算符、if、单层循环。
+bank.push(
+ ['k1','判断题','C++程序通常从main函数开始执行。',['正确','错误'],0,'main是C++程序的入口函数。'],
+ ['k1','单选题','下列哪一种写法是单行注释？',['/* 注释 */','// 注释','# 注释','<!-- 注释 -->'],1,'C++单行注释使用//。'],
+ ['k1','单选题','把C++源代码转换为可执行程序，首先需要进行什么操作？',['编译','截图','打印','复制'],0,'编译器把源代码翻译成目标代码，再经过链接生成可执行程序。'],
+ ['k1','判断题','注释内容会被编译器当作程序语句执行。',['正确','错误'],1,'注释只供阅读，不参与程序执行。'],
+ ['k2','单选题','下列变量名符合C++命名规则的是？',['3score','score-1','score_1','int'],2,'变量名不能数字开头、不能含减号、不能使用关键字。'],
+ ['k2','判断题','C++变量名区分大小写，score和Score是两个不同的名称。',['正确','错误'],0,'C++标识符区分大小写。'],
+ ['k2','单选题','下列哪个类型最适合保存“是否通过”这样的两种状态？',['int','double','bool','char'],2,'bool表示true或false。'],
+ ['k2','阅读程序题','int a=5; double b=a+0.5; cout<<b;',['5','5.0','5.5','0.5'],2,'整数与小数运算后，结果为5.5。'],
+ ['k3','单选题','下列语句用于从键盘读入整数x的是？',['cout<<x;','cin>>x;','x>>cin;','scanf<<x;'],1,'cin配合>>完成输入。'],
+ ['k3','判断题','cout<<endl;可以输出换行。',['正确','错误'],0,'endl输出换行并刷新输出缓冲区。'],
+ ['k3','单选题','下列哪条语句会输出变量a和b，中间没有自动空格？',['cout<<a<<b;','cin>>a>>b;','cout>>a>>b;','printf>>a>>b;'],0,'cout连续输出不会自动添加空格。'],
+ ['k4','单选题','C++中9/4的结果是？',['2','2.25','3','1'],0,'两个操作数都是整数，执行整数除法。'],
+ ['k4','单选题','17%5的结果是？',['1','2','3','5'],1,'%得到整数除法的余数。'],
+ ['k4','判断题','表达式3+4*2的结果是14。',['正确','错误'],1,'乘法优先于加法，结果为11。'],
+ ['k4','单选题','若int x=4; 执行x++后，x的值是？',['3','4','5','6'],2,'后置++使变量增加1。'],
+ ['k4','单选题','若a=3、b=5，表达式a<b && b<10的值是？',['true','false','3','5'],0,'两个条件都成立，与运算结果为true。'],
+ ['k5','单选题','若x=0，以下代码输出什么？\nif(x>0) cout<<1; else if(x==0) cout<<2; else cout<<3;',['1','2','3','0'],1,'x等于0，进入else if分支。'],
+ ['k5','判断题','if和if-else都属于选择（分支）结构。',['正确','错误'],0,'它们根据条件选择执行路径。'],
+ ['k5','单选题','判断整数n是否为偶数，正确条件是？',['n/2==0','n%2==0','n%2==1','n-2==0'],1,'偶数除以2的余数为0。'],
+ ['k6','单选题','for(int i=0;i<5;i++)循环体执行多少次？',['4','5','6','0'],1,'i依次为0、1、2、3、4，共5次。'],
+ ['k6','判断题','while循环开始时条件为假，循环体可能一次也不执行。',['正确','错误'],0,'while先判断条件。'],
+ ['k6','单选题','下列代码结束后n是多少？\nint n=10; while(n>3) n-=2;',['2','3','4','5'],0,'10、8、6、4、2，最后条件不成立。'],
+ ['k6','单选题','下列哪段代码最可能造成死循环？',['int i=0; while(i<3) i++;','int i=3; while(i>0) i--;','int i=0; while(i<3) cout<<i;','for(int i=0;i<3;i++) cout<<i;'],2,'循环条件一直成立且i没有改变。']
+);
 for(let n=1;n<=8;n++){bank.push(['k1','单选题',`关于C++程序，第${n}个说法正确的是？`,['需要先编译才能运行','只能在手机上运行','不能使用注释','不需要main函数'],0,'C++源程序通常要编译，程序从main函数开始。']);bank.push(['k2',n%3===0?'判断题':'单选题',`int a=${n}; a+=${n}; 后a的值是${2*n}。`,n%3===0?['正确','错误']:[String(2*n),String(n),String(n*n),'0'],n%3===0?0:0,'复合赋值等价于a=a+对应数值。']);bank.push(['k3','单选题',`输入输出中，第${n}题应使用哪组对象？`,['cin输入、cout输出','cout输入、cin输出','scanf只能输出','endl只能输入'],0,'cin用于输入，cout用于输出。']);bank.push(['k4','单选题',`整数${n+5}/${2}的结果是？`,[String(Math.floor((n+5)/2)),String((n+5)/2),String(n+5),String(2)],0,'整数除法结果截去小数部分。']);bank.push(['k5','判断题',`if和if-else都属于分支结构。`,['正确','错误'],0,'它们用于根据条件选择执行路径。']);bank.push(['k6',n%4===0?'判断题':'阅读程序题',`for(int i=0;i<${n%5+2};i++)循环体执行${n%5+2}次。`,n%4===0?['正确','错误']:[String(n%5+2),String(n%5+1),String(n%5+3),'0'],0,'i从0开始，小于上限时执行对应次数。']);}
 // 当前等级只展示本等级考纲知识点，避免跨级干扰。
 bank.splice(0,bank.length,...bank.filter(q=>Object.prototype.hasOwnProperty.call(topics,q[0])&&!/二维|递归|引用传递|网络拓扑|IPv4|IP地址|数组|字符串|函数/.test(q[2])));
@@ -273,7 +299,12 @@ bank=bank.filter(q=>level1Allowed.has(q[0])&&!/数组|string|string|函数|递�
 function hasDuplicateOptions(q){let seen=new Set(q[3].map(x=>String(x).trim()));return seen.size!==q[3].length}
 for(let i=bank.length-1;i>=0;i--)if(hasDuplicateOptions(bank[i]))bank.splice(i,1);
 if(bank.some(hasDuplicateOptions))throw new Error('题库检查失败：仍存在重复选项');
-let state=JSON.parse(localStorage.getItem('gesp1State')||'{"stats":{},"wrong":[],"answered":0,"best":null,"food":0,"petXp":0,"rewards":0,"reviewCorrect":0}');state.food??=0;state.petXp??=0;state.birdXp??=state.petXp;state.turtleXp??=0;state.activePet??='bird';state.petNames??={bird:'小飞羽',turtle:'小慢慢'};state.rewards??=0;state.reviewCorrect??=0;state.wrong??=[];state.wrong=state.wrong.map((x,i)=>({...x,id:x.id||`${x.at||0}-${i}`,p:x.p??null,mastered:x.mastered??false}));if(!state.historySeededV1){let stamp=Date.now();historySeeds.slice().reverse().forEach((x,i)=>state.wrong.unshift({id:x[0],q:x[2],p:null,a:x[3],e:x[4],t:x[1],at:stamp-i,mastered:false,source:x[5]}));state.historySeededV1=true;localStorage.setItem('gesp1State',JSON.stringify(state))}let exam=[],idx=0,answers=[],seconds=0,timer=null,drillQ=null,review={source:null,n:0,c:0,seen:[],q:null};
+let state=JSON.parse(localStorage.getItem('gesp1State')||'{"stats":{},"wrong":[],"answered":0,"best":null,"food":0,"petXp":0,"rewards":0,"reviewCorrect":0}');state.food??=0;state.petXp??=0;state.birdXp??=state.petXp;state.turtleXp??=0;state.activePet??='bird';state.petNames??={bird:'小飞羽',turtle:'小慢慢'};state.rewards??=0;state.reviewCorrect??=0;state.wrong??=[];state.wrong=state.wrong.map((x,i)=>({...x,id:x.id||`${x.at||0}-${i}`,p:x.p??null,mastered:x.mastered??false}));
+// 清理一级错题库中旧版本混入的二级/三级题目：只保留一级六个主题，并删除明确越级的内容。
+const level1WrongBlocked=/二级|三级|C\+\+\s*[23]级|GESP[23]|数组|vector|string|字符串|函数|递归|位运算|嵌套循环|二维|substr|find\(|引用传递|break|continue|枚举|模拟算法|素数|补码|进制转换|IPv4|IP地址|域名|网络拓扑|TCP协议|rand\s*\(|srand|随机数/;
+state.wrong=state.wrong.filter(x=>level1Allowed.has(x.t)&&!level1WrongBlocked.test(`${x.source||''} ${x.q||''}`));
+if(!state.historySeededV1){let stamp=Date.now();historySeeds.slice().reverse().forEach((x,i)=>state.wrong.unshift({id:x[0],q:x[2],p:null,a:x[3],e:x[4],t:x[1],at:stamp-i,mastered:false,source:x[5]}));state.historySeededV1=true}
+state.gesp1WrongCleanedV2=true;localStorage.setItem('gesp1State',JSON.stringify(state));let exam=[],idx=0,answers=[],seconds=0,timer=null,drillQ=null,review={source:null,n:0,c:0,seen:[],q:null};
 function save(){localStorage.setItem('gesp1State',JSON.stringify(state));updateDash()}
 function switchView(v){document.querySelectorAll('.view,.tab').forEach(e=>e.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelector(`[data-view="${v}"]`).classList.add('active');if(v==='mistakes')renderMistakes();if(v==='report')renderReport()}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
@@ -311,3 +342,4 @@ function feedPet(){if(state.food<1)return;state.food--;if(state.activePet==='bir
 function renderMap(){document.getElementById('mapGrid').innerHTML=Object.keys(topics).map(t=>{let p=accuracy(t),weak=(state.stats[t]?.w||0)>=2;return `<div class="card span4"><div class="topichead"><h3>${topics[t]}</h3><span class="tag ${weak?'danger':''}">${weak?'薄弱知识点':p==null?'未测试':p+'%'}</span></div><p class="muted">累计错题：${state.stats[t]?.w||0}题；答错达到2题后自动列入专项强化清单。</p><button onclick="setDrill('${t}')">专项练4题</button></div>`}).join('')}
 document.getElementById('topicSelect').innerHTML=Object.entries(topics).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');renderDrillIntro();updateDash();
 </script></body></html>
+
