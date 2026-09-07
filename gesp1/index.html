@@ -266,6 +266,9 @@ bank.push(['k1','单选题','int a=7; 执行 a+=3*2 后a的值是？',['10','13'
 for(let n=1;n<=8;n++){bank.push(['k1','单选题',`关于C++程序，第${n}个说法正确的是？`,['需要先编译才能运行','只能在手机上运行','不能使用注释','不需要main函数'],0,'C++源程序通常要编译，程序从main函数开始。']);bank.push(['k2',n%3===0?'判断题':'单选题',`int a=${n}; a+=${n}; 后a的值是${2*n}。`,n%3===0?['正确','错误']:[String(2*n),String(n),String(n*n),'0'],n%3===0?0:0,'复合赋值等价于a=a+对应数值。']);bank.push(['k3','单选题',`输入输出中，第${n}题应使用哪组对象？`,['cin输入、cout输出','cout输入、cin输出','scanf只能输出','endl只能输入'],0,'cin用于输入，cout用于输出。']);bank.push(['k4','单选题',`整数${n+5}/${2}的结果是？`,[String(Math.floor((n+5)/2)),String((n+5)/2),String(n+5),String(2)],0,'整数除法结果截去小数部分。']);bank.push(['k5','判断题',`if和if-else都属于分支结构。`,['正确','错误'],0,'它们用于根据条件选择执行路径。']);bank.push(['k6',n%4===0?'判断题':'阅读程序题',`for(int i=0;i<${n%5+2};i++)循环体执行${n%5+2}次。`,n%4===0?['正确','错误']:[String(n%5+2),String(n%5+1),String(n%5+3),'0'],0,'i从0开始，小于上限时执行对应次数。']);}
 // 当前等级只展示本等级考纲知识点，避免跨级干扰。
 bank.splice(0,bank.length,...bank.filter(q=>Object.prototype.hasOwnProperty.call(topics,q[0])&&!/二维|递归|引用传递|网络拓扑|IPv4|IP地址|数组|字符串|函数/.test(q[2])));
+// 一级考纲门禁：只保留计算机基础、变量类型、输入输出、运算符、if和单层while/for。
+const level1Allowed=new Set(['k1','k2','k3','k4','k5','k6']);
+bank=bank.filter(q=>level1Allowed.has(q[0])&&!/数组|string|string|函数|递归|位运算|vector|break|continue|嵌套循环|二维|substr|find\(/i.test(String(q[2])));
 // 题库质量门禁：规范化后有相同选项的题目不会进入考试或专项训练。
 function hasDuplicateOptions(q){let seen=new Set(q[3].map(x=>String(x).trim()));return seen.size!==q[3].length}
 for(let i=bank.length-1;i>=0;i--)if(hasDuplicateOptions(bank[i]))bank.splice(i,1);
