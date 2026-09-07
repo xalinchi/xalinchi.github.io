@@ -482,5 +482,53 @@ function renderPet(){let e=document.getElementById('petEmoji');if(!e)return;let 
 function feedPet(){if(state.food<1)return;state.food--;if(state.activePet==='bird')state.birdXp++;else state.turtleXp++;save();petInteract('feed')}
 function renderMap(){document.getElementById('mapGrid').innerHTML=Object.keys(topics).map(t=>{let p=accuracy(t),weak=(state.stats[t]?.w||0)>=2;return `<div class="card span4"><div class="topichead"><h3>${topics[t]}</h3><span class="tag ${weak?'danger':''}">${weak?'薄弱知识点':p==null?'未测试':p+'%'}</span></div><p class="muted">累计错题：${state.stats[t]?.w||0}题；答错达到2题后自动列入专项强化清单。</p><button onclick="setDrill('${t}')">专项练4题</button></div>`}).join('')}
 document.getElementById('topicSelect').innerHTML=Object.entries(topics).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');renderDrillIntro();updateDash();
-</script></body></html>
+</script>
+<style id="turtle-growth-style">
+.pet.sprite-turtle{width:var(--turtle-width,168px);height:var(--turtle-height,224px);filter:var(--turtle-filter,none)}
+#turtleGrowthBadge{display:block;font-size:28px;min-height:42px;letter-spacing:4px}
+.turtle-album-art{display:block;margin:8px auto;background-repeat:no-repeat;background-size:400% 100%;background-position:0 0}
+@media(prefers-reduced-motion:reduce){.pet.sprite-turtle,.pet.sprite-turtle.react{animation:none!important}}
+</style>
+<script>
+const turtleGrowthLooks=[
+ {width:80,hue:0,sat:1,badge:'🥚'},
+ {width:104,hue:-14,sat:.75,badge:'🌱'},
+ {width:116,hue:-8,sat:.9,badge:'🌱🌿'},
+ {width:128,hue:0,sat:1,badge:'💧'},
+ {width:140,hue:12,sat:1.1,badge:'🛡️'},
+ {width:152,hue:24,sat:1.15,badge:'🏕️'},
+ {width:164,hue:38,sat:1.15,badge:'🧭'},
+ {width:176,hue:52,sat:1.05,badge:'📚✨'},
+ {width:188,hue:65,sat:1,badge:'🎓✨'},
+ {width:200,hue:80,sat:1.2,badge:'👑✨'}
+];
+function turtleGrowthIndex(xp){return petData.turtle.stages.reduce((n,s,i)=>xp>=s.xp?i:n,0)}
+const renderPetBeforeGrowth=renderPet;
+renderPet=function(){
+ renderPetBeforeGrowth();
+ const e=document.getElementById('petEmoji');if(!e)return;
+ let badge=document.getElementById('turtleGrowthBadge');
+ if(!badge){badge=document.createElement('span');badge.id='turtleGrowthBadge';badge.setAttribute('aria-live','polite');e.insertAdjacentElement('afterend',badge)}
+ const turtle=state.activePet==='turtle',i=turtleGrowthIndex(state.turtleXp),look=turtleGrowthLooks[i];
+ badge.hidden=!turtle;
+ if(!turtle){badge.textContent='';return}
+ e.style.setProperty('--turtle-width',look.width+'px');
+ e.style.setProperty('--turtle-height',Math.round(look.width*224/168)+'px');
+ e.style.setProperty('--turtle-filter','hue-rotate('+look.hue+'deg) saturate('+look.sat+')');
+ e.setAttribute('role','img');e.setAttribute('aria-label',petData.turtle.stages[i].n+'，第'+(i+1)+'级');
+ badge.textContent=look.badge+' · Lv.'+(i+1);
+ // Reuse the existing animated asset so walk and touch animations stay intact.
+ const image=getComputedStyle(e).backgroundImage;
+ if(i>0)document.querySelectorAll('#petUnlocks > div').forEach((card,n)=>{
+  if(!n||n>i)return;
+  const old=card.firstElementChild,l=turtleGrowthLooks[n];
+  old.textContent='';old.className='turtle-album-art';
+  old.style.width=(42+n*3)+'px';old.style.height=Math.round((42+n*3)*224/168)+'px';
+  old.style.backgroundImage=image;old.style.filter='hue-rotate('+l.hue+'deg) saturate('+l.sat+')';
+  const mark=document.createElement('span');mark.textContent=l.badge;old.after(mark);
+ });
+};
+renderPet();
+</script>
+</body></html>
 
