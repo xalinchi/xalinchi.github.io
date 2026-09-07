@@ -382,11 +382,60 @@ bank.push(
 ['k10','程序填空题','【2023年12月真题考点】枚举N的因数对，且不漏掉平方根，循环条件应是：\nfor(int i=1; ____; i++) if(N%i==0) cout<<i<<" "<<N/i;',['i*i<=N','i*i<N','i<N/2','i<=N'],0,'检查到i*i<=N才能包含完全平方数的平方根。']
 );
 
+// 2026年9月最新错题：先进入错题原题重做，再进入举一反三。
+const recentWrongSeeds=[
+ ['rw2609-01','k16','【最新错题】下列哪个表达式的结果不是整数8？',['abs(-8)','min(max(8,9),10)','int(8.88)','sqrt(64)'],1,'min(max(8,9),10)=9；其余三个表达式的结果都是整数8。'],
+ ['rw2609-02','k12','【最新错题】关于srand(5)和rand()，下列说法正确的是？',['每次运行序列都完全不同','固定种子可得到可复现的伪随机序列','srand()返回随机整数','rand()一定得到真随机数'],1,'srand设置种子；相同种子通常产生相同的伪随机序列。'],
+ ['rw2609-03','k12','【最新错题】连续两次调用rand()，第二个返回值一定比第一个大吗？',['一定更大','一定更小','不一定','一定相等'],2,'伪随机序列没有相邻大小的必然关系。'],
+ ['rw2609-04','k17','【最新错题】计算机系统中存储的基本单位用B表示，B代表什么？',['Byte','Block','Bulk','Bit'],0,'B通常表示Byte（字节）；bit通常用小写b表示。'],
+ ['rw2609-05','k17','【最新错题】电脑运行程序提示内存不足，通常应增加哪种硬件？',['RAM','ROM','Cache','EPROM'],0,'程序运行主要使用RAM；ROM用于保存固件等固定内容。'],
+ ['rw2609-06','k17','【最新错题】系统断电后，RAM中的数据通常会怎样？',['仍永久保存','通常会丢失','自动写入ROM','变成只读数据'],1,'RAM是易失性存储器，断电后其中临时数据通常丢失。'],
+ ['rw2609-07','k16','【最新错题】在C++中，floor(-4.1)的结果是？',['-5','-4','4','5'],0,'floor向负无穷方向取整，因此floor(-4.1)=-5。'],
+ ['rw2609-08','k16','【最新错题】cout << double(14/4); 的输出通常是？',['3','3.5','14','4'],0,'括号内14/4先进行整数除法得到3，再转换成double。'],
+ ['rw2609-09','k1','【最新错题】若int a=10,b=20,c=30，下列表达式结果不是30的是？',['max(max(a,b),c)','min(a+b,c)','sqrt(a+b+c)','(a+b+c)/2'],2,'sqrt(60)约为7.75，不是30；其余选项结果为30。'],
+ ['rw2609-10','k18','【最新错题】continue后紧接的break是否会执行？',['会执行一次','不会执行','只在偶数轮执行','会结束程序'],1,'continue直接进入下一轮循环，后面的break不会执行。'],
+ ['rw2609-11','k5','【最新错题】两层循环中，内层循环执行break后会怎样？',['同时结束两层循环','只结束内层循环','结束整个程序','跳过外层循环'],1,'普通break只结束它所在的最近一层循环。'],
+ ['rw2609-12','k18','【最新错题】for(int i=0;i<100;i+=2)中，i在循环体内的最大值是？',['98','99','100','97'],0,'i每次加2且必须小于100，最后一次为98。'],
+ ['rw2609-13','k8','【最新错题】流程图中表示判断条件的图形是？',['矩形','平行四边形','菱形','椭圆'],2,'流程图中菱形表示判断，平行四边形表示输入输出。']
+];
+const recentAnswerIndex={'rw2609-01':1,'rw2609-02':1,'rw2609-03':2,'rw2609-04':0,'rw2609-05':0,'rw2609-06':1,'rw2609-07':0,'rw2609-08':0,'rw2609-09':2,'rw2609-10':1,'rw2609-11':1,'rw2609-12':0,'rw2609-13':2};
+recentWrongSeeds.forEach(x=>bank.push([x[1],'最新错题·单选题',x[2],x[3],recentAnswerIndex[x[0]],x[4],true]));
+
+// 判断题补充：覆盖二级常见的变量、运算、循环、字符串、网络与算法考点。
+[
+ ['k1','判断题','整数除法 7/2 的结果是 3。', ['正确','错误'],0,'两个操作数都是整数时，结果为整数3。'],
+ ['k1','判断题','表达式 7%2 的结果是 1。',['正确','错误'],0,'% 求余，7除以2余1。'],
+ ['k1','判断题','double(14/4) 的结果是 3.5。',['正确','错误'],1,'括号内先进行整数除法，14/4为3，再转换为double。'],
+ ['k1','判断题','在C++中，=表示比较是否相等，==表示赋值。',['正确','错误'],1,'=是赋值，==才是相等比较。'],
+ ['k2','判断题','if条件为真时执行if语句块，否则执行else语句块。',['正确','错误'],0,'这是if-else的基本执行规则。'],
+ ['k2','判断题','表达式 10<=N<=12 可以正确判断N是否在10到12之间。',['正确','错误'],1,'C++不支持数学式连续比较，应写N>=10&&N<=12。'],
+ ['k3','判断题','for(int i=0;i<10;i+=2)中，i在循环体内会取到10。',['正确','错误'],1,'条件是i<10，最大取到8。'],
+ ['k3','判断题','for循环的初始值、条件和变化部分都可以省略。',['正确','错误'],0,'三部分语法上都可省略，但省略条件可能形成死循环。'],
+ ['k4','判断题','while循环的条件一开始为假时，循环体一次也不会执行。',['正确','错误'],0,'while是先判断再执行。'],
+ ['k4','判断题','while循环体中不改变判断变量，可能造成死循环。',['正确','错误'],0,'判断条件始终成立时会无限循环。'],
+ ['k5','判断题','嵌套循环中，内层循环每执行一次，外层循环变量都会改变。',['正确','错误'],1,'内层循环变量变化不等于外层变量变化。'],
+ ['k5','判断题','两层循环的总执行次数等于外层次数乘以内层固定次数。',['正确','错误'],1,'内层次数可能随外层变量变化，不能直接相乘。'],
+ ['k6','判断题','字符串下标通常从0开始。',['正确','错误'],0,'C++ string首字符下标为0。'],
+ ['k6','判断题','字符串的length()返回字符串中字符的个数。',['正确','错误'],0,'length()和size()都可获得长度。'],
+ ['k7','判断题','C++数组长度为n时，合法下标是1到n。',['正确','错误'],1,'数组下标从0开始，合法范围为0到n-1。'],
+ ['k8','判断题','阅读程序写结果时，应按语句实际执行顺序逐步记录变量。',['正确','错误'],0,'逐步跟踪可以避免漏掉条件和循环边界。'],
+ ['k10','判断题','求一组数最大值时，用0初始化最大值一定正确。',['正确','错误'],1,'如果所有输入都是负数，初始化为0会得到错误结果。'],
+ ['k10','判断题','求平均数时，平均数等于总和除以数据个数。',['正确','错误'],0,'这是平均数的基本公式。'],
+ ['k12','判断题','调用srand(5)后，每次运行rand()都一定得到真正随机且完全不同的序列。',['正确','错误'],1,'固定种子通常产生可复现的伪随机序列。'],
+ ['k13','判断题','IPv4地址每一段的十进制范围是0到255。',['正确','错误'],0,'每段8位，范围为0至255。'],
+ ['k13','判断题','域名www.example.com中的顶级域名是www。',['正确','错误'],1,'最右侧com是顶级域名。'],
+ ['k17','判断题','RAM属于断电后数据通常会丢失的易失性存储器。',['正确','错误'],0,'RAM用于运行时临时存储。'],
+ ['k17','判断题','1GB通常等于1000MB。',['正确','错误'],1,'常见计算机容量换算按1GB=1024MB。'],
+ ['k18','判断题','continue会结束整个循环。',['正确','错误'],1,'continue只跳过本轮剩余语句。'],
+ ['k18','判断题','break通常只结束所在的最近一层循环。',['正确','错误'],0,'嵌套循环中不会自动结束外层循环。']
+].forEach(x=>bank.push([x[0],x[1],x[2],x[3],x[4],x[5],true]));
+
 // 题库质量门禁：规范化后有相同选项的题目不会进入考试或专项训练。
 function hasDuplicateOptions(q){let seen=new Set(q[3].map(x=>String(x).trim()));return seen.size!==q[3].length}
 for(let i=bank.length-1;i>=0;i--)if(hasDuplicateOptions(bank[i]))bank.splice(i,1);
 if(bank.some(hasDuplicateOptions))throw new Error('题库检查失败：仍存在重复选项');
 let state=JSON.parse(localStorage.getItem('gesp2State')||'{"stats":{},"wrong":[],"answered":0,"best":null,"food":0,"petXp":0,"rewards":0,"reviewCorrect":0}');state.food??=0;state.petXp??=0;state.birdXp??=state.petXp;state.turtleXp??=0;state.activePet??='bird';state.petNames??={bird:'小飞羽',turtle:'小慢慢'};state.rewards??=0;state.reviewCorrect??=0;state.wrong??=[];state.wrong=state.wrong.map((x,i)=>({...x,id:x.id||`${x.at||0}-${i}`,p:x.p??null,mastered:x.mastered??false}));if(!state.historySeededV1){let stamp=Date.now();historySeeds.slice().reverse().forEach((x,i)=>state.wrong.unshift({id:x[0],q:x[2],p:null,a:x[3],e:x[4],t:x[1],at:stamp-i,mastered:false,source:x[5]}));state.historySeededV1=true;localStorage.setItem('gesp2State',JSON.stringify(state))}if(!state.screenshotSeededV2){let stamp=Date.now()+1000,known=new Set(state.wrong.map(x=>x.id));screenshotSeedsV2.slice().reverse().forEach((x,i)=>{if(!known.has(x[0]))state.wrong.unshift({id:x[0],q:x[2],p:'截图未展开，原错误选项未记录',a:x[3],e:x[4],t:x[1],at:stamp-i,mastered:false,source:x[5]})});state.screenshotSeededV2=true;localStorage.setItem('gesp2State',JSON.stringify(state))}let exam=[],idx=0,answers=[],seconds=0,timer=null,drillQ=null,review={source:null,n:0,c:0,seen:[],q:null};
+if(!state.recentWrongSeededV1){let stamp=Date.now()+2000,known=new Set(state.wrong.map(x=>x.id));recentWrongSeeds.slice().reverse().forEach((x,i)=>{if(!known.has(x[0]))state.wrong.unshift({id:x[0],q:x[2],p:'本次截图红叉题，原错误选项已记录',a:x[3][recentAnswerIndex[x[0]]],e:x[5],t:x[1],at:stamp-i,mastered:false,source:'2026年9月最新错题截图'})});state.recentWrongSeededV1=true;localStorage.setItem('gesp2State',JSON.stringify(state))}
 function save(){localStorage.setItem('gesp2State',JSON.stringify(state));updateDash()}
 function switchView(v){document.querySelectorAll('.view,.tab').forEach(e=>e.classList.remove('active'));document.getElementById(v).classList.add('active');document.querySelector(`[data-view="${v}"]`).classList.add('active');if(v==='mistakes')renderMistakes();if(v==='report')renderReport()}
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
