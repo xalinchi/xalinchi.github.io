@@ -265,6 +265,9 @@ bank.push(['k1','单选题','算法的基本特性不包括哪一项？',['有�
 for(let n=2;n<=10;n++){bank.push(['k1','单选题',`二进制${n.toString(2)}转换为十进制是？`,[String(n),String(n+1),String(n+2),String(n-1)],0,'按位权相加得到十进制。']);bank.push(['k2','单选题',`函数int f(int x){return x+${n};}调用f(1)返回？`,[String(n+1),String(n),String(1),String(2*n)],0,'值传递后按函数体返回x加常数。']);bank.push(['k3','单选题',`int a[${n}];合法的最大下标是？`,[String(n-1),String(n),String(n+1),'0'],0,'数组下标从0到长度减1。']);bank.push(['k4','单选题',`string s="abc${n}"; s.size()是？`,['4','3','5',String(n)],0,'字符串包含a、b、c和一个数字，共4个字符。']);bank.push(['k5','单选题',`循环中遇到第${n}个满足条件的元素，若要跳过本轮应使用？`,['continue','break','return','goto'],0,'continue跳过本轮，继续下一轮。']);bank.push(['k6','单选题',`枚举${n}以内整数并统计偶数，判断条件应为？`,['i%2==0','i/2==0','i%2==1','i+2==0'],0,'偶数除以2余数为0。']);bank.push(['k7','程序填空题',`按规则重复处理${n}次，循环体每次执行一次，应使用哪种结构？`,['for循环','只写if','只写cout','函数声明'],0,'模拟过程常用循环逐步执行。']);}
 // 当前等级只展示本等级考纲知识点，避免跨级干扰。
 bank.splice(0,bank.length,...bank.filter(q=>Object.prototype.hasOwnProperty.call(topics,q[0])&&!/二维|递归|引用传递|网络拓扑|IPv4|IP地址/.test(q[2])));
+// 三级考纲门禁：仅保留算法/进制编码、函数、数组、string、位运算、break/continue、枚举和模拟。
+const level3Allowed=new Set(['k1','k2','k3','k4','k5','k6','k7']);
+bank=bank.filter(q=>level3Allowed.has(q[0]));
 // 题库质量门禁：规范化后有相同选项的题目不会进入考试或专项训练。
 function hasDuplicateOptions(q){let seen=new Set(q[3].map(x=>String(x).trim()));return seen.size!==q[3].length}
 for(let i=bank.length-1;i>=0;i--)if(hasDuplicateOptions(bank[i]))bank.splice(i,1);
