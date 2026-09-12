@@ -327,6 +327,42 @@ const level4Questions=[
 ['k8','单选题','异常处理通常使用哪组关键字？',['if/else','try/catch','for/while','class/struct'],1,'try包围可能出错代码，catch处理异常。','l4'],
 ['k8','判断题','ofstream主要用于向文件写入数据。',['正确','错误'],0,'ofstream是文件输出流。','l4']
 ];
+// 四级考点补全题：覆盖官方大纲中的细分能力与高频易错点，避免只会认概念而不会读写代码。
+const level4CoverageQuestions=[
+['k1','单选题','下列哪一项是“声明”而不是函数定义？',['int add(int,int);','int add(int a,int b){return a+b;}','int add(int a,int b){ }','int add(){return 0;}'],0,'声明只给出返回类型、函数名和参数类型，并以分号结束；函数体属于定义。','l4'],
+['k1','单选题','调用void change(int x)时，实参和形参的关系是？',['实参是形参的副本','形参是实参的副本','二者永远是同一个变量','只能传入常量'],1,'值传递时，形参获得实参的副本，修改形参不会改变实参。','l4'],
+['k1','判断题','在函数内部定义的同名局部变量会遮蔽外部同名变量。',['正确','错误'],0,'作用域决定可见性；局部同名变量优先使用。','l4'],
+['k1','单选题','把大程序拆成多个职责清晰的函数，主要体现什么思想？',['模块化编程','随机化','死循环','文件压缩'],0,'模块化便于复用、测试和定位错误。','l4'],
+['k2','单选题','int x=3; int *p=nullptr; p=&x; *p += 2; 最后x是多少？',['3','5','地址值','无法编译'],1,'先让p保存x的地址，再通过解引用访问x。','l4'],
+['k2','判断题','只要声明了int* p，就可以直接执行*p=1而不需要让p指向有效对象。',['正确','错误'],1,'未初始化或空指针解引用会产生未定义行为。','l4'],
+['k2','单选题','若函数参数写成void f(int &x)，调用f(a)后在函数内修改x会怎样？',['只改副本','修改a本身','程序必然崩溃','无法传入变量'],1,'引用参数是实参的别名，修改它就是修改实参。','l4'],
+['k2','单选题','若函数参数写成void f(int *p)，正确调用方式通常是？',['f(a)','f(&a)','f(*a)','f(int a)'],1,'指针传递需要把变量地址传给指针参数。','l4'],
+['k3','单选题','struct Student{string name; int score;}; Student s={"A",90}; 访问成绩应写成？',['s->score','s.score','Student.score','score.s'],1,'结构体对象用点运算符访问成员；指针对象才用->。','l4'],
+['k3','判断题','结构体数组中的每个元素都可以保存不同类型成员组成的一条记录。',['正确','错误'],0,'结构体适合把一条记录的多个字段组合起来。','l4'],
+['k3','单选题','Student *p=&s; 访问p指向的成绩应写成？',['p.score','p->score','*p.score','score->p'],1,'结构体指针访问成员使用箭头运算符。','l4'],
+['k4','单选题','int a[2][3]={{1,2,3},{4,5,6}}; a[1][2]的值是？',['3','4','5','6'],3,'第一下标是行、第二下标是列，均从0开始。','l4'],
+['k4','判断题','int a[2][3]中，a[2][0]是合法元素。',['正确','错误'],1,'行下标只能是0或1，a[2][0]越界。','l4'],
+['k4','单选题','遍历一个r行c列的二维数组，通常需要几层循环？',['0层','1层','2层','c层'],2,'外层遍历行，内层遍历列。','l4'],
+['k4','判断题','C++普通二维数组的每一行可以在运行时拥有不同列数而无需特殊结构。',['正确','错误'],1,'本级要求的普通二维数组是规则矩阵，不是变长数组。','l4'],
+['k5','单选题','递推计算f(n)时，若f(1)=1且f(n)=f(n-1)+2，f(4)是多少？',['4','5','7','8'],2,'依次得到f(2)=3、f(3)=5、f(4)=7。','l4'],
+['k5','判断题','递推关系已经确定时，如果没有初始条件，通常仍能唯一确定所有结果。',['正确','错误'],1,'初值是递推启动的基础，缺少初值通常无法唯一确定。','l4'],
+['k5','单选题','把递推式翻译成循环时，最容易遗漏的是？',['循环变量的更新和边界','变量名长度','屏幕颜色','注释格式'],0,'每次状态更新和终止条件必须与递推定义一致。','l4'],
+['k6','单选题','下面哪种排序在相等关键字不交换时通常可以保持稳定？',['冒泡排序','选择排序','随机打乱','二分查找'],0,'冒泡排序只交换逆序相邻元素，可保持相等元素相对顺序。','l4'],
+['k6','单选题','插入排序处理新元素时，通常把它插入到什么位置？',['已排序部分的合适位置','数组最后且不比较','随机位置','数组中点'],0,'插入排序维护左侧有序区，将当前元素插入正确位置。','l4'],
+['k6','判断题','选择排序每一轮从未排序区选出最小值并交换到前端，通常不是稳定排序。',['正确','错误'],0,'跨位置交换可能改变相等元素的相对顺序。','l4'],
+['k6','单选题','对[3,1,2]进行第一次相邻比较（只比较3和1）后，结果是？',['1,2,3','1,3,2','3,1,2','2,1,3'],1,'3大于1，交换这两个相邻元素后得到[1,3,2]。','l4'],
+['k7','单选题','一个循环每次把i加1并执行常数操作，复杂度通常是？',['O(1)','O(log n)','O(n)','O(n²)'],2,'循环次数与n成正比。','l4'],
+['k7','单选题','枚举所有n个元素的子集，常见复杂度量级是？',['O(n)','O(n²)','O(log n)','O(2^n)'],3,'每个元素选或不选，状态数为2^n。','l4'],
+['k7','判断题','两个独立的n次循环依次执行，复杂度通常是O(n²)。',['正确','错误'],1,'依次执行是相加，O(n)+O(n)仍为O(n)；嵌套才通常相乘。','l4'],
+['k7','单选题','三层各执行n次的嵌套循环，复杂度通常是？',['O(n)','O(n²)','O(n³)','O(3n)'],2,'三层嵌套的执行次数约为n×n×n。','l4'],
+['k8','单选题','读取文本文件并按空白分隔读取整数，最常用的是？',['ifstream fin; fin>>x;','ofstream fin; fin<<x;','cout>>x;','try>>x;'],0,'ifstream负责输入，>>按空白读取格式化数据。','l4'],
+['k8','判断题','使用getline读取一行时，行末换行符不会作为普通字符存入字符串。',['正确','错误'],0,'getline读取一整行并丢弃行末换行符。','l4'],
+['k8','单选题','文件打开失败后继续从文件流读取，正确做法是先检查什么？',['fin.is_open()或流状态','数组长度','排序稳定性','指针大小'],0,'先检查文件是否成功打开，避免对无效流继续操作。','l4'],
+['k8','单选题','把cout输出重定向到文件，常见做法涉及哪个成员函数？',['rdbuf','substr','push_back','sqrt'],0,'流缓冲区可通过rdbuf替换，实现输出重定向。','l4'],
+['k8','单选题','若try代码块中抛出一个int异常，通常用什么捕获？',['catch(int e)','catch(string s) בלבד','catch(file f)','catch(loop l)'],0,'catch的参数类型应与抛出对象类型匹配或兼容。','l4'],
+['k8','判断题','catch只能捕获try代码块内部抛出的异常。',['正确','错误'],0,'异常沿调用链寻找匹配的catch，必须从受保护的try范围传播出来。','l4']
+];
+level4Questions.push(...level4CoverageQuestions);
 level4Questions.forEach(q=>bank.push(q));
 // 只保留带有四级标记的题目，确保三级、二级历史题不会混入。
 bank=bank.filter(q=>q[6]==='l4');
@@ -408,4 +444,3 @@ const lessonData=[
 (()=>{const button=document.createElement('button');button.className='tab';button.dataset.view='selfstudy';button.textContent='四级自学 · 12课';button.onclick=()=>switchView('selfstudy');document.querySelector('nav').prepend(button);const section=document.createElement('section');section.id='selfstudy';section.className='view';section.innerHTML='<div class="card"><h2>四级自学 · 12课</h2><p>点击指定视频分集学习。若内嵌播放受限，请选择“在B站播放”。平台可能要求登录。</p><div id="videoArea" hidden><h3 id="videoName"></h3><iframe title="课程播放器" id="videoFrame" allow="autoplay; fullscreen; encrypted-media" allowfullscreen style="width:100%;aspect-ratio:16/9;border:0"></iframe><button onclick="document.getElementById(\'videoFrame\').src=\'about:blank\';document.getElementById(\'videoArea\').hidden=true">关闭视频</button></div><div id="lessonCards"></div><p>慕课补充：<a href="https://www.icourse163.org/course/PKU-1001553023" target="_blank" rel="noopener">北京大学《程序设计与算法（一）》</a>，可能需要登录选课。</p><p>第8课视频侧重递归与栈，第12课为结构体案例，不能替代完整递推专项或GESP真题训练。</p></div>';document.querySelector('main').append(section);const mapping=['k1','k2','k2','k3','k4','k6','k6','k5','k7','k8','k8','k3'];document.getElementById('lessonCards').innerHTML=lessonData.map((l,i)=>`<article class="card"><h3>第${i+1}课 ${esc(l[0])}</h3><p>${esc(l[1])}</p><p>${esc(l[2])}</p>${lessonVideos[i].map((v,j)=>`<p><button onclick="playLesson(${i},${j})">▶ ${esc(v.title)}</button> <a href="https://www.bilibili.com/video/${v.bvid}/?p=${v.page}" target="_blank" rel="noopener">在B站播放</a></p>`).join('')}<button onclick="setDrill('${mapping[i]}')">配套练习</button></article>`).join('');})();
 function playLesson(i,j){const v=lessonVideos[i][j];document.getElementById('videoArea').hidden=false;document.getElementById('videoName').textContent=v.title;document.getElementById('videoFrame').src=`https://player.bilibili.com/player.html?bvid=${v.bvid}&cid=${v.cid}&page=${v.page}&autoplay=0`;document.getElementById('videoArea').scrollIntoView({behavior:'smooth'});}
 </script></body></html>
-
