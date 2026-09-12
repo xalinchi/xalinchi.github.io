@@ -343,7 +343,7 @@ let state=JSON.parse(localStorage.getItem('gesp4State')||'{"stats":{},"wrong":[]
 // 清理旧版本误混入三级错题库的二级/跨级记录：非三级主题、明确标注二级来源及网络/随机/基础环境题全部移除。
 const legacySecondary=/二级|C\+\+\s*2级|GESP2|网络拓扑|IPv4|IP地址|域名|TCP协议|rand\s*\(|srand|RAM|ROM|GESP一级|变量名|命名规则|App通常|内存不足/;
 state.wrong=state.wrong.filter(x=>level4Allowed.has(x.t)&&!legacySecondary.test(`${x.source||''} ${x.q||''}`));
-if(!state.historySeededV1){let stamp=Date.now();historySeeds.slice().reverse().forEach((x,i)=>state.wrong.unshift({id:x[0],q:x[2],p:null,a:x[3],e:x[4],t:x[1],at:stamp-i,mastered:false,source:x[5]}));state.historySeededV1=true}
+state.historySeededV1=true
 if(!state.gesp4VerifiedSeedsV1){let stamp=Date.now();verifiedWrongSeeds.slice().reverse().forEach((x,i)=>state.wrong.unshift({id:x[0],q:x[2],p:'截图错题（原选项未保留）',a:x[4],e:x[5],t:x[1],at:stamp-i,mastered:false,source:x[6]}));state.gesp4VerifiedSeedsV1=true}
 localStorage.setItem('gesp4State',JSON.stringify(state));let exam=[],idx=0,answers=[],seconds=0,timer=null,drillQ=null,review={source:null,n:0,c:0,seen:[],q:null};
 function save(){localStorage.setItem('gesp4State',JSON.stringify(state));updateDash()}
