@@ -361,5 +361,14 @@ function renderPet(){let e=document.getElementById('petEmoji');if(!e)return;let 
 function feedPet(){if(state.food<1)return;state.food--;if(state.activePet==='bird')state.birdXp++;else state.turtleXp++;save();petInteract('feed')}
 function renderMap(){document.getElementById('mapGrid').innerHTML=Object.keys(topics).map(t=>{let p=accuracy(t),weak=(state.stats[t]?.w||0)>=2;return `<div class="card span4"><div class="topichead"><h3>${topics[t]}</h3><span class="tag ${weak?'danger':''}">${weak?'薄弱知识点':p==null?'未测试':p+'%'}</span></div><p class="muted">累计错题：${state.stats[t]?.w||0}题；答错达到2题后自动列入专项强化清单。</p><button onclick="setDrill('${t}')">专项练4题</button></div>`}).join('')}
 document.getElementById('topicSelect').innerHTML=Object.entries(topics).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');renderDrillIntro();updateDash();
+</script><script>
+/* GESP shared pet wallet v1: migration ledger prevents repeat credit. */
+(()=>{const key='gespSharedPetV1';const read=()=>JSON.parse(localStorage.getItem(key)||'{"food":0,"birdXp":0,"turtleXp":0,"migrated":{}}');const num=v=>Number.isFinite(Number(v))?Math.max(0,Number(v)):0;
+let w=read();for(const source of ['gesp2State','gesp3State','gesp4State','gesp4-pet']){if(w.migrated[source])continue;let raw=localStorage.getItem(source);if(!raw)continue;try{const x=JSON.parse(raw);w.food+=num(x.food);w.birdXp+=num(x.birdXp??x.petXp);w.turtleXp+=num(x.turtleXp??x.xp);w.migrated[source]=true;}catch{}}
+// The current level may have never been saved. Include its in-memory initial balance once.
+const current='gesp3State';if(!w.migrated[current]){w.food+=num(state.food);w.birdXp+=num(state.birdXp??state.petXp);w.turtleXp+=num(state.turtleXp);w.migrated[current]=true;}
+localStorage.setItem(key,JSON.stringify(w));const attached=new WeakSet();function attach(){if(attached.has(state))return;for(const f of ['food','birdXp','turtleXp'])Object.defineProperty(state,f,{configurable:true,enumerable:true,get(){return read()[f]||0},set(v){const x=read();x[f]=num(v);localStorage.setItem(key,JSON.stringify(x));}});attached.add(state);}attach();const oldSave=save;save=function(){attach();return oldSave();};
+function refresh(){updateDash();renderPet();}window.addEventListener('storage',e=>{if(e.key===key)refresh();});window.addEventListener('focus',refresh);refresh();const note=document.createElement('p');note.className='muted';note.textContent='二、三、四级共享宠物食物与成长值 · 同一设备、同一浏览器有效。原有余额已一次性合并。';document.getElementById('pet').prepend(note);
+})();
 </script></body></html>
 
