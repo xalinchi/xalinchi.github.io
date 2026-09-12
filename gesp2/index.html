@@ -530,5 +530,14 @@ renderPet=function(){
 };
 renderPet();
 </script>
-</body></html>
+<script>
+/* GESP shared pet wallet v1: migration ledger prevents repeat credit. */
+(()=>{const key='gespSharedPetV1';const read=()=>JSON.parse(localStorage.getItem(key)||'{"food":0,"birdXp":0,"turtleXp":0,"migrated":{}}');const num=v=>Number.isFinite(Number(v))?Math.max(0,Number(v)):0;
+let w=read();for(const source of ['gesp2State','gesp3State','gesp4State','gesp4-pet']){if(w.migrated[source])continue;let raw=localStorage.getItem(source);if(!raw)continue;try{const x=JSON.parse(raw);w.food+=num(x.food);w.birdXp+=num(x.birdXp??x.petXp);w.turtleXp+=num(x.turtleXp??x.xp);w.migrated[source]=true;}catch{}}
+// The current level may have never been saved. Include its in-memory initial balance once.
+const current='gesp2State';if(!w.migrated[current]){w.food+=num(state.food);w.birdXp+=num(state.birdXp??state.petXp);w.turtleXp+=num(state.turtleXp);w.migrated[current]=true;}
+localStorage.setItem(key,JSON.stringify(w));const attached=new WeakSet();function attach(){if(attached.has(state))return;for(const f of ['food','birdXp','turtleXp'])Object.defineProperty(state,f,{configurable:true,enumerable:true,get(){return read()[f]||0},set(v){const x=read();x[f]=num(v);localStorage.setItem(key,JSON.stringify(x));}});attached.add(state);}attach();const oldSave=save;save=function(){attach();return oldSave();};
+function refresh(){updateDash();renderPet();}window.addEventListener('storage',e=>{if(e.key===key)refresh();});window.addEventListener('focus',refresh);refresh();const note=document.createElement('p');note.className='muted';note.textContent='二、三、四级共享宠物食物与成长值 · 同一设备、同一浏览器有效。原有余额已一次性合并。';document.getElementById('pet').prepend(note);
+})();
+</script></body></html>
 
