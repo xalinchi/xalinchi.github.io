@@ -508,5 +508,11 @@ const videoEntry=document.createElement('div');videoEntry.className='card';video
 document.getElementById('home').prepend(videoEntry);
 const drillVideo=document.createElement('button');drillVideo.textContent='▶ 学习当前知识点的视频';drillVideo.onclick=()=>openTopicVideos(document.getElementById('topicSelect').value);document.getElementById('topicSelect').after(drillVideo);
 document.getElementById("openCourseVideos").onclick=()=>switchView("selfstudy");
+
+const sprintVideos=[["BV1jpjz6UEzR","GESP C++四级考点考纲知识点详细讲解","胖胖stem","约85分钟","考前全局梳理；发布者介绍为四级考点集训。"],["BV1Vw411i7rA","GESP-C++四级客观题考点详解","老杨讲编程","约82分钟","重点复习指针、多维数组、函数、递推、排序、文件和异常处理。"],["BV1nb4y1M7vX","GESP四级串讲：排序、异常处理、结构体、递推、文件输入输出","小王老师教编程","约63分钟","集中串讲多个重点模块，适合查漏补缺。"]];
+const sprintBox=document.createElement('div');sprintBox.id='sprintReview';sprintBox.className='card';
+sprintBox.innerHTML='<h2>考前冲刺 · 综合知识串讲</h2><p>完成12课后复习：先梳理考点，再复习客观题，最后查漏补缺。以下视频侧重点不同，不保证每一部单独覆盖全部考纲。</p>'+sprintVideos.map((v,i)=>`<article class="card"><h3>${i+1}. ${esc(v[1])}</h3><p>${esc(v[2])} · ${esc(v[3])}</p><p>${esc(v[4])}</p><a class="primary" href="https://www.bilibili.com/video/${v[0]}/" target="_blank" rel="noopener noreferrer">▶ 在B站播放</a></article>`).join('');
+document.getElementById('selfstudy').append(sprintBox);
 </script></body></html>
+
 
