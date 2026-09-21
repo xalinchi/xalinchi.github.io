@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="learning.css?v=3">
+<header class="top"><div class="brand"><div class="eyebrow">GRADE 3 · 每天进步一点点</div><h1>语文数学英语成长乐园</h1><p>学一学，练一练，把不会的变成会的。</p></div><div class="goal">⭐<small id="homeFood">0 颗星星</small></div></header>
+<nav aria-label="主要功能"><button class="tab active" data-view="home">今日学习</button><button class="tab" data-view="exam">正在练习</button><button class="tab" data-view="mistakes">错题库</button><button class="tab" data-view="report">学习报告</button><button class="tab" data-view="pet">成长伙伴</button></nav>
+<div id="storageNotice" class="feedback hidden" role="alert"></div>
+<section id="home" class="view active"><div class="card"><h2>今天想学哪一科？</h2><div class="actions" id="subjects"></div><p id="edition" class="muted"></p><div id="editionControls"></div><p>学习重点 → 小练习 → 薄弱点强化 → 原题重做 → 3道同类变式 → 2道复测</p><div id="resume"></div></div><div id="chapters" class="grid"></div><div id="lesson" class="card hidden"></div></section>
+<section id="exam" class="view"><div id="examBox" class="card" aria-live="polite"></div></section>
+<section id="mistakes" class="view"><div class="card"><h2>错题变成进步的台阶</h2><p>先重做原题，再练3道同知识点变式，最后用2道新题复测。全部答对才标记巩固完成。</p><div id="mistakeStats" class="stats"></div><div id="mistakeList"></div><details id="legacy"><summary>查看旧版学习记录</summary><p>旧题没有可靠的教材和知识点标识，保留供查阅，不计入新版掌握度。</p><div id="legacyList"></div></details></div></section>
+<section id="report" class="view"><div class="card"><h2>我的学习报告</h2><p>正确率按实际答题次数计算；掌握度参考最近8次作答、不同题数量和待巩固错题。练得少时会提示“样本不足”。</p><div class="actions"><button onclick="downloadReport('csv')">下载CSV</button><button onclick="downloadReport('html')">下载可打印报告</button><button onclick="exportBackup()">备份学习记录</button></div><div id="reportSummary" class="stats"></div><div id="reportTable"></div></div></section>
+<!--PET-->
+<footer class="footer">学习记录仅保存在当前浏览器。建议定期备份。<a href="SOURCES.md">教材范围与开源参考</a> · 更新版本 3</footer>
+</main><script src="curriculum.js?v=3"></script><script src="engine.js?v=3"></script><script src="pets.js?v=3"></script><script src="app.js?v=3"></script></body></html>

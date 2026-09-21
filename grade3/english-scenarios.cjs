@@ -1,0 +1,65 @@
+module.exports={
+ greetings:[
+ ['同学见面说“Hello!”应怎样回应？','Hello!','Goodbye!|I am nine.|It is red.'],
+ ['别人问“How are you?”，哪句回答身体状况？',"I'm fine, thank you.",'My name is Sam.|It is a book.|Three.'],
+ ['和朋友分别时，应说什么？','Goodbye!','Hello!|I am fine.|It is blue.'],
+ ['“I’m Sam.”中的“I’m”完整形式是？','I am','I is|I are|It am'],
+ ['对方表示感谢，你想辨认“thank”的意思，应选？','感谢','告别|名字|颜色'],
+ ['想询问朋友近来身体怎么样，应该说？','How are you?',"What's your name?|How many?|It's a desk."]],
+ name:[
+ ['想知道新同学叫什么名字，应该问？',"What's your name?",'How are you?|How many?|Goodbye!'],
+ ['你叫Amy，怎样介绍自己的姓名？','My name is Amy.','Your name is Amy.|It is Amy’s book.|I am fine.'],
+ ['“My name ____ Sam.”应填什么？','is','am|are|be'],
+ ['“What’s your name?”询问的是什么？','姓名','颜色|数量|身体状况'],
+ ['“I’m Lingling.”这句话的意思是？','我是玲玲','你是玲玲|这是玲玲的书|玲玲好吗'],
+ ['别人问“What’s your name?”，哪句是恰当应答？',"I'm Tom.","I'm fine.|It's a door.|Thank you."]],
+ commands:[
+ ['老师请同学起立，应说？','Stand up, please.','Sit down, please.|Point to the door.|Goodbye.'],
+ ['“Sit down, please.”要求做什么？','坐下','起立|指向门|介绍姓名'],
+ ['想让同学指向窗户，应说？','Point to the window.','Point to the desk.|Stand up.|Sit down.'],
+ ['“Point to the blackboard.”中的blackboard指什么？','黑板','椅子|门|书桌'],
+ ['补全“Point ____ the door.”','to','am|is|my'],
+ ['老师说“Point to the chair.”应指向哪个物品？','椅子','窗户|门|黑板']],
+ things:[
+ ['询问手边的物品是什么，应该问？',"What's this?","What's that?|How are you?|How old are you?"],
+ ['询问远处的物品是什么，应该问？',"What's that?","What's this?|How are you?|How many?"],
+ ['指着一本书回答“它是一本书”，应说？',"It's a book.","It's a pen.|It's a desk.|I'm a book."],
+ ['“This is my school.”中的this意思是？','这个','那个|哪里|多少'],
+ ['补全“It ____ a pen.”','is','am|are|be'],
+ ['“What’s this?”应该用哪类信息回答？','物品名称','自己的年龄|问候身体|告别用语']],
+ isit:[
+ ['图中是猫，问“Is it a cat?”，应该回答？','Yes, it is.',"No, it isn't.|I'm fine.|I'm nine."],
+ ['桌上是一本书，问“Is it a pen?”，应该回答？',"No, it isn't.",'Yes, it is.|Thank you.|Good morning.'],
+ ['想问“它是一只风筝吗？”，应说？','Is it a kite?','It is a kite.|Is it a cat?|How are you?'],
+ ['补全“____ it a bag?”','Is','Am|Are|Be'],
+ ['“No, it isn’t.”中的isn’t完整形式是？','is not','it not|is no|am not'],
+ ['“Yes, it is.”可以回答哪个问题？','Is it a book?',"What's your name?|How old are you?|How many?"]],
+ family:[
+ ['介绍自己的妈妈：“This is my ____.”','mother','father|brother|grandpa'],
+ ['“He’s my father.”中的He指代？','男性','女性|物品颜色|数量'],
+ ['介绍照片中的姐姐，应说？','She is my sister.','He is my sister.|She is my brother.|It is my pencil.'],
+ ['“This is my brother.”意思是？','这是我的兄弟','这是我的姐妹|这是你的母亲|这是我的老师'],
+ ['问“Who’s she?”，哪句回应人物身份？',"She's my mother.","It's red.|I'm fine.|Three books."],
+ ['补全“She ____ my sister.”','is','am|are|be']],
+ body:[
+ ['男孩指着自己的头，介绍的人说“This is ____ head.”','his','her|I|you'],
+ ['“Point to her nose.”应该指向女孩的哪里？','鼻子','眼睛|耳朵|脚'],
+ ['“This is his arm.”中的arm意思是？','手臂','腿|嘴|头'],
+ ['想说“这是她的脚”，应说？','This is her foot.','This is his foot.|This is her ear.|This is his eye.'],
+ ['“his”与“her”分别表示？','他的、她的','她的、他的|我的、你的|你们的、我们的'],
+ ['补全“Point to his ____.”，要求指向男孩的嘴。','mouth','nose|eye|leg']],
+ friends:[
+ ['初次见面，对方说“Nice to meet you.”，应该答？','Nice to meet you too.','Goodbye.|It is red.|Three pencils.'],
+ ['想邀请朋友一起玩，应说？',"Let's play together!",'Goodbye!|It is a book.|My name is a pen.'],
+ ['“Let’s sing together.”建议一起做什么？','唱歌','写名字|道别|数铅笔'],
+ ['同学说“Let’s be friends!”你愿意，可以回答？','Great!','Goodbye, pencil.|It is a ruler.|Six books.'],
+ ['“together”在“We play together.”中表示？','一起','再见|单独的名字|颜色'],
+ ['“Can we play together?”表示什么？','我们可以一起玩吗','你叫什么名字|它是什么颜色|这里有几本书']],
+ where:[
+ ['球在桌子下面：The ball is ____ the table.','under','on|in|to'],
+ ['书在书包里面：The book is ____ the schoolbag.','in','under|on|to'],
+ ['铅笔在书桌上面：The pencil is ____ the desk.','on','in|under|to'],
+ ['想知道书包在哪里，应问？','Where is my schoolbag?',"What's your name?|How are you?|How many?"],
+ ['“It is under the bed.”意思是？','它在床下面','它在床上面|它在盒子里|它是蓝色的'],
+ ['“Where is the book?”应回答哪句？','It is on the desk.','It is red.|I am fine.|I am nine.']]
+};
