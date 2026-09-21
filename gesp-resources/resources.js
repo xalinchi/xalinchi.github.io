@@ -7,7 +7,8 @@ const key=`gesp${D.level}ResourcesV1`;
 let progress;
 try{progress=JSON.parse(localStorage.getItem(key)||'{}');}catch{progress={};}
 if(!progress||typeof progress!=='object'||Array.isArray(progress))progress={};
-for(const field of ['checklist','syllabus','sessions','drafts'])if(!progress[field]||typeof progress[field]!=='object')progress[field]={};
+for(const field of ['checklist','syllabus','sessions','drafts','openCompleted'])if(!progress[field]||typeof progress[field]!=='object')progress[field]={};
+const openBank=window.GESP_OPEN_EXERCISES?.[D.level]||{items:[]};
 function persist(){try{localStorage.setItem(key,JSON.stringify(progress));}catch{const n=$('resourceStorage');if(n)n.textContent='浏览器未能保存进度，请保留页面并下载代码草稿。';}}
 function link(url,label){return /^https:\/\//.test(url||'')?`<a href="${h(url)}" target="_blank" rel="noopener noreferrer">${h(label)}</a>`:'';}
 function inline(s){
@@ -135,11 +136,14 @@ function downloadCode(id){
  const blob=new Blob([progress.drafts[id]||''],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
  a.href=url;a.download=`GESP-Cpp-${D.level}-${id.replace(':','-')}.cpp`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-$('exercises').innerHTML=`<div class="card"><h2>C++ ${D.level}级编程练习</h2><p>已收录24道站内编程真题，包含输入输出要求、样例与代码草稿。更多配套练习见练习清单。</p><div class="resource-filters"><label>知识点<select id="programTopic"><option value="">全部知识点</option>${topicOptions()}</select></label><button id="morePractice">打开完整练习清单</button></div><div id="programRows"></div><div id="programDetail"></div></div>`;
-$('morePractice').onclick=()=>openView('checklist');$('programTopic').onchange=renderPrograms;
+$('exercises').innerHTML=`<div class="card"><h2>C++ ${D.level}级编程练习</h2><p>已收录24道站内编程真题和 ${openBank.items.length} 道知识点适配的开源练习，均可保存代码草稿。更多配套练习见练习清单。</p><div class="resource-filters"><label>知识点<select id="programTopic"><option value="">全部知识点</option>${topicOptions()}</select></label><label>来源<select id="programSource"><option value="">全部来源</option><option value="paper">GESP真题</option><option value="open">开源适配题</option></select></label><button id="morePractice">打开完整练习清单</button></div><p id="openProgress" role="status"></p><div id="programRows"></div><div id="programDetail"></div></div>`;
+$('morePractice').onclick=()=>openView('checklist');$('programTopic').onchange=renderPrograms;$('programSource').onchange=renderPrograms;
 function renderPrograms(){
- const t=$('programTopic').value;
- $('programRows').innerHTML=D.papers.flatMap(p=>p.questions.filter(q=>q.type==='program'&&(!t||q.topic===t)).map(q=>`<article class="resource-row"><h3>${h(q.name)}</h3><p class="muted">${h(p.date)} · ${h(topics[q.topic])}</p><button data-open-program="${p.id}:${q.id}">阅读题目 / 写代码</button></article>`)).join('')||'<p>该知识点暂无站内编程题，可到练习清单或弱项强化练习。</p>';
+ const t=$('programTopic').value,s=$('programSource').value;
+ const papers=s==='open'?[]:D.papers.flatMap(p=>p.questions.filter(q=>q.type==='program'&&(!t||q.topic===t)).map(q=>`<article class="resource-row"><h3>${h(q.name)}</h3><p class="muted">GESP真题 · ${h(p.date)} · ${h(topics[q.topic])}</p><button data-open-program="${p.id}:${q.id}">阅读题目 / 写代码</button></article>`));
+ const opened=s==='paper'?[]:openBank.items.filter(q=>!t||q.topic===t).map(q=>`<article class="resource-row"><h3>${h(q.title)}</h3><p class="muted">开源适配题 · ${h(q.point)} · ${h(topics[q.topic])}${progress.openCompleted[q.id]?' · 已完成':''}</p><button data-open-exercise="${h(q.id)}">阅读题目 / 写代码</button></article>`);
+ $('openProgress').textContent=`开源适配题已完成 ${openBank.items.filter(q=>progress.openCompleted[q.id]).length} / ${openBank.items.length}`;
+ $('programRows').innerHTML=[...papers,...opened].join('')||'<p>该筛选条件下暂无编程题。</p>';
 }
 function openProgram(id,qid){
  const p=D.papers.find(p=>p.id===id),q=p?.questions.find(q=>q.id===qid&&q.type==='program');if(!q)return;
@@ -147,19 +151,25 @@ function openProgram(id,qid){
  $('programDetail').innerHTML=`<article class="card resource-detail"><h3>${h(p.title)} · ${h(q.name)}</h3><div class="resource-content">${markdown(q.content)}</div>${programEditor(p,q)}</article>`;
  bindEditor($('programDetail'));$('programDetail').scrollIntoView({behavior:'smooth'});
 }
-$('exercises').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.openProgram){const [p,q]=b.dataset.openProgram.split(':');openProgram(p,Number(q));}if(b.dataset.download)downloadCode(b.dataset.download);};
+function openExercise(id){
+ const q=openBank.items.find(x=>x.id===id);if(!q)return;const draftId=`open:${q.id}`,code=progress.drafts[draftId]||'';
+ openView('exercises');$('programDetail').innerHTML=`<article class="card resource-detail"><h3>${h(q.title)}</h3><p class="muted">${h(q.point)} · ${h(topics[q.topic])} · 来源：${h(openBank.attribution||'开源题库')} · ${h(q.license)}</p><div class="resource-content"><p>${h(q.content)}</p></div><div class="resource-editor"><p>${link(q.source,'查看英文原题与仓库文件')} ${link(openBank.source,'开源题库主页')}</p><p class="muted">中文题面按原练习目标整理；本页不运行代码，请使用本地编译器测试。</p><label>代码草稿<textarea spellcheck="false" data-draft="${draftId}" aria-label="代码草稿">${h(code)}</textarea></label><p class="muted" data-save-note>草稿保存在本浏览器</p><div class="actions"><button data-download="${draftId}">下载 .cpp 草稿</button><label class="resource-check"><input type="checkbox" data-open-check="${h(q.id)}" ${progress.openCompleted[q.id]?'checked':''}>我已完成此题</label></div></div></article>`;
+ bindEditor($('programDetail'));const checkbox=$('programDetail').querySelector('[data-open-check]');checkbox.onchange=()=>{progress.openCompleted[checkbox.dataset.openCheck]=checkbox.checked;persist();renderPrograms();};$('programDetail').scrollIntoView({behavior:'smooth'});
+}
+$('exercises').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.openProgram){const [p,q]=b.dataset.openProgram.split(':');openProgram(p,Number(q));}if(b.dataset.openExercise)openExercise(b.dataset.openExercise);if(b.dataset.download)downloadCode(b.dataset.download);};
 const mistakesCard=document.createElement('div');mistakesCard.id='resourceMistakes';mistakesCard.className='card resource-entry';$('mistakes').append(mistakesCard);
 const reportCard=document.createElement('div');reportCard.id='resourceReport';reportCard.className='card resource-entry';$('report').append(reportCard);
 function renderResourceMistakes(){
  const completed=D.papers.filter(p=>!p.pdfOnly&&progress.sessions[p.id]?.submitted);
  const wrong=completed.flatMap(p=>p.questions.filter(q=>q.type!=='program'&&progress.sessions[p.id].answers[q.id]!==String(q.answer)).map(q=>({p,q})));
  mistakesCard.innerHTML=`<h3>历年真题错题 / 未作答</h3><p>已交卷 ${completed.length} 套，待复盘 ${wrong.length} 题。这里保留最近一次交卷记录，与原有20题训练错题分开统计。</p>${wrong.map(({p,q})=>`<div class="resource-row"><b>${h(p.title)} · ${q.type==='judge'?'判断第'+(q.id-15):'单选第'+q.id}题</b><p>${h(q.content.slice(0,100))}</p><button data-wrong="${p.id}:${q.id}">回看题目与答案</button></div>`).join('')}`;
- reportCard.innerHTML=`<h3>历年真题学习记录</h3><p>练习清单已完成 ${D.practice.filter(x=>progress.checklist[x.id]).length}/${D.practice.length} 项</p>${completed.map(p=>`<p>${h(p.title)}：客观题 ${score(p,progress.sessions[p.id])}/50分（编程题待另行评测）</p>`).join('')||'<p>尚无已交卷的真题记录。</p>'}`;
+ reportCard.innerHTML=`<h3>历年真题学习记录</h3><p>练习清单已完成 ${D.practice.filter(x=>progress.checklist[x.id]).length}/${D.practice.length} 项 · 开源适配题已完成 ${openBank.items.filter(x=>progress.openCompleted[x.id]).length}/${openBank.items.length} 项</p>${completed.map(p=>`<p>${h(p.title)}：客观题 ${score(p,progress.sessions[p.id])}/50分（编程题待另行评测）</p>`).join('')||'<p>尚无已交卷的真题记录。</p>'}`;
 }
 mistakesCard.onclick=e=>{const b=e.target.closest('[data-wrong]');if(!b)return;const [p,q]=b.dataset.wrong.split(':');openPaper(p);currentIndex=Number(q)-1;renderQuestion();};
 const originalSwitchView=switchView;
 switchView=function(v){originalSwitchView(v);if(v==='mistakes'||v==='report')renderResourceMistakes();if(v==='checklist')renderChecklist();};
-const sources=document.createElement('p');sources.className='footer';sources.innerHTML=`资料更新 ${D.version} · ${link('https://github.com/sirwym/olympiad-practice-system','真题整理来源')} · ${link('https://github.com/lihongzheshuai/yummy-code','练习清单来源')} · <a href="../gesp-resources/SOURCES.md">来源与许可说明</a>`;
+const sources=document.createElement('p');sources.className='footer';sources.innerHTML=`资料更新 ${D.version} · ${link('https://github.com/sirwym/olympiad-practice-system','真题整理来源')} · ${link('https://github.com/lihongzheshuai/yummy-code','练习清单来源')} · ${link(openBank.source,'开源适配题来源')} · <a href="../gesp-resources/SOURCES.md">来源与许可说明</a>`;
 document.querySelector('main').append(sources);
 renderSyllabus();renderChecklist();paperList();renderPrograms();renderResourceMistakes();
 })();
+
