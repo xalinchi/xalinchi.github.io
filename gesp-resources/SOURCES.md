@@ -18,3 +18,15 @@
 - [AlajeBash/2023_Summer_Cpp_Challenge](https://github.com/AlajeBash/2023_Summer_Cpp_Challenge)：100 道初学者 C++ 练习，MIT License。本站从中筛选与 GESP C++ 三级、四级考纲匹配的题目，并将英文练习目标整理为中文题面；原文件链接保留在每道题内。
 - 许可证副本：[summer-LICENSE.txt](summer-LICENSE.txt)
 
+## 三级客观题强化来源
+
+- [rambasnet/CPP-Fundamentals](https://github.com/rambasnet/CPP-Fundamentals)：Colorado Mesa University 教授维护的 CS1 C++ 课程，MIT License。本站参考其基础概念、数组、字符串、函数和练习组织方式编写三级原创客观题。
+- [Viztruth/C-and-Cpp-Practice-problems-with-solutions](https://github.com/Viztruth/C-and-Cpp-Practice-problems-with-solutions)：面向初学者及计算机实验课的 C/C++ 练习仓库，MIT License。本站参考其数组统计、字符串处理和基础算法题型结构编写原创变式。
+- 新增题目不是上游题目的中文复制。每个知识点按“基础辨析、相近模拟、举一反三”组织，题面、选项和中文解析均为本站原创，并限制在 GESP C++ 三级考纲范围内。
+
+## 四级客观题强化来源
+
+- [rambasnet/CPP-Fundamentals](https://github.com/rambasnet/CPP-Fundamentals)：大学 CS1 C++ 课程，MIT License。参考函数、数组、算法分析及文件处理知识结构。
+- [rougier/CPP-Crash-Course](https://github.com/rougier/CPP-Crash-Course)：C++ 公开课程及考试示例，MIT License。参考指针、引用、结构体、异常和文件流知识结构。
+- 四级新增题按“基础辨析、相近模拟、举一反三”组织，题干和中文解析为本站原创，并排除类继承、模板、STL高级容器等超出四级范围的内容。
+
