@@ -55,13 +55,7 @@
     <div class="card span4"><h3>⑦ 模拟算法</h3><ol><li>初始状态不明确</li><li>操作顺序被随意交换</li><li>状态更新使用了新值而非旧值</li><li>多轮操作次数差一</li><li>边界、空输入与输出格式遗漏</li></ol><button onclick="setDrill('k7')">模拟专项诊断</button></div>
     <div class="card span8"><h3>相近题型参考</h3><p class="muted">系统参考公开练习站的题型分布重新编写训练题，不复制原题。推荐用于补充编程实践：</p><div class="actions"><a class="tab" href="https://www.hackerrank.com/domains/cpp" target="_blank" rel="noopener">HackerRank C++</a><a class="tab" href="https://atcoder.jp/contests/archive" target="_blank" rel="noopener">AtCoder Beginner</a><a class="tab" href="https://www.luogu.com.cn/training/list" target="_blank" rel="noopener">洛谷题单</a><a class="tab" href="https://en.cppreference.com/cpp/string/basic_string" target="_blank" rel="noopener">C++ string参考</a></div></div>
   </div></section>
-  <section id="papers" class="view"><div class="grid">
-    <div class="card span8"><div class="eyebrow">CCF官方试卷 · 2023—2026</div><h2>历年真题中心</h2><p class="muted">真题用于完整限时训练；做完后只记录错题所属知识点，再进入本系统完成同考点变式。系统不复制整套试卷，以下链接均指向CCF官网。</p>
-      <div class="actions"><a class="tab" href="https://gesp.ccf.org.cn/101/attach/1767258728693792.pdf" target="_blank" rel="noopener">2026年9月·三级</a><a class="tab" href="https://gesp.ccf.org.cn/101/attach/1753295297183776.pdf" target="_blank" rel="noopener">2026年6月·三级</a><a class="tab" href="https://gesp.ccf.org.cn/101/attach/1734775052173344.pdf" target="_blank" rel="noopener">2026年3月·三级</a><a class="tab" href="https://gesp.ccf.org.cn/101/1010/index.html" target="_blank" rel="noopener">全部历年真题</a></div>
-      <h3 style="margin-top:18px">90分训练法</h3><ol><li>严格计时完成一套真题，不查资料。</li><li>将错题归入进制/函数/数组/string/位运算与流程/枚举/模拟七类之一。</li><li>进入“弱项强化”，每组4题全对后再做下一套。</li><li>错题库的3道变式必须连续全对，才标记为掌握。</li></ol>
-    </div>
-    <div class="card span4"><div class="eyebrow">基于2026年3、6、9月试卷</div><h2>下一阶段高概率考点</h2><div class="topic"><b>★★★★★ 进制与补码</b><p class="muted">二/八/十/十六进制互转、负数补码、位运算组合。</p><button onclick="setDrill('k1')">立即训练</button></div><div class="topic"><b>★★★★★ 字符串与字符数组</b><p class="muted">size、find、substr、getline、下标与边界。</p><button onclick="setDrill('k4')">立即训练</button></div><div class="topic"><b>★★★★☆ 一维数组</b><p class="muted">遍历、统计、极值、越界与状态更新。</p><button onclick="setDrill('k3')">立即训练</button></div><div class="topic"><b>★★★★☆ 函数与值传递</b><p class="muted">返回值、局部作用域、实参与形参副本。</p><button onclick="setDrill('k2')">立即训练</button></div><div class="topic"><b>★★★☆☆ 枚举与模拟</b><p class="muted">条件筛选、边界控制、逐步维护状态。</p><button onclick="setDrill('k6')">枚举专项</button> <button onclick="setDrill('k7')">模拟专项</button></div><p class="muted">“高概率”是基于近三次试卷的频次与连续性分析，不代表官方预测。</p></div>
-  </div></section>
+  <section id="papers" class="view"></section>
   <footer class="footer">依据 CCF GESP 官方等级大纲与三级历年真题考点整理。真题链接来自CCF官网；系统训练题与预测题均为原创变式，不冒充官方真题。学习记录保存在当前浏览器中。 · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1008/10012.html" target="_blank">官方大纲</a> · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1010/index.html" target="_blank">历年真题</a></footer>
 </main><script>
 const topics={k1:'计算机基础、算法特性与进制编码',k2:'函数定义、值传递与作用域',k3:'一维数组与遍历',k4:'string字符串与字符处理',k5:'位运算、复合运算与流程控制',k6:'枚举算法与复杂度意识',k7:'模拟算法与步骤翻译'};
@@ -420,4 +414,8 @@ const current='gesp3State';if(!w.migrated[current]){w.food+=num(state.food);w.bi
 localStorage.setItem(key,JSON.stringify(w));const attached=new WeakSet();function attach(){if(attached.has(state))return;for(const f of ['food','birdXp','turtleXp'])Object.defineProperty(state,f,{configurable:true,enumerable:true,get(){return read()[f]||0},set(v){const x=read();x[f]=num(v);localStorage.setItem(key,JSON.stringify(x));}});attached.add(state);}attach();const oldSave=save;save=function(){attach();return oldSave();};
 function refresh(){updateDash();renderPet();}window.addEventListener('storage',e=>{if(e.key===key)refresh();});window.addEventListener('focus',refresh);refresh();const note=document.createElement('p');note.className='muted';note.textContent='二、三、四级共享宠物食物与成长值 · 同一设备、同一浏览器有效。原有余额已一次性合并。';document.getElementById('pet').prepend(note);
 })();
-</script></body></html>
+</script><link rel="stylesheet" href="../gesp-resources/resources.css?v=20260921">
+<script src="../gesp-resources/katex.min.js"></script>
+<script src="../gesp-resources/level3.js?v=20260921"></script>
+<script src="../gesp-resources/resources.js?v=20260921"></script>
+</body></html>

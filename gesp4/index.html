@@ -513,6 +513,10 @@ const sprintVideos=[["BV1jpjz6UEzR","GESP C++四级考点考纲知识点详细�
 const sprintBox=document.createElement('div');sprintBox.id='sprintReview';sprintBox.className='card';
 sprintBox.innerHTML='<h2>考前冲刺 · 综合知识串讲</h2><p>完成12课后复习：先梳理考点，再复习客观题，最后查漏补缺。以下视频侧重点不同，不保证每一部单独覆盖全部考纲。</p>'+sprintVideos.map((v,i)=>`<article class="card"><h3>${i+1}. ${esc(v[1])}</h3><p>${esc(v[2])} · ${esc(v[3])}</p><p>${esc(v[4])}</p><a class="primary" href="https://www.bilibili.com/video/${v[0]}/" target="_blank" rel="noopener noreferrer">▶ 在B站播放</a></article>`).join('');
 document.getElementById('selfstudy').append(sprintBox);
-</script></body></html>
+</script><link rel="stylesheet" href="../gesp-resources/resources.css?v=20260921">
+<script src="../gesp-resources/katex.min.js"></script>
+<script src="../gesp-resources/level4.js?v=20260921"></script>
+<script src="../gesp-resources/resources.js?v=20260921"></script>
+</body></html>
 
 
