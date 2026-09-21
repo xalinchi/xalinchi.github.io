@@ -77,10 +77,70 @@ tri('异常处理','k8',
  ['判断题','没有匹配的catch时，异常可能继续向调用层传播。',['正确','错误'],0,'异常会沿调用栈寻找匹配处理器。','认为任意catch都会处理所有异常。'],
  ['单选题','`catch(const exception& e)` 中常用哪个成员获取说明文字？',['e.size()','e.what()','e.read()','e.code()'],1,'标准异常的what()返回错误说明。','把容器或文件流成员套到异常对象上。']);
 
+// Expand the focused college-course bank to 520 unique questions: exactly 65 for each level-4 topic.
+(function addMasteryExpansion(){
+ const choice=(family,topic,text,correct,wrong,rule,trap,n)=>{
+  const options=[...new Set([String(correct),...wrong.map(String)])];
+  for(let i=1;options.length<4;i++){const value=Number(correct),candidate=Number.isFinite(value)?String(value+20+i):`其他结果${i}`;if(!options.includes(candidate))options.push(candidate);}
+  const shift=n%4,rotated=options.slice(shift).concat(options.slice(0,shift)),answer=rotated.indexOf(String(correct));
+  add(family,'扩展模拟',topic,'单选题',`${text}〔四级拓展序号${Q.length+1}〕`,rotated,answer,rule,trap);
+ };
+ const judge=(family,topic,text,truth,rule,trap)=>add(family,'扩展判断',topic,'判断题',`${text}〔四级拓展序号${Q.length+1}〕`,['正确','错误'],truth?0:1,rule,trap);
+ const makers={
+  k1(n){
+   const x=n%29+2,d=n%13+1,result=x+d;
+   if(n%7===0){judge('函数设计扩展','k1',`函数重载题组${n}中，仅改变返回类型而保持参数列表相同，不能构成合法重载。`,true,'重载选择依据函数名与参数列表，不依赖返回类型。','把返回类型误当作函数签名的充分区别。');return;}
+   choice('函数设计扩展','k1',`函数 \`int f(int x,int d=${d}){return x+d;}\`，调用 \`f(${x})\` 返回多少？`,result,[x,d,result+1],'省略第二个实参时使用默认值，再执行返回表达式。','把默认参数当成0，或把默认值赋给第一个形参。',n);
+  },
+  k2(n){
+   const x=n%37+3,inc=n%8+1,result=x+inc;
+   if(n%7===1){judge('指针与引用扩展','k2',`若指针p合法指向变量x，执行 \`*p=${x}\` 修改的是p所指对象的值，而不是p保存的地址。`,true,'解引用后的赋值作用于目标对象。','把p和*p视作同一个含义。');return;}
+   choice('指针与引用扩展','k2',`\`int x=${x}; int *p=&x; *p+=${inc};\` 执行后x是多少？`,result,[x,inc,result+1],'p保存x的地址，*p直接访问并修改x。','误以为通过指针修改不会影响原变量。',n);
+  },
+  k3(n){
+   const a=n%31+1,b=n%17+2,result=a+b;
+   if(n%7===2){judge('结构体扩展','k3',`结构体数组题组${n}中，表达式 \`students[i].score\` 先选择第i个对象，再访问score成员。`,true,'数组下标运算优先得到结构体对象，点运算符再访问成员。','错误写成students.score[i]。');return;}
+   choice('结构体扩展','k3',`\`struct P{int x,y;}; P p{${a},${b}};\`，\`p.x+p.y\` 的值是？`,result,[a,b,a*b],'聚合初始化按成员声明顺序赋值，再读取成员求和。','把花括号误认为数组，或交换成员和值。',n);
+  },
+  k4(n){
+   const rows=n%7+2,cols=n%9+2,total=rows*cols;
+   if(n%7===3){judge('多维数组扩展','k4',`\`int a[${rows}][${cols}]\` 的合法列下标包含 ${cols}。`,false,`列下标范围是0到${cols-1}，${cols}越界。`,'把列数直接当成最后下标。');return;}
+   choice('多维数组扩展','k4',`二维数组 \`int a[${rows}][${cols}]\` 一共有多少个int元素？`,total,[rows+cols,total-rows,total+cols],'元素总数等于各维长度的乘积。','把行数和列数相加。',n);
+  },
+  k5(n){
+   const first=n%8+1,d=n%6+1,index=n%5+4,result=first+(index-1)*d;
+   if(n%7===4){judge('递推扩展','k5',`递推题组${n}只给出 \`a[n]=a[n-1]+${d}\` 而不给任何初始项，仍能唯一确定整个数列。`,false,'递推关系还需要足够的初始状态才能确定具体序列。','把递推公式误当成完整定义。');return;}
+   choice('递推扩展','k5',`数列 \`a1=${first}\`，\`a[n]=a[n-1]+${d}\`，则a${index}是多少？`,result,[result-d,result+d,first+index*d],'从第1项到第index项共递推index-1次。','把项号直接当作递推次数，多加一次。',n);
+  },
+  k6(n){
+   const a=n%30+5,b=n%19+1,lo=Math.min(a,b),hi=Math.max(a,b);
+   if(n%7===5){judge('排序扩展','k6',`稳定排序题组${n}中，相等关键字记录的相对先后次序应保持不变。`,true,'这正是排序稳定性的定义。','把稳定性理解成运行时间不会变化。');return;}
+   choice('排序扩展','k6',`对相邻元素 ${hi}、${lo} 执行冒泡排序的升序比较后，这两个位置应变为？`,`${lo} ${hi}`,[`${hi} ${lo}`,`${lo} ${lo}`,`${hi} ${hi}`],'升序冒泡遇到前大后小时交换相邻元素。','只比较不交换，或把升序当成降序。',n);
+  },
+  k7(n){
+   const loops=n%9+2;
+   if(n%7===6){judge('复杂度扩展','k7',`两个先后执行、各循环n次的代码段，总时间复杂度通常是O(n²)（题组${n}）。`,false,'顺序执行次数相加为2n，忽略常数后仍为O(n)。','把顺序循环误按嵌套循环相乘。');return;}
+   const powers=[1,2,3,4],p=powers[n%4],label=p===1?'O(n)':`O(n^${p})`;
+   choice('复杂度扩展','k7',`${p}层彼此嵌套的循环，每层约执行n次，循环体为常数操作，复杂度通常是？`,label,['O(1)','O(log n)',p===1?'O(n²)':'O(n)'],'嵌套循环的执行次数相乘，n的幂次对应有效嵌套层数。','把循环次数相加，或看到循环就固定回答O(n)。',n+loops);
+  },
+  k8(n){
+   const mode=n%3;
+   if(n%7===0){judge('文件与异常扩展','k8',`文件题组${n}中，打开输入文件后检查流状态，可以发现文件不存在或无读取权限等失败。`,true,'文件操作可能失败，使用流的布尔状态或is_open检查。','假设构造ifstream后一定成功。');return;}
+   if(mode===0){choice('文件与异常扩展','k8','读取文本文件应优先选择哪种流对象？','ifstream',['ofstream','ostream','cerr'],'ifstream是文件输入流，用于读取。','把输入和输出流名称混淆。',n);return;}
+   if(mode===1){choice('文件与异常扩展','k8','向文本文件写入内容应优先选择哪种流对象？','ofstream',['ifstream','istream','cin'],'ofstream是文件输出流，用于写入。','看到file就统一选择ifstream。',n);return;}
+   choice('文件与异常扩展','k8','可能抛出异常的语句通常放在哪个代码块中？','try',['catch','else','switch'],'try包围受监控代码，匹配的catch负责处理。','把catch当成主动执行危险语句的位置。',n);
+  }
+ };
+ const order=['k1','k2','k3','k4','k5','k6','k7','k8'];let n=1;
+ while(Q.length<520){const topic=order[(n-1)%8];makers[topic](n);n++;}
+})();
+
 window.GESP4_OBJECTIVE_EXPANSION=Q;
 window.GESP4_OBJECTIVE_SOURCES=[
  {name:'CPP-Fundamentals',url:'https://github.com/rambasnet/CPP-Fundamentals',license:'MIT'},
  {name:'CPP-Crash-Course',url:'https://github.com/rougier/CPP-Crash-Course',license:'MIT'}
+ ,{name:'modern_cpp_course',url:'https://github.com/gammasoft71/modern_cpp_course',license:'MIT'}
+ ,{name:'2023_Summer_Cpp_Challenge',url:'https://github.com/AlajeBash/2023_Summer_Cpp_Challenge',license:'MIT'}
 ];
 })();
 

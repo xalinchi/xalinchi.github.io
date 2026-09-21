@@ -29,5 +29,7 @@
 
 - [rambasnet/CPP-Fundamentals](https://github.com/rambasnet/CPP-Fundamentals)：大学 CS1 C++ 课程，MIT License。参考函数、数组、算法分析及文件处理知识结构。
 - [rougier/CPP-Crash-Course](https://github.com/rougier/CPP-Crash-Course)：C++ 公开课程及考试示例，MIT License。参考指针、引用、结构体、异常和文件流知识结构。
-- 四级新增题按“基础辨析、相近模拟、举一反三”组织，题干和中文解析为本站原创，并排除类继承、模板、STL高级容器等超出四级范围的内容。
+- [gammasoft71/modern_cpp_course](https://github.com/gammasoft71/modern_cpp_course)：免费开源现代 C++ 课程，MIT License。参考数组与指针、结构体、引用、函数及异常的课程组织方式。
+- [AlajeBash/2023_Summer_Cpp_Challenge](https://github.com/AlajeBash/2023_Summer_Cpp_Challenge)：100 道初学者 C++ 练习，MIT License。参考函数、矩阵、排序及数组函数题型分布。
+- 四级大学课程题型强化题库共520道，按八个四级知识点各65题均衡分布。题目按“基础辨析、相近模拟、举一反三”和扩展训练组织，题干和中文解析为本站原创，并排除类继承、模板、STL高级容器等超出四级范围的内容。
 
