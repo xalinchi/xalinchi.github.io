@@ -8,6 +8,7 @@ let progress;
 try{progress=JSON.parse(localStorage.getItem(key)||'{}');}catch{progress={};}
 if(!progress||typeof progress!=='object'||Array.isArray(progress))progress={};
 for(const field of ['checklist','syllabus','sessions','drafts','openCompleted'])if(!progress[field]||typeof progress[field]!=='object')progress[field]={};
+for(const [id,s] of Object.entries(progress.sessions)){if(!s||typeof s!=='object'||!s.answers||typeof s.answers!=='object'||!Number.isFinite(s.deadline))delete progress.sessions[id];}
 const openBank=window.GESP_OPEN_EXERCISES?.[D.level]||{items:[]};
 function persist(){try{localStorage.setItem(key,JSON.stringify(progress));}catch{const n=$('resourceStorage');if(n)n.textContent='浏览器未能保存进度，请保留页面并下载代码草稿。';}}
 function link(url,label){return /^https:\/\//.test(url||'')?`<a href="${h(url)}" target="_blank" rel="noopener noreferrer">${h(label)}</a>`:'';}
@@ -30,7 +31,7 @@ function section(id,label){
  if(!b){b=document.createElement('button');b.className='tab';b.dataset.view=id;b.textContent=label;document.querySelector('nav').append(b);}
  b.onclick=()=>switchView(id);return el;
 }
-section('papers','历年真题');section('syllabus','考试提纲');section('checklist','练习清单');section('exercises','编程练习');
+section('papers','历年真题');section('syllabus','考试提纲');section('exercises','编程练习');
 const message=document.createElement('p');message.id='resourceStorage';message.className='muted';message.setAttribute('role','status');document.querySelector('main').append(message);
 let current=null,currentIndex=0;
 function openView(id){switchView(id);$(id).scrollIntoView({behavior:'smooth',block:'start'});}
@@ -41,29 +42,20 @@ function navigationCard(title,description,actions){
  const row=document.createElement('div');row.className='actions';
  actions.forEach(([label,id])=>{const b=document.createElement('button');b.textContent=label;b.onclick=()=>openView(id);row.append(b);});box.append(row);return box;
 }
-$('home').prepend(navigationCard(`C++ ${D.level}级 · 真题与练习资料`,'按考纲学习 → 勾选练习 → 限时做真题 → 回看错题。进度保存在本浏览器。',[['历年真题','papers'],['考试提纲','syllabus'],['练习清单','checklist'],['编程练习','exercises']]));
+$('home').prepend(navigationCard(`C++ ${D.level}级 · 真题与练习资料`,'按考纲学习 → 勾选练习 → 限时做真题 → 回看错题。进度保存在本浏览器。',[['历年真题','papers'],['知识学习','syllabus'],['编程题库','exercises']]));
 $('examIntro').append(navigationCard('按真实试卷练习','真题整卷计时120分钟，25道客观题共50分；另有2道编程题。',[['选择历年真题','papers']]));
 $('map').prepend(navigationCard('对照考试提纲','查看本级学习目标，并进入已有专项练习。',[['打开考试提纲','syllabus']]));
-$('drill').append(navigationCard('编程专项与练习计划','编程真题提供完整题面和草稿区，配套题单提供题目与题解入口。',[['练习清单','checklist'],['编程练习','exercises']]));
-if($('selfstudy'))$('selfstudy').prepend(navigationCard('课程配套资料','结合考纲目标、练习清单和历年真题复习。',[['考试提纲','syllabus'],['练习清单','checklist']]));
+$('drill').append(navigationCard('编程专项与练习计划','编程真题提供完整题面和草稿区，配套题单提供题目与题解入口。',[['编程题库','exercises']]));
+if($('selfstudy'))$('selfstudy').prepend(navigationCard('课程配套资料','结合考纲目标、练习清单和历年真题复习。',[['考试提纲','syllabus'],['编程题库','exercises']]));
 function renderSyllabus(){
  $('syllabus').innerHTML=`<div class="card"><h2>GESP C++ ${D.level}级考试提纲</h2><p>依据官方大纲整理的学习目标摘要。${link(D.official,'官方大纲发布页')} · ${link(D.syllabusPDF+'#page='+(D.level===3?17:19),'查看本级大纲原文')}</p><p>120分钟 · 单选15题×2分 · 判断10题×2分 · 编程2题×25分</p><p class="muted">${D.level===3?'三级核心范围是编码、进制、位运算、数组、字符串、枚举和模拟。站内函数专项可作为衔接扩展，不列为三级新增核心考点。':'递推属于四级核心；递归及跨级算法练习作为拓展，按自己的基础选做。'}</p><p id="syllabusProgress"></p></div><div class="grid resource-grid">${D.syllabus.map(x=>`<article class="card span6"><h3>${h(x.name)}</h3><p>${h(x.goal)}</p><label class="resource-check"><input type="checkbox" data-syllabus="${x.id}" ${progress.syllabus[x.id]?'checked':''}>已完成本项复习</label><div class="actions"><button data-drill="${x.topic}">客观题专项</button><button data-topic="${x.topic}">对应练习清单</button></div></article>`).join('')}</div>`;
  updateSyllabusProgress();
 }
 function updateSyllabusProgress(){$('syllabusProgress').textContent=`已复习 ${D.syllabus.filter(x=>progress.syllabus[x.id]).length} / ${D.syllabus.length} 项`;}
 $('syllabus').addEventListener('change',e=>{if(e.target.dataset.syllabus){progress.syllabus[e.target.dataset.syllabus]=e.target.checked;persist();updateSyllabusProgress();}});
-$('syllabus').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.drill)setDrill(b.dataset.drill);if(b.dataset.topic){$('listTopic').value=b.dataset.topic;$('listGroup').value='';$('listSearch').value='';renderChecklist();openView('checklist');}});
+$('syllabus').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.drill)setDrill(b.dataset.drill);if(b.dataset.topic){$('programTopic').value=b.dataset.topic;$('programSource').value='';$('programSearch').value='';renderPrograms();openView('exercises');}});
 const topicOptions=()=>Object.entries(topics).map(([k,v])=>`<option value="${k}">${h(v)}</option>`).join('');
-$('checklist').innerHTML=`<div class="card"><h2>C++ ${D.level}级练习清单</h2><p>整理自 ${link(`https://github.com/lihongzheshuai/yummy-code/blob/master/GESP${D.level}.md`,'yummy-code 对应级别题单')}。勾选表示你已完成，不代表在线评测通过。跨级及其他赛事题标注为拓展。</p><div class="resource-filters"><label>知识点<select id="listTopic"><option value="">全部知识点</option>${topicOptions()}</select></label><label>类型<select id="listGroup"><option value="">全部类型</option><option>GESP编程真题</option><option>考纲配套练习</option><option>拓展练习</option></select></label><label>搜索<input id="listSearch" type="search" placeholder="题号或题目名称"></label><label class="resource-check"><input id="listPending" type="checkbox">仅看未完成</label></div><p id="listProgress" role="status"></p><div id="listRows"></div></div>`;
-function renderChecklist(){
- const search=$('listSearch').value.toLowerCase(),t=$('listTopic').value,g=$('listGroup').value,pending=$('listPending').checked;
- const items=D.practice.filter(x=>(!t||x.topic===t)&&(!g||x.group===g)&&(!search||(x.id+' '+x.name).toLowerCase().includes(search))&&(!pending||!progress.checklist[x.id]));
- $('listProgress').textContent=`总进度 ${D.practice.filter(x=>progress.checklist[x.id]).length}/${D.practice.length} · 当前显示 ${items.length} 项`;
- $('listRows').innerHTML=items.map(x=>`<article class="resource-row"><label class="resource-check"><input type="checkbox" data-check="${h(x.id)}" ${progress.checklist[x.id]?'checked':''}><strong>${h(x.name)}</strong></label><p class="muted">${h(x.id)} · ${h(x.point)} · ${h(x.date||x.group)}${x.extension?' · 拓展选做':''}</p><div class="actions">${x.paper?`<button data-program="${x.paper}:${x.question}">站内题目与草稿</button>`:''}${link(x.url,'题目 / 在线提交')}${link(x.solution,'查看题解')}</div></article>`).join('')||'<p>没有符合条件的题目，请调整筛选。</p>';
-}
-['listTopic','listGroup','listPending'].forEach(id=>$(id).onchange=renderChecklist);$('listSearch').oninput=renderChecklist;
-$('listRows').onchange=e=>{if(e.target.dataset.check){progress.checklist[e.target.dataset.check]=e.target.checked;persist();renderChecklist();}};
-$('listRows').onclick=e=>{const b=e.target.closest('[data-program]');if(b){const [id,q]=b.dataset.program.split(':');openProgram(id,Number(q));}};
+function renderChecklist(){renderPrograms();}
 function paperList(){
  $('papers').innerHTML=`<div class="card"><h2>C++ ${D.level}级历年真题</h2><p>12套站内试卷（2023年6月—2026年3月），另提供2026年6月、9月官方原卷。每套站内卷有25道客观题和2道编程题。</p><p class="muted">社区整理的题面与答案可能存在转录问题，以官方原卷为准；部分题目需结合原卷中的代码或图片。编程题保存草稿，使用外部平台运行评测。客观题得分不会冒充整卷总分。</p><label>年份 <select id="paperYear"><option value="">全部年份</option>${[2026,2025,2024,2023].map(y=>`<option>${y}</option>`).join('')}</select></label><div id="paperCards" class="grid resource-grid"></div></div>`;
  $('paperYear').onchange=renderPaperCards;renderPaperCards();
@@ -92,14 +84,14 @@ function openPaper(id){
  current=p;
  if(!progress.sessions[id]){progress.sessions[id]={answers:{},deadline:Date.now()+120*60*1000,submitted:false,idx:0};persist();}
  const s=session();currentIndex=Math.max(0,Math.min(26,Number(s.idx)||0));openView('papers');
- if(!s.submitted&&Date.now()>=s.deadline)submitPaper();else renderQuestion();
+ if(!s.submitted&&Date.now()>=s.deadline)submitPaper(true);else renderQuestion();
 }
 function score(p,s){return p.questions.filter(q=>q.type!=='program').reduce((n,q)=>n+(s.answers[q.id]===String(q.answer)?q.score:0),0);}
 function renderQuestion(){
  const s=session(),q=current.questions[currentIndex];s.idx=currentIndex;persist();
  const options=q.type==='judge'?[{key:'True',text:'正确'},{key:'False',text:'错误'}]:q.options||[];
  const selected=s.answers[q.id];
- $('papers').innerHTML=`<div class="card"><div class="examtop"><h2>${h(current.title)}</h2><span id="realTimer" class="timer"></span></div><div class="actions"><button data-back>返回试卷列表</button>${link(current.pdf,'官方原卷 PDF')}<button data-restart>重新开始本卷</button></div>${s.submitted?`<div class="feedback"><strong>客观题 ${score(current,s)} / 50分</strong><p>编程题共50分，需另行评测；此处不是整卷总分。${s.expired?'本次因计时结束自动交卷。':''}</p></div>`:'<p class="muted">交卷前不显示答案；作答与倒计时会保留，刷新或离开页面不暂停。编程题可先保存草稿再去评测。</p>'}<div class="qnav resource-nav">${current.questions.map((x,i)=>`<button data-jump="${i}" class="qdot ${s.answers[x.id]!==undefined?'done':''} ${i===currentIndex?'current':''}" aria-label="第${i+1}题" aria-current="${i===currentIndex?'step':'false'}">${i+1}</button>`).join('')}</div><p class="tag">第 ${currentIndex+1} / 27 题 · ${q.type==='program'?'编程题':q.type==='judge'?'判断题':'单选题'} · ${q.score}分</p>${q.needsOriginal?`<div class="feedback resource-warning">本题的代码、图片或选项在社区整理版中不完整。请先${link(current.pdf,'打开官方原卷')}查看${q.type==='judge'?'判断':'单选'}第${q.type==='judge'?q.id-15:q.id}题，再作答。</div>`:''}<div class="resource-content">${markdown(q.content)}</div>${q.type==='program'?programEditor(current,q):`<div class="options">${options.map(o=>`<button class="option ${selected===o.key?'selected':''} ${s.submitted&&o.key===String(q.answer)?'correct':''} ${s.submitted&&selected===o.key&&selected!==String(q.answer)?'wrong':''}" data-answer="${h(o.key)}" ${s.submitted?'disabled':''}><span class="letter">${h(o.key==='True'?'✓':o.key==='False'?'✗':o.key)}</span><span class="resource-content">${markdown(o.text||'请查看官方原卷中此选项')}</span></button>`).join('')}</div>${s.submitted?`<div class="feedback">${selected===String(q.answer)?'回答正确':selected===undefined?'未作答':'回答错误'} · 参考答案：${h(q.type==='judge'?(q.answer==='True'?'正确':'错误'):q.answer)}<p class="muted">答案来自社区整理；如有疑问请核对官方原卷。</p><button onclick="setDrill('${q.topic}')">进入相关专项复习</button></div>`:''}`}<div class="actions resource-bottom"><button data-move="-1" ${currentIndex===0?'disabled':''}>上一题</button><button data-move="1" ${currentIndex===26?'disabled':''}>下一题</button>${!s.submitted?'<button class="primary" data-submit>交卷并查看客观题成绩</button>':''}</div></div>`;
+ $('papers').innerHTML=`<div class="card"><div class="examtop"><h2>${h(current.title)}</h2><span id="realTimer" class="timer"></span></div><div class="actions"><button data-back>返回试卷列表</button>${link(current.pdf,'官方原卷 PDF')}<button data-restart>重新开始本卷</button></div>${s.submitted?`<div class="feedback"><strong>客观题 ${score(current,s)} / 50分</strong><p>编程题共50分，需另行评测；此处不是整卷总分。${s.expired?'本次因计时结束自动交卷。':''}</p></div>`:'<p class="muted">交卷前不显示答案；作答与倒计时会保留，刷新或离开页面不暂停。编程题可先保存草稿再去评测。</p>'}<div class="qnav resource-nav">${current.questions.map((x,i)=>`<button data-jump="${i}" class="qdot ${s.answers[x.id]!==undefined?'done':''} ${i===currentIndex?'current':''}" aria-label="第${i+1}题" aria-current="${i===currentIndex?'step':'false'}">${i+1}</button>`).join('')}</div><p class="tag">第 ${currentIndex+1} / 27 题 · ${q.type==='program'?'编程题':q.type==='judge'?'判断题':'单选题'} · ${q.score}分</p>${q.needsOriginal?`<div class="feedback resource-warning">本题的代码、图片或选项在社区整理版中不完整。请先${link(current.pdf,'打开官方原卷')}查看${q.type==='judge'?'判断':'单选'}第${q.type==='judge'?q.id-15:q.id}题，再作答。</div>`:''}<div class="resource-content">${markdown(q.content)}</div>${q.type==='program'?programEditor(current,q):`<div class="options">${options.map(o=>`<button class="option ${selected===o.key?'selected':''} ${s.submitted&&o.key===String(q.answer)?'correct':''} ${s.submitted&&selected===o.key&&selected!==String(q.answer)?'wrong':''}" data-answer="${h(o.key)}" ${s.submitted?'disabled':''}><span class="letter">${h(o.key==='True'?'✓':o.key==='False'?'✗':o.key)}</span><span class="resource-content">${markdown(o.text||'请查看官方原卷中此选项')}</span></button>`).join('')}</div>${s.submitted?`<div class="feedback">${selected===String(q.answer)?'回答正确':selected===undefined?'未作答':'回答错误'} · 参考答案：${h(q.type==='judge'?(q.answer==='True'?'正确':'错误'):q.answer)}<p class="muted">${h(q.correction||'答案来自社区整理；如有疑问请核对官方原卷。')}</p><button onclick="setDrill('${q.topic}')">进入相关专项复习</button></div>`:''}`}<div class="actions resource-bottom"><button data-move="-1" ${currentIndex===0?'disabled':''}>上一题</button><button data-move="1" ${currentIndex===26?'disabled':''}>下一题</button>${!s.submitted?'<button class="primary" data-submit>交卷并查看客观题成绩</button>':''}</div></div>`;
  bindEditor($('papers'));tick();
 }
 function answer(value){
@@ -136,15 +128,30 @@ function downloadCode(id){
  const blob=new Blob([progress.drafts[id]||''],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
  a.href=url;a.download=`GESP-Cpp-${D.level}-${id.replace(':','-')}.cpp`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-$('exercises').innerHTML=`<div class="card"><h2>C++ ${D.level}级编程练习</h2><p>已收录24道站内编程真题和 ${openBank.items.length} 道知识点适配的开源练习，均可保存代码草稿。更多配套练习见练习清单。</p><div class="resource-filters"><label>知识点<select id="programTopic"><option value="">全部知识点</option>${topicOptions()}</select></label><label>来源<select id="programSource"><option value="">全部来源</option><option value="paper">GESP真题</option><option value="open">开源适配题</option></select></label><button id="morePractice">打开完整练习清单</button></div><p id="openProgress" role="status"></p><div id="programRows"></div><div id="programDetail"></div></div>`;
-$('morePractice').onclick=()=>openView('checklist');$('programTopic').onchange=renderPrograms;$('programSource').onchange=renderPrograms;
-function renderPrograms(){
- const t=$('programTopic').value,s=$('programSource').value;
- const papers=s==='open'?[]:D.papers.flatMap(p=>p.questions.filter(q=>q.type==='program'&&(!t||q.topic===t)).map(q=>`<article class="resource-row"><h3>${h(q.name)}</h3><p class="muted">GESP真题 · ${h(p.date)} · ${h(topics[q.topic])}</p><button data-open-program="${p.id}:${q.id}">阅读题目 / 写代码</button></article>`));
- const opened=s==='paper'?[]:openBank.items.filter(q=>!t||q.topic===t).map(q=>`<article class="resource-row"><h3>${h(q.title)}</h3><p class="muted">开源适配题 · ${h(q.point)} · ${h(topics[q.topic])}${progress.openCompleted[q.id]?' · 已完成':''}</p><button data-open-exercise="${h(q.id)}">阅读题目 / 写代码</button></article>`);
- $('openProgress').textContent=`开源适配题已完成 ${openBank.items.filter(q=>progress.openCompleted[q.id]).length} / ${openBank.items.length}`;
- $('programRows').innerHTML=[...papers,...opened].join('')||'<p>该筛选条件下暂无编程题。</p>';
+// One programming catalog merges paper entries and Yummy references by problem identity.
+const programCatalog=[],catalogSeen=new Set();
+for(const x of D.practice){
+ const q=x.paper?D.papers.find(p=>p.id===x.paper)?.questions.find(q=>q.id===x.question):null;
+ const identity=x.url||x.solution||`${x.paper}:${x.question}`;
+ if(catalogSeen.has(identity))continue;catalogSeen.add(identity);
+ programCatalog.push({...x,kind:x.paper?'paper':'reference',identity});
 }
+for(const p of D.papers)for(const q of p.questions.filter(x=>x.type==='program')){
+ if(programCatalog.some(x=>x.paper===p.id&&x.question===q.id))continue;
+ const identity=q.url||`${p.id}:${q.id}`;if(catalogSeen.has(identity))continue;catalogSeen.add(identity);
+ programCatalog.push({id:q.practiceId||identity,name:q.name,topic:q.topic,point:topics[q.topic],kind:'paper',paper:p.id,question:q.id,url:q.url,solution:q.solution,date:p.date,identity});
+}
+for(const q of openBank.items){const identity=q.source;if(catalogSeen.has(identity))continue;catalogSeen.add(identity);programCatalog.push({...q,name:q.title,kind:'open',identity});}
+$('exercises').innerHTML=`<div class="card"><h2>C++ ${D.level}级编程题库</h2><p>历年编程真题、Yummy配套题单和开源练习统一展示，同一题只列一次。完成勾选表示自评，不代表评测通过。</p><div class="resource-filters"><label>知识点<select id="programTopic"><option value="">全部知识点</option>${topicOptions()}</select></label><label>来源<select id="programSource"><option value="">全部来源</option><option value="paper">站内真题</option><option value="reference">配套题单</option><option value="open">开源适配题</option></select></label><label>搜索<input id="programSearch" type="search" placeholder="题号、名称或考点"></label><label class="resource-check"><input id="programPending" type="checkbox">仅看未完成</label></div><p id="openProgress" role="status"></p><div id="programRows"></div><div id="programDetail"></div></div>`;
+['programTopic','programSource','programPending'].forEach(id=>$(id).onchange=renderPrograms);$('programSearch').oninput=renderPrograms;
+function renderPrograms(){
+ const t=$('programTopic').value,s=$('programSource').value,term=$('programSearch').value.trim().toLowerCase(),pending=$('programPending').checked;
+ const complete=x=>x.kind==='open'?progress.openCompleted[x.id]:progress.checklist[x.id];
+ const items=programCatalog.filter(x=>(!t||x.topic===t)&&(!s||x.kind===s)&&(!pending||!complete(x))&&(!term||[x.id,x.name,x.point].join(' ').toLowerCase().includes(term)));
+ $('openProgress').textContent=`共 ${programCatalog.length} 道不重复编程题 · 已完成 ${programCatalog.filter(complete).length} 道 · 当前显示 ${items.length} 道`;
+ $('programRows').innerHTML=items.map(x=>`<article class="resource-row"><label class="resource-check"><input type="checkbox" data-catalog-check="${h(x.id)}" data-kind="${x.kind}" ${complete(x)?'checked':''}><strong>${h(x.name)}</strong></label><p class="muted">${h(x.id)} · ${h(x.point||topics[x.topic])} · ${h(x.date||({'paper':'GESP真题','reference':'配套题单','open':'开源适配题'}[x.kind]))}${x.extension?' · 拓展选做':''}</p><div class="actions">${x.kind==='paper'?`<button data-open-program="${x.paper}:${x.question}">阅读题目 / 写代码</button>`:x.kind==='open'?`<button data-open-exercise="${h(x.id)}">阅读题目 / 写代码</button>`:''}${link(x.url,'题目 / 在线提交')}${link(x.solution,'查看题解')}</div></article>`).join('')||'<p>没有符合条件的题目，请调整筛选。</p>';
+}
+$('programRows').onchange=e=>{const x=e.target;if(!x.dataset.catalogCheck)return;(x.dataset.kind==='open'?progress.openCompleted:progress.checklist)[x.dataset.catalogCheck]=x.checked;persist();renderPrograms();};
 function openProgram(id,qid){
  const p=D.papers.find(p=>p.id===id),q=p?.questions.find(q=>q.id===qid&&q.type==='program');if(!q)return;
  openView('exercises');
@@ -167,9 +174,10 @@ function renderResourceMistakes(){
 }
 mistakesCard.onclick=e=>{const b=e.target.closest('[data-wrong]');if(!b)return;const [p,q]=b.dataset.wrong.split(':');openPaper(p);currentIndex=Number(q)-1;renderQuestion();};
 const originalSwitchView=switchView;
-switchView=function(v){originalSwitchView(v);if(v==='mistakes'||v==='report')renderResourceMistakes();if(v==='checklist')renderChecklist();};
+switchView=function(v){originalSwitchView(v);if(v==='mistakes'||v==='report')renderResourceMistakes();if(v==='exercises')renderPrograms();};
 const sources=document.createElement('p');sources.className='footer';sources.innerHTML=`资料更新 ${D.version} · ${link('https://github.com/sirwym/olympiad-practice-system','真题整理来源')} · ${link('https://github.com/lihongzheshuai/yummy-code','练习清单来源')} · ${link(openBank.source,'开源适配题来源')} · <a href="../gesp-resources/SOURCES.md">来源与许可说明</a>`;
 document.querySelector('main').append(sources);
-renderSyllabus();renderChecklist();paperList();renderPrograms();renderResourceMistakes();
+renderSyllabus();paperList();renderPrograms();renderResourceMistakes();
+if(D.extraReferences?.length){const box=document.createElement('div');box.className='card';box.innerHTML='<h3>配套知识讲解</h3>'+D.extraReferences.map(x=>'<p>'+link(x.url,x.name)+'</p>').join('');$('syllabus').append(box);}
 })();
 

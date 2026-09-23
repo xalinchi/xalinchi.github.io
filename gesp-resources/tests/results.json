@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-23",
+  "assertions": 8152,
+  "results": [
+    {
+      "level": 3,
+      "bank": 1027,
+      "topics": 7,
+      "result": "PASS"
+    },
+    {
+      "level": 4,
+      "bank": 884,
+      "topics": 8,
+      "result": "PASS"
+    }
+  ],
+  "scope": "JSDOM functional and data regression; browser visual checks reported separately"
+}

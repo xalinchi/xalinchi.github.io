@@ -1,0 +1,2783 @@
+{
+  "levels": {
+    "3": {
+      "before": 981,
+      "originalUnique": 769,
+      "existingDuplicates": 212,
+      "after": 1027,
+      "newObjectiveUnique": 258,
+      "paperCount": 12,
+      "paperQuestions": 324,
+      "practiceReferences": 87,
+      "requiresOriginal": 36,
+      "skipped": [
+        "2026-03:19",
+        "2026-03:20",
+        "2025-12:12",
+        "2024-12:12",
+        "2024-12:13",
+        "2024-12:14",
+        "2024-09:12",
+        "2024-06:2",
+        "2024-06:3",
+        "2024-06:6",
+        "2023-12:3",
+        "2023-12:4",
+        "2023-12:5",
+        "2023-12:6",
+        "2023-12:7",
+        "2023-12:8",
+        "2023-12:9",
+        "2023-12:11",
+        "2023-12:12",
+        "2023-12:13",
+        "2023-12:16",
+        "2023-12:17",
+        "2023-12:18",
+        "2023-12:19",
+        "2023-12:20",
+        "2023-12:21",
+        "2023-12:22",
+        "2023-12:23",
+        "2023-09:2",
+        "2023-09:13",
+        "2023-09:14",
+        "2023-09:15",
+        "2023-06:1",
+        "2023-06:13",
+        "2023-06:14",
+        "2023-06:15"
+      ],
+      "duplicates": [
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 618
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 619
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 620
+          }
+        },
+        {
+          "kept": "二进制1001转换为十进制是？",
+          "removed": "二进制1001转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 621
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 623
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 624
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 625
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 628
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 629
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 630
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 633
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 634
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 635
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 640
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 641
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 642
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 647
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 648
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 649
+          }
+        },
+        {
+          "kept": "二进制1000转换为十进制是？",
+          "removed": "二进制1000转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 650
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 654
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 655
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 656
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 662
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 663
+          }
+        },
+        {
+          "kept": "string s=\"abc10\"; s.size() 的结果是？",
+          "removed": "string s=\"abc10\"; s.size() 的结果是？",
+          "source": {
+            "type": "existing",
+            "index": 667
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 668
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 670
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 675
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 676
+          }
+        },
+        {
+          "kept": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "removed": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "source": {
+            "type": "existing",
+            "index": 679
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 682
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 683
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 684
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 689
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 690
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 691
+          }
+        },
+        {
+          "kept": "二进制1010转换为十进制是？",
+          "removed": "二进制1010转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 692
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 696
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 697
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 698
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 703
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 704
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 705
+          }
+        },
+        {
+          "kept": "int a[3] 的合法最大下标是？",
+          "removed": "int a[3] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 708
+          }
+        },
+        {
+          "kept": "string 的 size() 返回字符串中字符的数量。",
+          "removed": "string 的 size() 返回字符串中字符的数量。",
+          "source": {
+            "type": "existing",
+            "index": 709
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 710
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 711
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 712
+          }
+        },
+        {
+          "kept": "二进制0011转换为十进制是？",
+          "removed": "二进制0011转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 713
+          }
+        },
+        {
+          "kept": "int a[4] 的合法最大下标是？",
+          "removed": "int a[4] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 715
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 717
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 718
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 719
+          }
+        },
+        {
+          "kept": "二进制0110转换为十进制是？",
+          "removed": "二进制0110转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 720
+          }
+        },
+        {
+          "kept": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "removed": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "source": {
+            "type": "existing",
+            "index": 721
+          }
+        },
+        {
+          "kept": "int a[5] 的合法最大下标是？",
+          "removed": "int a[5] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 722
+          }
+        },
+        {
+          "kept": "continue 会结束最近一层循环。",
+          "removed": "continue 会结束最近一层循环。",
+          "source": {
+            "type": "existing",
+            "index": 724
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 725
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 726
+          }
+        },
+        {
+          "kept": "二进制1001转换为十进制是？",
+          "removed": "二进制1001转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 727
+          }
+        },
+        {
+          "kept": "int a[6] 的合法最大下标是？",
+          "removed": "int a[6] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 729
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 731
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 732
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 733
+          }
+        },
+        {
+          "kept": "int a[7] 的合法最大下标是？",
+          "removed": "int a[7] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 736
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 738
+          }
+        },
+        {
+          "kept": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "removed": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "source": {
+            "type": "existing",
+            "index": 739
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 740
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 745
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 746
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 747
+          }
+        },
+        {
+          "kept": "二进制0010转换为十进制是？",
+          "removed": "二进制0010转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 748
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 752
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 753
+          }
+        },
+        {
+          "kept": "模拟算法必须按照题目给出的步骤顺序执行。",
+          "removed": "模拟算法必须按照题目给出的步骤顺序执行。",
+          "source": {
+            "type": "existing",
+            "index": 754
+          }
+        },
+        {
+          "kept": "二进制0101转换为十进制是？",
+          "removed": "二进制0101转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 755
+          }
+        },
+        {
+          "kept": "int a[10] 的合法最大下标是？",
+          "removed": "int a[10] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 757
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 759
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 760
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 761
+          }
+        },
+        {
+          "kept": "二进制1000转换为十进制是？",
+          "removed": "二进制1000转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 762
+          }
+        },
+        {
+          "kept": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "removed": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "source": {
+            "type": "existing",
+            "index": 763
+          }
+        },
+        {
+          "kept": "int a[11] 的合法最大下标是？",
+          "removed": "int a[11] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 764
+          }
+        },
+        {
+          "kept": "string 的 size() 返回字符串中字符的数量。",
+          "removed": "string 的 size() 返回字符串中字符的数量。",
+          "source": {
+            "type": "existing",
+            "index": 765
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 766
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 767
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 768
+          }
+        },
+        {
+          "kept": "int a[12] 的合法最大下标是？",
+          "removed": "int a[12] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 771
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 773
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 774
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 775
+          }
+        },
+        {
+          "kept": "int a[13] 的合法最大下标是？",
+          "removed": "int a[13] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 778
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 780
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 781
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 782
+          }
+        },
+        {
+          "kept": "二进制0001转换为十进制是？",
+          "removed": "二进制0001转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 783
+          }
+        },
+        {
+          "kept": "int a[14] 的合法最大下标是？",
+          "removed": "int a[14] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 785
+          }
+        },
+        {
+          "kept": "continue 会结束最近一层循环。",
+          "removed": "continue 会结束最近一层循环。",
+          "source": {
+            "type": "existing",
+            "index": 787
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 788
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 789
+          }
+        },
+        {
+          "kept": "二进制0100转换为十进制是？",
+          "removed": "二进制0100转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 790
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 794
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 795
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 796
+          }
+        },
+        {
+          "kept": "二进制0111转换为十进制是？",
+          "removed": "二进制0111转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 797
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 801
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 802
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 803
+          }
+        },
+        {
+          "kept": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "removed": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "source": {
+            "type": "existing",
+            "index": 805
+          }
+        },
+        {
+          "kept": "int a[2] 的合法最大下标是？",
+          "removed": "int a[2] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 806
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 808
+          }
+        },
+        {
+          "kept": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "removed": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "source": {
+            "type": "existing",
+            "index": 809
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 810
+          }
+        },
+        {
+          "kept": "int a[3] 的合法最大下标是？",
+          "removed": "int a[3] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 813
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 815
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 816
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 817
+          }
+        },
+        {
+          "kept": "二进制0000转换为十进制是？",
+          "removed": "二进制0000转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 818
+          }
+        },
+        {
+          "kept": "int a[4] 的合法最大下标是？",
+          "removed": "int a[4] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 820
+          }
+        },
+        {
+          "kept": "string 的 size() 返回字符串中字符的数量。",
+          "removed": "string 的 size() 返回字符串中字符的数量。",
+          "source": {
+            "type": "existing",
+            "index": 821
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 822
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 823
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 824
+          }
+        },
+        {
+          "kept": "二进制0011转换为十进制是？",
+          "removed": "二进制0011转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 825
+          }
+        },
+        {
+          "kept": "int a[5] 的合法最大下标是？",
+          "removed": "int a[5] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 827
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 829
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 830
+          }
+        },
+        {
+          "kept": "模拟算法必须按照题目给出的步骤顺序执行。",
+          "removed": "模拟算法必须按照题目给出的步骤顺序执行。",
+          "source": {
+            "type": "existing",
+            "index": 831
+          }
+        },
+        {
+          "kept": "二进制0110转换为十进制是？",
+          "removed": "二进制0110转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 832
+          }
+        },
+        {
+          "kept": "int a[6] 的合法最大下标是？",
+          "removed": "int a[6] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 834
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 836
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 837
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 838
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 843
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 844
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 845
+          }
+        },
+        {
+          "kept": "二进制1100转换为十进制是？",
+          "removed": "二进制1100转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 846
+          }
+        },
+        {
+          "kept": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "removed": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "source": {
+            "type": "existing",
+            "index": 847
+          }
+        },
+        {
+          "kept": "int a[8] 的合法最大下标是？",
+          "removed": "int a[8] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 848
+          }
+        },
+        {
+          "kept": "continue 会结束最近一层循环。",
+          "removed": "continue 会结束最近一层循环。",
+          "source": {
+            "type": "existing",
+            "index": 850
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 851
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 852
+          }
+        },
+        {
+          "kept": "二进制1111转换为十进制是？",
+          "removed": "二进制1111转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 853
+          }
+        },
+        {
+          "kept": "int a[9] 的合法最大下标是？",
+          "removed": "int a[9] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 855
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 857
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 858
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 859
+          }
+        },
+        {
+          "kept": "二进制0010转换为十进制是？",
+          "removed": "二进制0010转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 860
+          }
+        },
+        {
+          "kept": "int a[10] 的合法最大下标是？",
+          "removed": "int a[10] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 862
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 864
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 865
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 866
+          }
+        },
+        {
+          "kept": "二进制0101转换为十进制是？",
+          "removed": "二进制0101转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 867
+          }
+        },
+        {
+          "kept": "int a[11] 的合法最大下标是？",
+          "removed": "int a[11] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 869
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 871
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 872
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 873
+          }
+        },
+        {
+          "kept": "int a[12] 的合法最大下标是？",
+          "removed": "int a[12] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 876
+          }
+        },
+        {
+          "kept": "string 的 size() 返回字符串中字符的数量。",
+          "removed": "string 的 size() 返回字符串中字符的数量。",
+          "source": {
+            "type": "existing",
+            "index": 877
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 878
+          }
+        },
+        {
+          "kept": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "removed": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "source": {
+            "type": "existing",
+            "index": 879
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 880
+          }
+        },
+        {
+          "kept": "二进制1011转换为十进制是？",
+          "removed": "二进制1011转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 881
+          }
+        },
+        {
+          "kept": "int a[13] 的合法最大下标是？",
+          "removed": "int a[13] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 883
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 885
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 886
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 887
+          }
+        },
+        {
+          "kept": "二进制1110转换为十进制是？",
+          "removed": "二进制1110转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 888
+          }
+        },
+        {
+          "kept": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "removed": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "source": {
+            "type": "existing",
+            "index": 889
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 892
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 893
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 894
+          }
+        },
+        {
+          "kept": "二进制0001转换为十进制是？",
+          "removed": "二进制0001转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 895
+          }
+        },
+        {
+          "kept": "int a[15] 的合法最大下标是？",
+          "removed": "int a[15] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 897
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 899
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 900
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 901
+          }
+        },
+        {
+          "kept": "二进制0100转换为十进制是？",
+          "removed": "二进制0100转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 902
+          }
+        },
+        {
+          "kept": "int a[16] 的合法最大下标是？",
+          "removed": "int a[16] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 904
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 906
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 907
+          }
+        },
+        {
+          "kept": "模拟算法必须按照题目给出的步骤顺序执行。",
+          "removed": "模拟算法必须按照题目给出的步骤顺序执行。",
+          "source": {
+            "type": "existing",
+            "index": 908
+          }
+        },
+        {
+          "kept": "int a[2] 的合法最大下标是？",
+          "removed": "int a[2] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 911
+          }
+        },
+        {
+          "kept": "continue 会结束最近一层循环。",
+          "removed": "continue 会结束最近一层循环。",
+          "source": {
+            "type": "existing",
+            "index": 913
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 914
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 915
+          }
+        },
+        {
+          "kept": "二进制1010转换为十进制是？",
+          "removed": "二进制1010转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 916
+          }
+        },
+        {
+          "kept": "int a[3] 的合法最大下标是？",
+          "removed": "int a[3] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 918
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 920
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 921
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 922
+          }
+        },
+        {
+          "kept": "二进制1101转换为十进制是？",
+          "removed": "二进制1101转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 923
+          }
+        },
+        {
+          "kept": "int a[4] 的合法最大下标是？",
+          "removed": "int a[4] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 925
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 927
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 928
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 929
+          }
+        },
+        {
+          "kept": "二进制0000转换为十进制是？",
+          "removed": "二进制0000转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 930
+          }
+        },
+        {
+          "kept": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "removed": "值传递函数修改形参后，调用者的实参一定会改变。",
+          "source": {
+            "type": "existing",
+            "index": 931
+          }
+        },
+        {
+          "kept": "int a[5] 的合法最大下标是？",
+          "removed": "int a[5] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 932
+          }
+        },
+        {
+          "kept": "string 的 size() 返回字符串中字符的数量。",
+          "removed": "string 的 size() 返回字符串中字符的数量。",
+          "source": {
+            "type": "existing",
+            "index": 933
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 934
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 935
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 936
+          }
+        },
+        {
+          "kept": "二进制0011转换为十进制是？",
+          "removed": "二进制0011转换为十进制是？",
+          "source": {
+            "type": "existing",
+            "index": 937
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 941
+          }
+        },
+        {
+          "kept": "枚举算法的核心做法是？",
+          "removed": "枚举算法的核心做法是？",
+          "source": {
+            "type": "existing",
+            "index": 942
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 943
+          }
+        },
+        {
+          "kept": "int a[7] 的合法最大下标是？",
+          "removed": "int a[7] 的合法最大下标是？",
+          "source": {
+            "type": "existing",
+            "index": 946
+          }
+        },
+        {
+          "kept": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "removed": "若要跳过本轮循环剩余语句，应使用哪个语句？",
+          "source": {
+            "type": "existing",
+            "index": 948
+          }
+        },
+        {
+          "kept": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "removed": "枚举算法可以通过有限样本证明任意整数范围内的猜想。",
+          "source": {
+            "type": "existing",
+            "index": 949
+          }
+        },
+        {
+          "kept": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "removed": "把题目中的每一步规则翻译成代码，最符合哪种算法？",
+          "source": {
+            "type": "existing",
+            "index": 950
+          }
+        },
+        {
+          "kept": "定义整型变量int a=3,b=16，则a|b的值和a+b的关系是（）。",
+          "removed": "定义整型变量 int a = 3, b = 16，则 a | b 的值和 a + b 的关系是（ ）。",
+          "source": {
+            "type": "paper",
+            "paper": "2024-03",
+            "question": 13,
+            "url": "https://gesp.ccf.org.cn/101/attach/1602047101108256.pdf"
+          }
+        },
+        {
+          "kept": "中国计算机学会（CCF）在2024年1月27日的颁奖典礼上颁布了王选奖，王选先生的重大贡献是（）。",
+          "removed": "中国计算机学会（CCF）在 2024 年 1 月 27 日的颁奖典礼上颁布了王选奖，王选先生的重大贡献是（ ）。",
+          "source": {
+            "type": "paper",
+            "paper": "2024-03",
+            "question": 15,
+            "url": "https://gesp.ccf.org.cn/101/attach/1602047101108256.pdf"
+          }
+        },
+        {
+          "kept": "人们所使用的手机上安装的App通常指的是（）。",
+          "removed": "人们所使用的手机上安装的 App 通常指的是（ ）。",
+          "source": {
+            "type": "paper",
+            "paper": "2023-09",
+            "question": 1,
+            "url": "https://gesp.ccf.org.cn/101/attach/1570611239321632.pdf"
+          }
+        },
+        {
+          "kept": "在C++语言中，表达式(0xff==255)的值为true。",
+          "removed": "在 C++ 语言中，表达式 (0xff == 255) 的值为 true。",
+          "source": {
+            "type": "paper",
+            "paper": "2023-09",
+            "question": 24,
+            "url": "https://gesp.ccf.org.cn/101/attach/1570611239321632.pdf"
+          }
+        },
+        {
+          "kept": "在C++语言中，数组被定义时，它的大小就确定了。",
+          "removed": "在 C++ 语言中，数组被定义时，它的大小就确定了。",
+          "source": {
+            "type": "paper",
+            "paper": "2023-06",
+            "question": 22,
+            "url": "https://gesp.ccf.org.cn/101/attach/1553039911551008.pdf"
+          }
+        },
+        {
+          "kept": "如果 a 为 int 类型的变量，且表达式 ((a | 3) == 3) 的值为 true，则说明 a 在从 0 到 3 之间（可能为 0、可能为 3）。",
+          "removed": "如果 a 为 int 类型的变量，且表达式 ((a | 3) == 3) 的值为 true，则说明 a 在从 0 到 3 之间（可能为 0、可能为 3）。",
+          "source": {
+            "type": "paper",
+            "paper": "2023-06",
+            "question": 25,
+            "url": "https://gesp.ccf.org.cn/101/attach/1553039911551008.pdf"
+          }
+        }
+      ],
+      "conflicts": [],
+      "extraLearningReferences": [
+        "https://www.coderli.com/gesp-3-knowledge-base-output-for-cout/",
+        "https://www.coderli.com/gesp-3-knowledge-one-dimensional-array-declaration/"
+      ]
+    },
+    "4": {
+      "before": 735,
+      "originalUnique": 631,
+      "existingDuplicates": 104,
+      "after": 884,
+      "newObjectiveUnique": 253,
+      "paperCount": 12,
+      "paperQuestions": 324,
+      "practiceReferences": 56,
+      "requiresOriginal": 44,
+      "skipped": [
+        "2026-03:7",
+        "2026-03:12",
+        "2025-12:13",
+        "2025-12:14",
+        "2025-09:14",
+        "2025-06:11",
+        "2025-06:12",
+        "2025-03:11",
+        "2024-12:12",
+        "2024-09:12",
+        "2024-06:1",
+        "2024-06:2",
+        "2024-06:3",
+        "2024-06:4",
+        "2024-06:8",
+        "2024-06:13",
+        "2024-06:17",
+        "2024-06:19",
+        "2024-06:22",
+        "2024-06:23",
+        "2024-03:9",
+        "2023-12:2",
+        "2023-12:3",
+        "2023-12:4",
+        "2023-12:5",
+        "2023-12:6",
+        "2023-12:7",
+        "2023-12:9",
+        "2023-12:10",
+        "2023-12:11",
+        "2023-12:12",
+        "2023-12:15",
+        "2023-12:19",
+        "2023-12:20",
+        "2023-12:21",
+        "2023-12:22",
+        "2023-09:2",
+        "2023-09:3",
+        "2023-09:14",
+        "2023-09:15",
+        "2023-06:1",
+        "2023-06:13",
+        "2023-06:14",
+        "2023-06:15"
+      ],
+      "duplicates": [
+        {
+          "kept": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "removed": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "source": {
+            "type": "existing",
+            "index": 543
+          }
+        },
+        {
+          "kept": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "removed": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "source": {
+            "type": "existing",
+            "index": 547
+          }
+        },
+        {
+          "kept": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "removed": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "source": {
+            "type": "existing",
+            "index": 552
+          }
+        },
+        {
+          "kept": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "removed": "遍历二维数组时，i作为行下标、j作为列下标是一种常见约定。",
+          "source": {
+            "type": "existing",
+            "index": 557
+          }
+        },
+        {
+          "kept": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "removed": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "source": {
+            "type": "existing",
+            "index": 565
+          }
+        },
+        {
+          "kept": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "removed": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "source": {
+            "type": "existing",
+            "index": 567
+          }
+        },
+        {
+          "kept": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "removed": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "source": {
+            "type": "existing",
+            "index": 568
+          }
+        },
+        {
+          "kept": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "removed": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "source": {
+            "type": "existing",
+            "index": 570
+          }
+        },
+        {
+          "kept": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "removed": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "source": {
+            "type": "existing",
+            "index": 572
+          }
+        },
+        {
+          "kept": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "removed": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "source": {
+            "type": "existing",
+            "index": 573
+          }
+        },
+        {
+          "kept": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "removed": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "source": {
+            "type": "existing",
+            "index": 575
+          }
+        },
+        {
+          "kept": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "removed": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "source": {
+            "type": "existing",
+            "index": 577
+          }
+        },
+        {
+          "kept": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "removed": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "source": {
+            "type": "existing",
+            "index": 578
+          }
+        },
+        {
+          "kept": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "removed": "二维字符数组的每一行都可以作为一个独立的C风格字符串使用。",
+          "source": {
+            "type": "existing",
+            "index": 580
+          }
+        },
+        {
+          "kept": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "removed": "输出字符数组时，遇到第一个\\0后通常停止输出该字符串。",
+          "source": {
+            "type": "existing",
+            "index": 582
+          }
+        },
+        {
+          "kept": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "removed": "画布裁剪要求保留第x1到x2行、第y1到y2列，输出行数为？",
+          "source": {
+            "type": "existing",
+            "index": 583
+          }
+        },
+        {
+          "kept": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "removed": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "source": {
+            "type": "existing",
+            "index": 588
+          }
+        },
+        {
+          "kept": "杨辉三角每行两端的元素通常设置为？",
+          "removed": "杨辉三角每行两端的元素通常设置为？",
+          "source": {
+            "type": "existing",
+            "index": 589
+          }
+        },
+        {
+          "kept": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "removed": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "source": {
+            "type": "existing",
+            "index": 590
+          }
+        },
+        {
+          "kept": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "removed": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "source": {
+            "type": "existing",
+            "index": 591
+          }
+        },
+        {
+          "kept": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "removed": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "source": {
+            "type": "existing",
+            "index": 592
+          }
+        },
+        {
+          "kept": "杨辉三角每行两端的元素通常设置为？",
+          "removed": "杨辉三角每行两端的元素通常设置为？",
+          "source": {
+            "type": "existing",
+            "index": 593
+          }
+        },
+        {
+          "kept": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "removed": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "source": {
+            "type": "existing",
+            "index": 594
+          }
+        },
+        {
+          "kept": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "removed": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "source": {
+            "type": "existing",
+            "index": 595
+          }
+        },
+        {
+          "kept": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "removed": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "source": {
+            "type": "existing",
+            "index": 596
+          }
+        },
+        {
+          "kept": "杨辉三角每行两端的元素通常设置为？",
+          "removed": "杨辉三角每行两端的元素通常设置为？",
+          "source": {
+            "type": "existing",
+            "index": 597
+          }
+        },
+        {
+          "kept": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "removed": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "source": {
+            "type": "existing",
+            "index": 598
+          }
+        },
+        {
+          "kept": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "removed": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "source": {
+            "type": "existing",
+            "index": 599
+          }
+        },
+        {
+          "kept": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "removed": "杨辉三角内部元素可由左上方元素与正上方元素相加得到。",
+          "source": {
+            "type": "existing",
+            "index": 600
+          }
+        },
+        {
+          "kept": "杨辉三角每行两端的元素通常设置为？",
+          "removed": "杨辉三角每行两端的元素通常设置为？",
+          "source": {
+            "type": "existing",
+            "index": 601
+          }
+        },
+        {
+          "kept": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "removed": "只处理二维数组主对角线上的元素时，行下标和列下标可以使用同一个循环变量。",
+          "source": {
+            "type": "existing",
+            "index": 602
+          }
+        },
+        {
+          "kept": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "removed": "输出整数占固定宽度并右对齐，常用的控制符组合是？",
+          "source": {
+            "type": "existing",
+            "index": 603
+          }
+        },
+        {
+          "kept": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "removed": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "source": {
+            "type": "existing",
+            "index": 609
+          }
+        },
+        {
+          "kept": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "removed": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "source": {
+            "type": "existing",
+            "index": 610
+          }
+        },
+        {
+          "kept": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "removed": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "source": {
+            "type": "existing",
+            "index": 611
+          }
+        },
+        {
+          "kept": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "removed": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "source": {
+            "type": "existing",
+            "index": 612
+          }
+        },
+        {
+          "kept": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "removed": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "source": {
+            "type": "existing",
+            "index": 613
+          }
+        },
+        {
+          "kept": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "removed": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "source": {
+            "type": "existing",
+            "index": 614
+          }
+        },
+        {
+          "kept": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "removed": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "source": {
+            "type": "existing",
+            "index": 615
+          }
+        },
+        {
+          "kept": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "removed": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "source": {
+            "type": "existing",
+            "index": 616
+          }
+        },
+        {
+          "kept": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "removed": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "source": {
+            "type": "existing",
+            "index": 617
+          }
+        },
+        {
+          "kept": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "removed": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "source": {
+            "type": "existing",
+            "index": 618
+          }
+        },
+        {
+          "kept": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "removed": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "source": {
+            "type": "existing",
+            "index": 619
+          }
+        },
+        {
+          "kept": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "removed": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "source": {
+            "type": "existing",
+            "index": 620
+          }
+        },
+        {
+          "kept": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "removed": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "source": {
+            "type": "existing",
+            "index": 621
+          }
+        },
+        {
+          "kept": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "removed": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "source": {
+            "type": "existing",
+            "index": 622
+          }
+        },
+        {
+          "kept": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "removed": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "source": {
+            "type": "existing",
+            "index": 623
+          }
+        },
+        {
+          "kept": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "removed": "若函数声明为int f(int p[],int n)，调用时传入数组a，函数实际获得的是？",
+          "source": {
+            "type": "existing",
+            "index": 624
+          }
+        },
+        {
+          "kept": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "removed": "形参数组写成int p[100]就一定会在函数调用时复制100个元素。",
+          "source": {
+            "type": "existing",
+            "index": 625
+          }
+        },
+        {
+          "kept": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "removed": "f(a+2,4)通常表示处理数组a从哪个元素开始的4个元素？",
+          "source": {
+            "type": "existing",
+            "index": 626
+          }
+        },
+        {
+          "kept": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "removed": "用指针作数组函数参数时，函数可以修改原数组中的元素。",
+          "source": {
+            "type": "existing",
+            "index": 627
+          }
+        },
+        {
+          "kept": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "removed": "为了让函数知道数组实参有多少个元素，通常需要额外传入什么？",
+          "source": {
+            "type": "existing",
+            "index": 628
+          }
+        },
+        {
+          "kept": "指针数组的每个元素都可以保存一个地址。",
+          "removed": "指针数组的每个元素都可以保存一个地址。",
+          "source": {
+            "type": "existing",
+            "index": 634
+          }
+        },
+        {
+          "kept": "int *p; int **q=&p;中q保存的是什么？",
+          "removed": "int *p; int **q=&p;中q保存的是什么？",
+          "source": {
+            "type": "existing",
+            "index": 635
+          }
+        },
+        {
+          "kept": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "removed": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "source": {
+            "type": "existing",
+            "index": 636
+          }
+        },
+        {
+          "kept": "若p=a，访问a[i]的等价指针表达式是？",
+          "removed": "若p=a，访问a[i]的等价指针表达式是？",
+          "source": {
+            "type": "existing",
+            "index": 637
+          }
+        },
+        {
+          "kept": "指针数组的每个元素都可以保存一个地址。",
+          "removed": "指针数组的每个元素都可以保存一个地址。",
+          "source": {
+            "type": "existing",
+            "index": 639
+          }
+        },
+        {
+          "kept": "int *p; int **q=&p;中q保存的是什么？",
+          "removed": "int *p; int **q=&p;中q保存的是什么？",
+          "source": {
+            "type": "existing",
+            "index": 640
+          }
+        },
+        {
+          "kept": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "removed": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "source": {
+            "type": "existing",
+            "index": 641
+          }
+        },
+        {
+          "kept": "若p=a，访问a[i]的等价指针表达式是？",
+          "removed": "若p=a，访问a[i]的等价指针表达式是？",
+          "source": {
+            "type": "existing",
+            "index": 642
+          }
+        },
+        {
+          "kept": "指针数组的每个元素都可以保存一个地址。",
+          "removed": "指针数组的每个元素都可以保存一个地址。",
+          "source": {
+            "type": "existing",
+            "index": 644
+          }
+        },
+        {
+          "kept": "int *p; int **q=&p;中q保存的是什么？",
+          "removed": "int *p; int **q=&p;中q保存的是什么？",
+          "source": {
+            "type": "existing",
+            "index": 645
+          }
+        },
+        {
+          "kept": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "removed": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "source": {
+            "type": "existing",
+            "index": 646
+          }
+        },
+        {
+          "kept": "若p=a，访问a[i]的等价指针表达式是？",
+          "removed": "若p=a，访问a[i]的等价指针表达式是？",
+          "source": {
+            "type": "existing",
+            "index": 647
+          }
+        },
+        {
+          "kept": "指针数组的每个元素都可以保存一个地址。",
+          "removed": "指针数组的每个元素都可以保存一个地址。",
+          "source": {
+            "type": "existing",
+            "index": 649
+          }
+        },
+        {
+          "kept": "int *p; int **q=&p;中q保存的是什么？",
+          "removed": "int *p; int **q=&p;中q保存的是什么？",
+          "source": {
+            "type": "existing",
+            "index": 650
+          }
+        },
+        {
+          "kept": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "removed": "改变二级指针q所指向的p，可能改变p保存的地址。",
+          "source": {
+            "type": "existing",
+            "index": 651
+          }
+        },
+        {
+          "kept": "若p=a，访问a[i]的等价指针表达式是？",
+          "removed": "若p=a，访问a[i]的等价指针表达式是？",
+          "source": {
+            "type": "existing",
+            "index": 652
+          }
+        },
+        {
+          "kept": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "removed": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "source": {
+            "type": "existing",
+            "index": 659
+          }
+        },
+        {
+          "kept": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "removed": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "source": {
+            "type": "existing",
+            "index": 660
+          }
+        },
+        {
+          "kept": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "removed": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "source": {
+            "type": "existing",
+            "index": 661
+          }
+        },
+        {
+          "kept": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "removed": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "source": {
+            "type": "existing",
+            "index": 662
+          }
+        },
+        {
+          "kept": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "removed": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "source": {
+            "type": "existing",
+            "index": 664
+          }
+        },
+        {
+          "kept": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "removed": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "source": {
+            "type": "existing",
+            "index": 665
+          }
+        },
+        {
+          "kept": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "removed": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "source": {
+            "type": "existing",
+            "index": 666
+          }
+        },
+        {
+          "kept": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "removed": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "source": {
+            "type": "existing",
+            "index": 667
+          }
+        },
+        {
+          "kept": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "removed": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "source": {
+            "type": "existing",
+            "index": 669
+          }
+        },
+        {
+          "kept": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "removed": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "source": {
+            "type": "existing",
+            "index": 670
+          }
+        },
+        {
+          "kept": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "removed": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "source": {
+            "type": "existing",
+            "index": 671
+          }
+        },
+        {
+          "kept": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "removed": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "source": {
+            "type": "existing",
+            "index": 672
+          }
+        },
+        {
+          "kept": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "removed": "sort(a+2,a+5)只对从a[2]到a[4]的元素排序。",
+          "source": {
+            "type": "existing",
+            "index": 674
+          }
+        },
+        {
+          "kept": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "removed": "自定义升序比较函数cmp(a,b)通常应在a小于b时返回？",
+          "source": {
+            "type": "existing",
+            "index": 675
+          }
+        },
+        {
+          "kept": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "removed": "自定义比较器对两个相等元素返回true，通常不符合严格排序关系。",
+          "source": {
+            "type": "existing",
+            "index": 676
+          }
+        },
+        {
+          "kept": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "removed": "对结构体使用sort并按score升序、同分按name升序，比较器需要比较哪些字段？",
+          "source": {
+            "type": "existing",
+            "index": 677
+          }
+        },
+        {
+          "kept": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "removed": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "source": {
+            "type": "existing",
+            "index": 683
+          }
+        },
+        {
+          "kept": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "removed": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "source": {
+            "type": "existing",
+            "index": 684
+          }
+        },
+        {
+          "kept": "pair<int,string> p中访问两个成员通常使用？",
+          "removed": "pair<int,string> p中访问两个成员通常使用？",
+          "source": {
+            "type": "existing",
+            "index": 685
+          }
+        },
+        {
+          "kept": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "removed": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "source": {
+            "type": "existing",
+            "index": 686
+          }
+        },
+        {
+          "kept": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "removed": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "source": {
+            "type": "existing",
+            "index": 687
+          }
+        },
+        {
+          "kept": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "removed": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "source": {
+            "type": "existing",
+            "index": 688
+          }
+        },
+        {
+          "kept": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "removed": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "source": {
+            "type": "existing",
+            "index": 689
+          }
+        },
+        {
+          "kept": "pair<int,string> p中访问两个成员通常使用？",
+          "removed": "pair<int,string> p中访问两个成员通常使用？",
+          "source": {
+            "type": "existing",
+            "index": 690
+          }
+        },
+        {
+          "kept": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "removed": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "source": {
+            "type": "existing",
+            "index": 691
+          }
+        },
+        {
+          "kept": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "removed": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "source": {
+            "type": "existing",
+            "index": 692
+          }
+        },
+        {
+          "kept": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "removed": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "source": {
+            "type": "existing",
+            "index": 693
+          }
+        },
+        {
+          "kept": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "removed": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "source": {
+            "type": "existing",
+            "index": 694
+          }
+        },
+        {
+          "kept": "pair<int,string> p中访问两个成员通常使用？",
+          "removed": "pair<int,string> p中访问两个成员通常使用？",
+          "source": {
+            "type": "existing",
+            "index": 695
+          }
+        },
+        {
+          "kept": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "removed": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "source": {
+            "type": "existing",
+            "index": 696
+          }
+        },
+        {
+          "kept": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "removed": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "source": {
+            "type": "existing",
+            "index": 697
+          }
+        },
+        {
+          "kept": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "removed": "union U{char c; int x;};同一时刻给c赋值后再给x赋值，通常意味着？",
+          "source": {
+            "type": "existing",
+            "index": 698
+          }
+        },
+        {
+          "kept": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "removed": "联合体所占空间通常与最大成员的空间有关，而不是所有成员空间之和。",
+          "source": {
+            "type": "existing",
+            "index": 699
+          }
+        },
+        {
+          "kept": "pair<int,string> p中访问两个成员通常使用？",
+          "removed": "pair<int,string> p中访问两个成员通常使用？",
+          "source": {
+            "type": "existing",
+            "index": 700
+          }
+        },
+        {
+          "kept": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "removed": "两个pair进行关系比较时，通常先比较first，first相等时再比较second。",
+          "source": {
+            "type": "existing",
+            "index": 701
+          }
+        },
+        {
+          "kept": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "removed": "使用pair而不是自定义结构体保存两个数据，直接优势之一是？",
+          "source": {
+            "type": "existing",
+            "index": 702
+          }
+        },
+        {
+          "kept": "递推是一种通过已知的初始值和递推公式，逐步求解目标值的算法。",
+          "removed": "递推是一种通过已知的初始值和递推公式，逐步求解目标值的算法。",
+          "source": {
+            "type": "paper",
+            "paper": "2024-12",
+            "question": 20,
+            "url": "https://gesp.ccf.org.cn/101/attach/1650239710691360.pdf"
+          }
+        },
+        {
+          "kept": "选择排序是稳定的排序算法。",
+          "removed": "选择排序是稳定的排序算法。",
+          "source": {
+            "type": "paper",
+            "paper": "2024-09",
+            "question": 21,
+            "url": "https://gesp.ccf.org.cn/cms/api/news/downloadFile?id=1634204225896480"
+          }
+        },
+        {
+          "kept": "在 C++ 语言中，如果一个函数可能抛出异常，那么一定要在 try 子句里调用这个函数。",
+          "removed": "在 C++ 语言中，如果一个函数可能抛出异常，那么一定要在 try 子句里调用这个函数。",
+          "source": {
+            "type": "paper",
+            "paper": "2023-06",
+            "question": 21,
+            "url": "https://gesp.ccf.org.cn/101/attach/1553241699516448.pdf"
+          }
+        }
+      ],
+      "conflicts": [],
+      "extraLearningReferences": [
+        "https://www.coderli.com/gesp-5-luogu-p1223-queue-water/"
+      ]
+    }
+  },
+  "crossLevelShared": [
+    {
+      "id": "655858ca989b568e129b",
+      "text": "小杨的父母最近刚刚给他买了一块华为手表，他说手表上跑的是鸿蒙，这个鸿蒙是（ ）。"
+    },
+    {
+      "id": "1176ad49e5cc69cfa75b",
+      "text": "中国计算机学会（CCF）在2024年1月27日的颁奖典礼上颁布了王选奖，王选先生的重大贡献是（）。"
+    },
+    {
+      "id": "2f15096658a9d27804d4",
+      "text": "小杨今年春节回奶奶家了，奶奶家的数字电视要设置 ip 地址并接入到 WIFI 盒子才能收看节目，那这个 WIFI 盒子具有路由器的功能。（ ）"
+    },
+    {
+      "id": "bbc9261419811f6b7b6d",
+      "text": "任何一个 while 循环都可以转化为等价的 for 循环（ ）。"
+    },
+    {
+      "id": "0dbe2d10d4192eb78e31",
+      "text": "任何一个 for 循环都可以转化为等价的 while 循环（ ）。"
+    },
+    {
+      "id": "33cd712bb3bd4f5ce9b3",
+      "text": "某公司新出了一款无人驾驶的小汽车，通过声控智能驾驶系统，乘客只要告诉汽车目的地，车子就能自动选择一条优化路线，告诉乘客后驶达那里。请问下面哪项不是驾驶系统完成选路所必须的。（ ）"
+    },
+    {
+      "id": "08983682fbce3010839b",
+      "text": "域名是由一串用点分隔的名字来标识互联网上一个计算机或计算机组的名称，CCF 编程能力等级认证官方网站的域名是 gesp.ccf.org.cn，其中顶级域名是 gesp。"
+    },
+    {
+      "id": "32ebedf22b8b2ba7b289",
+      "text": "人们所使用的手机上安装的App通常指的是（）。"
+    },
+    {
+      "id": "dac93ce39339e61544ea",
+      "text": "小杨最近在准备考 GESP，他用的 Dev C++ 来练习和运行程序，所以 Dev C++ 也是一个小型操作系统。（ ）"
+    },
+    {
+      "id": "3727bf8379f146dffcb5",
+      "text": "现代计算机是指电子计算机，它所基于的是（ ）体系结构。"
+    }
+  ]
+}
