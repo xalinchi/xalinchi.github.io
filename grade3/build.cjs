@@ -19,4 +19,6 @@ data+='\nconst writingUnits='+JSON.stringify(writing)+';\n';
 data+=`writingUnits.forEach((u,i)=>{let id='z'+(i+1)+'-writing';skill('z'+(i+1),id,u[0],u[1],u[2],'先想清楚再表达，写完检查错别字和标点。');u[3].forEach(x=>item(id,x[0],x[1],x[2].split('|'),u[1]));});\n`;
 fs.writeFileSync(__dirname+'/data.js',data);
 const body=fs.readFileSync(__dirname+'/shell.html','utf8').replace('<!--PET-->',pet);
-fs.writeFileSync(__dirname+'/index.html',head+body.replace('src="curriculum.js?v=3"','src="data.js?v=3"'));
+data+='\n'+fs.readFileSync(__dirname+'/supplement.js','utf8');
+fs.writeFileSync(__dirname+'/data.js',data);
+fs.writeFileSync(__dirname+'/index.html',head+body.replace('src="curriculum.js?v=3"','src="data.js?v=3"').replaceAll('?v=3','?v=20260923'));

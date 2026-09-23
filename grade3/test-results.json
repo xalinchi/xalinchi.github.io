@@ -1,10 +1,10 @@
 {
-  "questions": 881,
-  "skills": 76,
+  "questions": 977,
+  "skills": 102,
   "chapters": 33,
   "bySubject": {
-    "zh": 192,
-    "math": 341,
+    "zh": 248,
+    "math": 381,
     "en": 348
   },
   "passed": [
