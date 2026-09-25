@@ -65,7 +65,7 @@
   <footer class="footer">依据 CCF GESP 官方等级大纲与三级历年真题考点整理。真题链接来自CCF官网；系统训练题与预测题均为原创变式，不冒充官方真题。学习记录保存在当前浏览器中。 · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1008/10012.html" target="_blank">官方大纲</a> · <a style="color:#8bdfff" href="https://gesp.ccf.org.cn/101/1010/index.html" target="_blank">历年真题</a></footer>
 </main><script>
 const topics={k1:'计算机基础、算法特性与进制编码',k2:'函数定义、值传递与作用域',k3:'一维数组与遍历',k4:'string字符串与字符处理',k5:'位运算、复合运算与流程控制',k6:'枚举算法与复杂度意识',k7:'模拟算法与步骤翻译'};
-let bank=window.GESP_QUESTION_CATALOG.levels[3].map(ref=>{const q=window.GESP_QUESTION_CATALOG.questions[ref.id];const row=[ref.topic,ref.type,(q.text||q.content||q.name||''),[...(q.options||[])],q.answer,q.explanation,...ref.tags];while(row.length<10)row.push(null);row[10]={id:ref.id,sources:q.sources,aliases:q.aliases};return row;});
+let bank=window.GESP_QUESTION_CATALOG.levels[3].filter(ref=>window.GESP_QUESTION_CATALOG.questions[ref.id]).map(ref=>{const q=window.GESP_QUESTION_CATALOG.questions[ref.id];const row=[ref.topic,ref.type,(q.text||q.content||q.name||''),[...(q.options||[])],q.answer,q.explanation,...ref.tags];while(row.length<10)row.push(null);row[10]={id:ref.id,sources:q.sources,aliases:q.aliases};return row;});
 const level3Allowed=new Set(Object.keys(topics));
 const historySeeds=[];
 const verifiedWrongSeeds=[['g3-2024-03-01'], ['g3-2024-03-02'], ['g3-2024-03-03'], ['g3-2024-03-04'], ['g3-2024-03-05'], ['g3-2023-12-01'], ['g3-2023-12-02'], ['g3-2023-12-03'], ['g3-2023-09-01'], ['g3-2023-09-02'], ['g3-2023-09-03'], ['g3-2023-09-04'], ['g3-2023-06-01'], ['g3-2023-06-02'], ['g3-2023-06-03']];
