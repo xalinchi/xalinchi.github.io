@@ -115,13 +115,38 @@ function feedPet(){if(state.food<1)return;state.food--;if(state.activePet==='bir
 function renderMap(){document.getElementById('mapGrid').innerHTML=Object.keys(topics).map(t=>{let p=accuracy(t),weak=(state.stats[t]?.w||0)>=2;return `<div class="card span4"><div class="topichead"><h3>${topics[t]}</h3><span class="tag ${weak?'danger':''}">${weak?'薄弱知识点':p==null?'未测试':p+'%'}</span></div><p class="muted">累计错题：${state.stats[t]?.w||0}题；答错达到2题后自动列入专项强化清单。</p><button onclick="setDrill('${t}')">专项练4题</button></div>`}).join('')}
 document.getElementById('topicSelect').innerHTML=Object.entries(topics).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');renderDrillIntro();updateDash();
 </script><script>
-/* GESP shared pet wallet v1: migration ledger prevents repeat credit. */
-(()=>{const key='gespSharedPetV1';const read=()=>{let x;try{x=JSON.parse(localStorage.getItem(key)||'{}')}catch{x={}}if(!x||typeof x!=='object'||Array.isArray(x))x={};return {...x,migrated:x.migrated&&typeof x.migrated==='object'?x.migrated:{}};};const num=v=>Number.isFinite(Number(v))?Math.max(0,Number(v)):0;
-let w=read();for(const source of ['gesp2State','gesp3State','gesp4State','gesp4-pet']){if(w.migrated[source])continue;let raw=localStorage.getItem(source);if(!raw)continue;try{const x=JSON.parse(raw);w.food+=num(x.food);w.birdXp+=num(x.birdXp??x.petXp);w.turtleXp+=num(x.turtleXp??x.xp);w.migrated[source]=true;}catch{}}
-// The current level may have never been saved. Include its in-memory initial balance once.
-const current='gesp3State';if(!w.migrated[current]){w.food+=num(state.food);w.birdXp+=num(state.birdXp??state.petXp);w.turtleXp+=num(state.turtleXp);w.migrated[current]=true;}
-localStorage.setItem(key,JSON.stringify(w));const attached=new WeakSet();function attach(){if(attached.has(state))return;for(const f of ['food','birdXp','turtleXp'])Object.defineProperty(state,f,{configurable:true,enumerable:true,get(){return read()[f]||0},set(v){const x=read();x[f]=num(v);localStorage.setItem(key,JSON.stringify(x));}});attached.add(state);}attach();const oldSave=save;save=function(){attach();return oldSave();};
-function refresh(){updateDash();renderPet();}window.addEventListener('storage',e=>{if(e.key===key)refresh();});window.addEventListener('focus',refresh);refresh();const note=document.createElement('p');note.className='muted';note.textContent='二、三、四级共享宠物食物与成长值 · 同一设备、同一浏览器有效。原有余额已一次性合并。';document.getElementById('pet').prepend(note);
+/* GESP shared pet continuity v2 */
+(()=>{
+const key='gespSharedPetV1', num=v=>Number.isFinite(Number(v))?Math.max(0,Number(v)):0;
+function readKey(k){try{const x=JSON.parse(localStorage.getItem(k)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{};}catch{return {};}}
+const read=()=>readKey(key);
+let w=read();w.migrated=w.migrated&&typeof w.migrated==='object'?w.migrated:{};
+const sources=['gesp2State','gesp3State','gesp4State','gesp4-pet'];
+for(const f of ['food','birdXp','turtleXp']){
+ const value=x=>num(f==='birdXp'?(x.birdXp??x.petXp):f==='turtleXp'?(x.turtleXp??x.xp):x.food);
+ // Recover invalid legacy balances without adding mirrored copies of the same pet.
+ if(w[f]==null||!Number.isFinite(Number(w[f])))w[f]=Math.max(value(state),...sources.map(s=>value(readKey(s))));
+ else w[f]=num(w[f]);
+}
+for(const source of sources){const x=readKey(source);if(!Object.keys(x).length)continue;
+ if(!w.migrated[source]){for(const f of ['food','birdXp','turtleXp'])w[f]=Math.max(w[f],num(f==='birdXp'?(x.birdXp??x.petXp):f==='turtleXp'?(x.turtleXp??x.xp):x.food));w.migrated[source]=true;}
+}
+w.migrated['gesp3State']=true;
+if(!w.profileVersion){const previous=readKey('gesp2State'),p=Object.keys(previous).length?previous:state;
+ w.activePet=['bird','turtle'].includes(p.activePet)?p.activePet:'bird';
+ w.petNames={bird:'小飞羽',turtle:'小慢慢',...(p.petNames&&typeof p.petNames==='object'?p.petNames:{})};w.profileVersion=2;
+}
+localStorage.setItem(key,JSON.stringify(w));
+const attached=new WeakSet();
+function attach(){if(attached.has(state))return;
+ for(const f of ['food','birdXp','turtleXp','activePet'])Object.defineProperty(state,f,{configurable:true,enumerable:true,get(){return read()[f]},set(v){const x=read();x[f]=f==='activePet'?(['bird','turtle'].includes(v)?v:'bird'):num(v);localStorage.setItem(key,JSON.stringify(x));}});
+ const names=new Proxy({}, {get(_,p){return (read().petNames||{})[p]},set(_,p,v){if(['bird','turtle'].includes(p)){const x=read();x.petNames={...x.petNames,[p]:String(v).slice(0,8)};localStorage.setItem(key,JSON.stringify(x));}return true},ownKeys(){return ['bird','turtle']},getOwnPropertyDescriptor(){return {enumerable:true,configurable:true}}});
+ Object.defineProperty(state,'petNames',{configurable:true,enumerable:true,get(){return names},set(v){const x=read();x.petNames={...x.petNames,...v};localStorage.setItem(key,JSON.stringify(x));}});attached.add(state);
+}
+attach();const oldSave=save;save=function(){attach();return oldSave();};
+function refresh(){updateDash();renderPet();}
+window.addEventListener('storage',e=>{if(e.key===key)refresh()});window.addEventListener('focus',refresh);refresh();
+const note=document.createElement('p');note.className='muted';note.textContent='二级、三级接续同一只宠物：名字、等级、成长值和食物同步保留。请使用原来的设备和浏览器。';document.getElementById('pet').prepend(note);
 })();
 </script><link rel="stylesheet" href="../gesp-resources/resources.css?v=20260923">
 <script src="../gesp-resources/katex.min.js"></script>
