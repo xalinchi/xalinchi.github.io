@@ -323,6 +323,7 @@ const notes={syllabus:['先知道要学什么','选一项学习目标，再到�
 for(const [id,[title,desc,next,label]]of Object.entries(notes)){const box=document.createElement('div');box.className='flow-context';box.innerHTML=`<div><h2>${h(title)}</h2><p>${h(desc)}</p></div><button>${h(label)}</button>`;box.querySelector('button').onclick=()=>switchView(next);$(id).prepend(box);}
 // Label the optional function module consistently without discarding its exercises.
 const functionOption=$('topicSelect').querySelector('option[value="k2"]');if(functionOption)functionOption.textContent='函数与作用域 · 衔接拓展';
+const sourceDetails=document.createElement('details');sourceDetails.className='flow-details';sourceDetails.innerHTML='<summary>资料来源与使用说明</summary>';document.querySelectorAll('main > .footer').forEach(e=>sourceDetails.append(e));document.querySelector('main').append(sourceDetails);
 renderHome();renderDrillIntro();switchView(initial);
 window.GESP_GUIDED_FLOW={version:'20261003',recommendation};
 })();
