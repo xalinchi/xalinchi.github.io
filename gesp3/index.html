@@ -154,5 +154,127 @@ const note=document.createElement('p');note.className='muted';note.textContent='
 <script src="../gesp-resources/open-exercises.js?v=20260923"></script>
 <script src="../gesp-resources/resources.js?v=20260923"></script>
 <script src="../gesp-resources/streamlined.js?v=20260923"></script>
-</body></html>
+<script>
+/* Original C++11 STL extension exercises; concepts checked against OI Wiki. */
+function buildStlQuestions(){
+const items=[], groups={};
+function group(id,name,make){groups[id]=name;for(let s=0;s<10;s++){let n=3+s,a=7+11*s,b=a+3;make((code,result,why)=>{const j=items.filter(q=>q.group===id&&q.seed===s).length,judge=j>=2,truth=(j+s)%2===0;let opts,answer,claim;
+if(judge){claim=truth?String(result):String(Number(result)+1);opts=['正确','错误'];answer=truth?0:1;}else{opts=[String(result),String(Number(result)+1),String(Number(result)+2),String(Number(result)+3)];let shift=(items.length+s)%4;opts=opts.slice(shift).concat(opts.slice(0,shift));answer=opts.indexOf(String(result));}
+items.push({id:`stl-${id}-${s}-${j}`,group:id,seed:s,type:judge?'判断题':'选择题',code,result:String(result),text:judge?`判断：下面代码输出 ${claim}。`:'执行下面代码，输出结果是？',options:opts,answer,explanation:why+` 因此输出为 ${result}。`,source:'原创拓展题（参考 GitHub OI Wiki 容器资料）'});
+},n,a,b);}}
+group('v-init','vector · 定义与初始化',(q,n,a,b)=>{
+q(`vector<int> v(${n}, ${a}); cout << v.size();`,n,`圆括号的第一个参数指定元素个数，共 ${n} 个`);
+q(`vector<int> v{${n}, ${a}}; cout << v.size();`,2,'花括号列出两个元素，不是指定长度');
+q(`vector<int> v(${n}); cout << v[${n-1}];`,0,'指定长度构造的 int 元素都初始化为 0');
+q(`vector<int> v{${a}, ${b}, ${n}}; cout << v.front();`,a,'front() 读取第一个元素');
+});
+group('v-index','vector · 下标与首尾访问',(q,n,a,b)=>{
+q(`vector<int> v{${a}, ${b}, ${n}}; cout << v[1];`,b,'下标从 0 开始，下标 1 对应第二个元素');
+q(`vector<int> v{${n}, ${a}, ${b}}; v[0] = ${b+2}; cout << v.front();`,b+2,'修改下标 0 就修改了首元素');
+q(`vector<int> v{${a}, ${n}, ${b}}; cout << v.back();`,b,'back() 读取末尾元素');
+q(`vector<int> v{${b}, ${a}, ${n}}; cout << v[v.size()-1];`,n,'最后一个有效下标是 size()-1');
+});
+group('v-tail','vector · 末尾增删',(q,n,a,b)=>{
+q(`vector<int> v{${a}}; v.push_back(${b}); cout << v.back();`,b,'push_back 把新元素追加到末尾');
+q(`vector<int> v{${a}, ${b}, ${n}}; v.pop_back(); cout << v.back();`,b,'pop_back 删除末元素，原来第二个元素成为末元素');
+q(`vector<int> v(${n}, ${a}); v.push_back(${b}); cout << v.size();`,n+1,'追加一个元素后长度增加 1');
+q(`vector<int> v{${a}, ${b}}; v.pop_back(); v.push_back(${n}); cout << v.front();`,a,'操作末尾不会改变此处保留下来的首元素');
+});
+group('v-size','vector · 长度与清空',(q,n,a,b)=>{
+q(`vector<int> v{${a}, ${b}}; v.resize(${n+2}); cout << v.back();`,0,'resize 增长长度时，新补充的 int 元素默认为 0');
+q(`vector<int> v(${n}, ${a}); v.resize(2); cout << v.size();`,2,'缩短到 2 时只保留前两个元素');
+q(`vector<int> v{${a}, ${b}}; v.clear(); cout << v.empty();`,1,'clear 清除全部元素，empty 返回 true；未设置 boolalpha 时输出 1');
+q(`vector<int> v{${a}, ${b}}; v.reserve(${n+20}); cout << v.size();`,2,'reserve 预留容量，不增加元素数量');
+});
+group('s-unique','set · 唯一性与插入',(q,n,a,b)=>{
+q(`set<int> s{${a}, ${a}, ${b}, ${b}}; cout << s.size();`,2,'set 中相同的整数只保留一个');
+q(`set<int> s{${a}, ${b}}; s.insert(${n}); cout << s.size();`,3,'新插入的整数与已有两个整数都不同');
+q(`set<int> s{${a}}; s.insert(${a}); cout << s.size();`,1,'重复插入已有元素不会增加大小');
+q(`set<int> s; s.insert(${a}); s.insert(${b}); s.insert(${a}); cout << s.count(${a});`,1,'set 的每个整数至多出现一次，count 不是插入次数');
+});
+group('s-find','set · 查找与存在判断',(q,n,a,b)=>{
+q(`set<int> s{${a}, ${b}}; cout << s.count(${n});`,0,'查询的整数不在集合中，count 返回 0');
+q(`set<int> s{${n}, ${b}}; cout << (s.find(${b}) != s.end());`,1,'找到元素时返回的位置不等于 end');
+q(`set<int> s{${a}, ${b}}; cout << (s.find(${n}) == s.end());`,1,'未找到元素时 find 返回 end');
+q(`set<int> s{${a}, ${b}}; s.find(${n}); cout << s.size();`,2,'find 只查询，不会插入不存在的元素');
+});
+group('s-erase','set · 删除与清空',(q,n,a,b)=>{
+q(`set<int> s{${a}, ${b}, ${n}}; s.erase(${b}); cout << s.size();`,2,'按值删除已有元素后，元素数量减少 1');
+q(`set<int> s{${a}, ${b}}; cout << s.erase(${n});`,0,'没有匹配元素可删除，erase(key) 返回 0');
+q(`set<int> s{${a}, ${b}}; s.clear(); cout << s.empty();`,1,'清空后集合为空，布尔值 true 输出 1');
+q(`set<int> s{${a}, ${b}}; s.erase(${a}); s.insert(${a}); cout << s.count(${a});`,1,'删除后可以重新插入，最终该元素存在');
+});
+group('s-order','set · 默认升序',(q,n,a,b)=>{
+q(`set<int> s{${b}, ${n}, ${a}}; cout << *s.begin();`,n,'默认 set<int> 按数值升序排列，begin 指向最小元素');
+q(`set<int> s{${b}, ${n}, ${a}}; int x=0; for(int v:s) x=v; cout << x;`,b,'默认按升序遍历，最后一次赋值为最大元素');
+q(`set<int> s{${b}, ${a}}; s.insert(${n}); cout << *s.begin();`,n,'新插入的整数最小，成为遍历时的第一个元素');
+q(`set<int> s{${b}, ${n}, ${a}}; s.erase(${n}); cout << *s.begin();`,a,'删掉最小值后，下一个较小值成为首元素');
+});
+group('m-key','map · 键与值',(q,n,a,b)=>{
+q(`map<int,int> m; m[${n}]=${a}; m[${n}]=${b}; cout << m.size();`,1,'两次赋值使用相同键，只修改该键对应的值');
+q(`map<int,int> m; m[${n}]=${a}; m[${n}]=${b}; cout << m[${n}];`,b,'对已有键再次赋值会覆盖原值');
+q(`map<int,int> m; m[${n}]=${a}; m[${b}]=${a}; cout << m.size();`,2,'键不同即可保存两项，值可以相同');
+q(`map<string,int> m; m["red"]=${a}; m["blue"]=${b}; cout << m["red"];`,a,'map 可以用字符串作为键，通过键读取对应值');
+});
+group('m-default','map · 下标访问与默认值',(q,n,a,b)=>{
+q(`map<int,int> m; cout << m[${a}];`,0,'对不存在的键使用下标，会插入该键；int 值初始化为 0');
+q(`map<int,int> m; m[${a}]; m[${b}]; cout << m.size();`,2,'两次访问不同的缺失键会插入两个条目');
+q(`map<int,int> m; m[${a}]++; m[${a}]++; cout << m[${a}];`,2,'初始默认值为 0，累计自增两次后为 2');
+q(`map<int,int> m; m[${a}]=${n}; m[${a}]; cout << m.size();`,1,'读取已经存在的键不会增加条目');
+});
+group('m-find','map · 查询不插入',(q,n,a,b)=>{
+q(`map<int,int> m; m[${a}]=${b}; cout << m.count(${a});`,1,'count 统计键是否存在，而不是返回该键对应的值');
+q(`map<int,int> m; m[${a}]=${b}; m.find(${n}); cout << m.size();`,1,'find 不会为缺失的键创建条目');
+q(`map<int,int> m; m[${a}]=${b}; cout << (m.find(${n}) == m.end());`,1,'查找缺失键时返回 end');
+q(`map<int,int> m; m[${a}]=${b}; cout << m.count(${b});`,0,'count 查找的是键，不能把存储的值当成键');
+});
+group('m-order','map · 删除、清空与键顺序',(q,n,a,b)=>{
+q(`map<int,int> m; m[${n}]=${a}; m[${a}]=${b}; m.erase(${n}); cout << m.size();`,1,'erase 的参数是键，删去其中一项后剩 1 项');
+q(`map<int,int> m; m[${b}]=${n}; m[${a}]=${b}; cout << m.begin()->first;`,a,'默认 map<int,int> 按键升序排列，first 表示键');
+q(`map<int,int> m; m[${a}]=${n}; m.clear(); cout << m.empty();`,1,'clear 删除所有键值对，empty 返回 true');
+q(`map<int,int> m; m[${a}]=${b}; cout << m.erase(${b});`,0,'erase 按键删除；该整数只作为值出现，所以删除 0 项');
+});
+return {items,groups};
+}
+
+(function stlExtensionV1(){
+'use strict';
+const {items,groups}=buildStlQuestions(),byId=new Map(items.map(q=>[q.id,q])),base=items.filter(q=>q.seed===0),h=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const P=state.stlExtension&&typeof state.stlExtension==='object'?state.stlExtension:{};
+state.stlExtension=P;P.records??={};P.wrong??={};P.rewarded??={};P.correctRewards??=0;
+let current=null,locked=false,filter='all',type='all';
+const root=document.createElement('section');root.id='stl';root.className='view';root.innerHTML=`<div class="card"><h2>STL 入门拓展 · vector / set / map</h2><p><b>范围说明：</b>C++ 三级官方大纲列出一维数组，未列出这三类 STL 容器；Python 的字典、集合要求不能套用到 C++。本区供提前学习，不计入三级综合模拟和三级掌握率。</p><p>48 道基础练习（24 道选择、24 道判断），12 个细分知识点；另备 432 道参数变式。按 C++11 作答，代码均已包含所需头文件并使用 std 命名空间；布尔值按默认方式输出 0 或 1。</p><div class="actions"><label>知识点 <select id="stlGroup"><option value="all">全部</option>${Object.entries(groups).map(([k,v])=>`<option value="${k}">${h(v)}</option>`).join('')}</select></label><label>题型 <select id="stlType"><option value="all">全部</option><option>选择题</option><option>判断题</option></select></label><button id="stlNext" class="primary">练一道未掌握题</button><button id="stlWrongBtn">拓展错题与举一反三</button></div><div id="stlSummary"></div><div id="stlQuestion"></div><div id="stlMistakes"></div><details><summary>考纲与 GitHub 参考资料</summary><p>题目为原创拓展题，不冒充官方真题或 GitHub 原题。参考资料只用于核对容器用法。</p><p><a target="_blank" rel="noopener" href="https://gesp.ccf.org.cn/101/attach/1725701770182688.pdf">CCF 官方大纲</a> · <a target="_blank" rel="noopener" href="https://github.com/OI-wiki/OI-wiki/blob/master/docs/lang/csl/sequence-container.md">GitHub OI Wiki：vector</a> · <a target="_blank" rel="noopener" href="https://github.com/OI-wiki/OI-wiki/blob/master/docs/lang/csl/associative-container.md">GitHub OI Wiki：set / map</a></p></details></div>`;
+document.querySelector('main').append(root);
+const style=document.createElement('style');style.textContent='#stl pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef3f8;padding:16px;border-radius:10px;color:#172536}#stl select{max-width:100%}#stl .option{white-space:normal}#stl .stl-record{padding:14px;margin:12px 0;border:1px solid #ccd8df;border-radius:10px}';document.head.append(style);
+const $=id=>document.getElementById(id);
+function commit(){save();summary();}
+function pending(){return Object.values(P.wrong).filter(w=>!w.mastered);}
+function summary(){const rs=Object.values(P.records),n=rs.reduce((s,r)=>s+r.n,0),c=rs.reduce((s,r)=>s+r.c,0);$('stlSummary').textContent=`拓展答题 ${n} 次 · 正确率 ${n?Math.round(c/n*100)+'%':'待检测'} · 基础题答对 ${base.filter(q=>P.records[q.id]?.passed).length}/48 · 待巩固 ${pending().length} 题`;}
+function open(){switchView('stl');summary();}
+for(const id of ['home','drill']){const card=document.createElement('div');card.className='card';card.innerHTML='<h3>新增：vector、set、map 入门拓展</h3><p>选择题、判断题、逐题解析与同考点举一反三。三级考纲外拓展，独立记录进度。</p><button class="primary">打开 STL 拓展题库</button>';card.querySelector('button').onclick=open;$(id).prepend(card);}
+function portals(){for(const id of ['mistakes','report']){let card=$('stlPortal-'+id);if(!card){card=document.createElement('div');card.id='stlPortal-'+id;card.className='card';$(id).append(card);}card.innerHTML=`<h3>STL 拓展${id==='mistakes'?'错题':'学习报告'}</h3><p>待巩固 ${pending().length} 题；与三级考纲内记录分开统计。</p><button>查看拓展练习与报告</button>`;card.querySelector('button').onclick=()=>{open();mistakes();};}}
+const previousSwitch=switchView;switchView=function(v){previousSwitch(v);if(v==='mistakes'||v==='report')portals();};portals();
+function show(q,mode){current={q,mode};locked=false;const r=P.review;$('stlQuestion').innerHTML=`<div class="eyebrow">${h(q.type)} · ${h(groups[q.group])} · 原创拓展题</div><p>${mode==='review'?(r.phase==='original'?'先重做原题，答对后开始举一反三。':`同考点新题：已连续答对 ${r.streak}/3 道。`):'作答后显示答案与原因。'}</p><div class="question">${h(q.text)}</div><pre><code>${h(q.code)}</code></pre><div class="options">${q.options.map((x,i)=>`<button class="option" data-stl-answer="${i}"><span class="letter">${String.fromCharCode(65+i)}</span>${h(x)}</button>`).join('')}</div><div id="stlFeedback" aria-live="polite"></div>`;
+$('stlQuestion').querySelectorAll('[data-stl-answer]').forEach(b=>b.onclick=()=>answer(Number(b.dataset.stlAnswer)));}
+function record(q,i){const ok=i===q.answer,r=P.records[q.id]??={n:0,c:0,passed:false};r.n++;r.c+=ok?1:0;r.passed=ok;r.lastPick=i;r.at=Date.now();if(ok&&!P.rewarded[q.id]){P.rewarded[q.id]=true;P.correctRewards++;if(P.correctRewards%10===0)state.food++;}return ok;}
+function answer(i){if(!current||locked)return;locked=true;const {q,mode}=current,ok=record(q,i);$('stlQuestion').querySelectorAll('[data-stl-answer]').forEach(b=>{b.disabled=true;if(Number(b.dataset.stlAnswer)===q.answer)b.classList.add('correct');else if(Number(b.dataset.stlAnswer)===i)b.classList.add('wrong');});let message='',next=()=>practice();
+if(mode==='practice'){if(!ok){const w=P.wrong[q.id]??={id:q.id,seen:[],errors:[]};w.mastered=false;w.pick=i;w.at=Date.now();message='已加入拓展错题库。';}else if(P.wrong[q.id]&&!P.wrong[q.id].mastered)message='原题答对后，仍需完成错题库中的三道新题巩固。';}
+else{const r=P.review,w=P.wrong[r.source];r.qid=null;if(r.phase==='original'){if(ok){r.phase='variants';r.streak=0;message='原题已答对，接下来做三道同考点新题。';}else{message='请理解解析后重做原题。';w.pick=i;}}else{r.streak=ok?r.streak+1:0;if(!ok){w.errors.push({id:q.id,pick:i,at:Date.now()});message='已保存这道变式的错误记录；换新题继续，连续正确进度重新计数。';}if(r.streak===3){w.mastered=true;w.masteredAt=Date.now();P.review=null;message='三道不同的同考点题连续答对，已掌握。';next=mistakes;}}if(P.review)next=continueReview;}
+commit();$('stlFeedback').innerHTML=`<div class="feedback"><b>${ok?'回答正确':'回答错误'}</b><p>你的选择：${h(q.options[i])}；正确答案：${String.fromCharCode(65+q.answer)}. ${h(q.options[q.answer])}</p><p>${h(q.explanation)}</p><p>${h(message)}</p></div><button id="stlContinue" class="primary">${mode==='review'?'继续巩固 / 返回错题':'下一道未掌握题'}</button>`;$('stlContinue').onclick=next;}
+function practice(){P.review=null;$('stlMistakes').innerHTML='';const pool=base.filter(q=>(filter==='all'||q.group===filter)&&(type==='all'||q.type===type)&&!P.records[q.id]?.passed);const q=pool.find(q=>!P.records[q.id])||pool.find(q=>q.id!==current?.q.id)||pool[0];if(!q){current=null;$('stlQuestion').innerHTML='<p>本筛选条件下的基础题均已答对，不再重复推送。若有待巩固错题，请完成举一反三。</p>';return;}show(q,'practice');}
+function startReview(id){P.review={source:id,phase:'original',streak:0,qid:id};P.wrong[id].mastered=false;commit();$('stlMistakes').innerHTML='';show(byId.get(id),'review');}
+function continueReview(){const r=P.review;if(!r)return mistakes();const source=byId.get(r.source),w=P.wrong[r.source];if(r.phase==='original'){r.qid=source.id;commit();show(source,'review');return;}
+if(r.qid&&byId.has(r.qid)){show(byId.get(r.qid),'review');return;}
+const used=new Set([source.id,...w.seen]);const candidates=items.filter(q=>q.group===source.group&&!used.has(q.id));
+// Prefer a different code pattern and a dedicated variant over a repeated stem.
+const q=candidates.find(q=>q.seed>0&&q.id.split('-').at(-1)!==source.id.split('-').at(-1))||candidates[0];
+if(!q){current=null;$('stlQuestion').innerHTML='<p>该考点的不同变式已练完，系统不会重复出题。请复习错误记录后，由老师补充新题。</p>';return;}
+w.seen.push(q.id);r.qid=q.id;commit();show(q,'review');}
+function mistakes(){current=null;$('stlQuestion').innerHTML='';const rows=Object.values(P.wrong);$('stlMistakes').innerHTML=`<h3>拓展错题与举一反三</h3>${rows.length?'':'<p>还没有拓展错题。</p>'}${rows.map(w=>{const q=byId.get(w.id);if(!q)return '';return `<div class="stl-record"><b>${h(groups[q.group])} · ${w.mastered?'已掌握':'待巩固'}</b><pre>${h(q.code)}</pre><p>${h(q.text)}</p><p>上次选择：${h(q.options[w.pick])}；正确答案：${h(q.options[q.answer])}</p><p>${h(q.explanation)}</p>${w.mastered?'':`<button data-stl-review="${q.id}">原题重做 → 3道新题巩固</button>`}${w.errors.length?`<details><summary>变式错误记录 ${w.errors.length} 次</summary>${w.errors.map(e=>{const v=byId.get(e.id);return `<pre>${h(v.code)}</pre><p>你的选择：${h(v.options[e.pick])}；${h(v.explanation)}</p>`}).join('')}</details>`:''}</div>`;}).join('')}<h3>细分知识点报告</h3>${Object.entries(groups).map(([id,name])=>{const a=items.filter(q=>q.group===id).map(q=>P.records[q.id]).filter(Boolean),n=a.reduce((s,r)=>s+r.n,0),c=a.reduce((s,r)=>s+r.c,0);return `<p>${h(name)}：${n?`${c}/${n} 次正确（${Math.round(c/n*100)}%）`:'尚未检测'}</p>`;}).join('')}`;$('stlMistakes').querySelectorAll('[data-stl-review]').forEach(b=>b.onclick=()=>startReview(b.dataset.stlReview));if(P.review){const b=document.createElement('button');b.textContent='继续上次未完成的举一反三';b.onclick=()=>{$('stlMistakes').innerHTML='';continueReview();};$('stlMistakes').prepend(b);}summary();}
+$('stlGroup').onchange=e=>{filter=e.target.value;practice();};$('stlType').onchange=e=>{type=e.target.value;practice();};$('stlNext').onclick=practice;$('stlWrongBtn').onclick=mistakes;summary();
+window.GESP_STL_EXTENSION={version:'20261003',items,groups,open};
+})();
+
+</script></body></html>
+
 
