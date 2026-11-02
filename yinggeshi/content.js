@@ -1,0 +1,25 @@
+// Source: supplied planning PPT, October 2026. Dates are source-list dates, not independently verified.
+window.SITE={sections:[['home','首页','Home'],['overview','基地概览','Overview'],['news','基地动态','News'],['notices','通知公告','Notices'],['research','科研平台与团队','Platforms & Teams'],['policies','政策法规','Policies'],['services','园区服务','Services'],['contact','合作交流','Cooperation & Contact']],tabs:{overview:[['intro','基地简介','Introduction'],['a117','A1-17 地块科研场地','A1-17 Research Facilities'],['a308','A3-08、A3-16 地块科研场地','A3-08 / A3-16 Research Facilities'],['a220','A2-20 地块配套人才公寓场地','A2-20 Talent Apartments'],['a222','A2-22 地块中试基地场地','A2-22 Pilot Facilities'],['map','基地地图','Campus Map'],['gallery','基地风采','Gallery']],research:[['platforms','重点平台','Key Platforms'],['teams','入驻团队','Resident Teams'],['directions','科研方向','Research Areas'],['results','平台成果','Research Results']],policies:[['national','国家政策','National Policies'],['management','基地管理方法','Base Management Rules']],services:[['service','园区服务政策','Park Services']],contact:[['contact','联系我们','Contact Us']]},records:[]};
+const add=(section,category,title,en,date,source,extra='')=>SITE.records.push({id:'item-'+(SITE.records.length+1),section,category,title,en,date,source,extra,status:'pending'});
+add('notices','重要通知','关于支持英歌石科学城创新发展的若干政策（试行）','Policies Supporting Innovation in Yinggeshi Science City (Trial)','2025-03-06','辽宁黄海实验室网站；新闻公告·新闻资讯');
+add('notices','重要通知','关于印发《大连高新区国民经济和社会发展第十五个五年规划》的通知','Notice on the 15th Five-Year Development Plan of Dalian High-tech Zone','2026-06-18','大连高新区管委会网站；政务公开·政府文件');
+add('notices','项目申报','关于印发2026年度省科技重大专项项目指南及组织申报项目的通知','2026 Provincial Major Science and Technology Projects: Guidelines and Applications','2026-05-19','大连理工大学科学技术研究院；重要通知·产学研与成果转化');
+add('notices','规划公示','大连英歌石科学城项目A3-08-2地块建设工程设计方案总平面图','Site Plan for Plot A3-08-2, Yinggeshi Science City','2026-03-18','大连高新区管委会网站；规划建设相关公示');
+add('notices','成果转化','关于7项科技成果作价投资的公示','Public Notice on Equity Investment Using Seven Research Achievements','2026-03-30','大连理工大学科技园管理委员会办公室；重要通知');
+add('news','科研活动','学校科创团队赴英歌石科学城科技创新基地考察调研','University Research Teams Visit the Yinggeshi Innovation Base','2026-03-09','大连理工大学新闻网；合作交流');
+add('news','基地建设动态','大连英歌石科学城开城——学校高质量建设英歌石科学城科技创新基地','Yinggeshi Science City Opens: Development of the University Innovation Base','2024-10-16','大连理工大学新闻网；综合新闻','PPT 第5页同题条目标注2026-03-23，第10页标注2024-10-16；日期及是否为同一报道待核验。 / Slides 5 and 10 list different dates (2026-03-23 and 2024-10-16); verification required.');
+add('news','区域动态','大连多个大项目最新进展！','Updates on Major Projects in Dalian','2025-02-16','大连发布；澎湃新闻·澎湃号·政务');
+add('news','区域动态','2026，来高新，马上见！','See You in Dalian High-tech Zone in 2026','2026-02-28','大连高新区管理委员会网站；新闻中心·区域动态');
+add('news','科研活动','重磅！环大工创新创业生态圈，启动建设！','Launch of the Innovation and Entrepreneurship Ecosystem Around DUT','2026-07-17','大连理工大学科技园管理委员会办公室；新闻快递');
+add('news','理事会新闻','英歌石科学城理事会第四次会议召开','Fourth Meeting of the Yinggeshi Science City Council','2026-03-23','大连理工大学新闻网；主页新闻');
+add('news','科研活动','“产业端”走近“科技端”，17家工业企业技术负责人赴英歌石科学城交流对接','Technology Leaders from 17 Industrial Companies Visit Yinggeshi Science City','2026-06-04','大连高新区管理委员会网站；新闻中心·区域动态');
+add('news','科研活动','人力资源和社会保障部国外人才研究中心赴辽宁黄海实验室开展新型研发机构建设情况专题调研','Research Visit to Liaoning Huanghai Laboratory on New R&D Institutions','2026-08-28','辽宁黄海实验室官网；新闻公告·新闻资讯');
+add('news','科研活动','辽宁黄海实验室与沈阳工业大学签署研究生联合培养合作协议','Liaoning Huanghai Laboratory and Shenyang University of Technology Sign Joint Graduate Training Agreement','2026-09-03','辽宁黄海实验室官网；新闻公告·新闻资讯');
+add('notices','成果转化','关于征集科技成果转化项目信息的通知','Call for Research Commercialization Project Information','2026-09-22','大连理工大学科技园管理委员会办公室；重要通知');
+add('notices','项目申报','关于组织申报2026年中国产学研合作促进会科技创新奖的通知','Applications for the 2026 Industry–University–Research Cooperation Innovation Awards','2026-07-08','大连理工大学科技园管理委员会办公室；重要通知');
+add('policies','national','中华人民共和国科学技术进步法','Law of the People’s Republic of China on Science and Technology Progress','2022-01-18','中华人民共和国科学技术部；政府信息公开—政策法规—法律法规');
+add('policies','national','国务院关于促进国家高新技术产业开发区高质量发展的若干意见','State Council Opinions on High-quality Development of National High-tech Zones','2020-07-17','中国政府网；国务院政策文件');
+add('policies','national','工业和信息化部科技型企业孵化器管理办法','Administrative Measures for Technology Business Incubators','2025-06-16','中国政府网；部门政策文件');
+add('policies','management','大连理工大学科研机构管理办法（修订）','Dalian University of Technology Research Institution Management Rules (Revised)','2022-03-10','大连理工大学科学技术研究院；服务指南—政策法规—科研基地');
+add('services','service','创新策源 能级跃升！英歌石科学城即将开城运营','Yinggeshi Science City Prepares to Open','2024-10-16','大连高新区管理委员会；新闻中心');
+add('services','service','英歌石科学城发展服务办公室机构职能','Responsibilities of the Yinggeshi Science City Development Service Office','','大连高新区管理委员会；政务公开—机构职能');
