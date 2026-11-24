@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CSP-J 第一轮 · 辅助学习系统</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#173756,transparent 65%),#07111f;color:#eef7ff;font:16px/1.65 system-ui,sans-serif;min-height:100vh}main{max-width:1080px;margin:auto;padding:24px}header{padding:24px 0}h1,h2,p{margin:0 0 10px}header p,small{color:#afc4da}nav, .row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}button,select,input{font:inherit;color:inherit;border:1px solid #385574;border-radius:9px;background:#142946;padding:8px 13px}button{cursor:pointer}button:hover,button:focus-visible{border-color:#4de1c1}button[aria-current=true],.primary{background:#4de1c1;color:#071c22;font-weight:700}article,details{background:#0d1b2f;border:1px solid #28415f;border-radius:14px;padding:18px;margin:12px 0}summary{cursor:pointer}.bad{color:#ffacb8}.good{color:#81ebae}.mid{color:#ffd18a}.banner{background:#3a202b;padding:10px 16px;border-radius:9px;border:1px solid #98546a}.option{display:block;width:100%;text-align:left;margin:8px 0}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;white-space:nowrap}th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #28415f}a{color:#7fc0ff}pre{overflow:auto}label{display:grid;gap:4px}@media(max-width:600px){main{padding:14px}header{padding:12px 0}article{padding:12px}}
+</style>
+<main><header><h1>CSP-J 第一轮辅助学习系统</h1><p>专项刷题、错题复习与知识诊断</p><div class="banner bad">题库未达发布标准 · 57 个考点仍有缺口</div></header>
+<nav aria-label="学习导航"></nav><section id="view"></section></main>
+<script id="topics" type="application/json">[{"id":"A1","module":"计算机基础与常识","name":"计算机组成","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A2","module":"计算机基础与常识","name":"存储单位","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A3","module":"计算机基础与常识","name":"进制转换","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A4","module":"计算机基础与常识","name":"操作系统","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A5","module":"计算机基础与常识","name":"网络基础","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A6","module":"计算机基础与常识","name":"信息安全","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A7","module":"计算机基础与常识","name":"计算机历史","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A8","module":"计算机基础与常识","name":"竞赛规则","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A9","module":"计算机基础与常识","name":"编译与运行","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"A10","module":"计算机基础与常识","name":"g++ 选项","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B1","module":"C++ 程序设计","name":"变量与类型","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B2","module":"C++ 程序设计","name":"常量与赋值","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B3","module":"C++ 程序设计","name":"输入输出","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B4","module":"C++ 程序设计","name":"运算符与表达式","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B5","module":"C++ 程序设计","name":"条件语句","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B6","module":"C++ 程序设计","name":"循环","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B7","module":"C++ 程序设计","name":"位运算","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B8","module":"C++ 程序设计","name":"数学函数","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B9","module":"C++ 程序设计","name":"一维数组","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B10","module":"C++ 程序设计","name":"二维数组","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B11","module":"C++ 程序设计","name":"字符与字符串","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B12","module":"C++ 程序设计","name":"函数","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B13","module":"C++ 程序设计","name":"递归","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B14","module":"C++ 程序设计","name":"结构体","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B15","module":"C++ 程序设计","name":"指针","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"B16","module":"C++ 程序设计","name":"文件操作","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C1","module":"基础数据结构","name":"栈","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C2","module":"基础数据结构","name":"队列","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C3","module":"基础数据结构","name":"链表","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C4","module":"基础数据结构","name":"堆与优先队列","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C5","module":"基础数据结构","name":"树与遍历","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C6","module":"基础数据结构","name":"图与存储","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C7","module":"基础数据结构","name":"二叉搜索树","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"C8","module":"基础数据结构","name":"哈夫曼树","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D1","module":"基础算法","name":"模拟与枚举","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D2","module":"基础算法","name":"排序","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D3","module":"基础算法","name":"递推","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D4","module":"基础算法","name":"时间复杂度","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D5","module":"基础算法","name":"空间复杂度","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D6","module":"基础算法","name":"贪心","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D7","module":"基础算法","name":"二分查找","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D8","module":"基础算法","name":"前缀和与差分","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D9","module":"基础算法","name":"双指针","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D10","module":"基础算法","name":"高精度","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"D11","module":"基础算法","name":"动态规划","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"E1","module":"基础数学","name":"素数与筛法","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"E2","module":"基础数学","name":"GCD 与 LCM","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"E3","module":"基础数学","name":"质因数分解","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"E4","module":"基础数学","name":"快速幂","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"E5","module":"基础数学","name":"排列组合","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"E6","module":"基础数学","name":"概率与期望","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"F1","module":"搜索与初赛专项","name":"DFS","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"F2","module":"搜索与初赛专项","name":"BFS","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"F3","module":"搜索与初赛专项","name":"全排列","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"F4","module":"搜索与初赛专项","name":"剪枝","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"F5","module":"搜索与初赛专项","name":"程序阅读","outline_id":null,"difficulty":null,"exam_freq":null},{"id":"F6","module":"搜索与初赛专项","name":"完善程序","outline_id":null,"difficulty":null,"exam_freq":null}]</script>
+<script id="questions" type="application/json">[{"id":"OR-1","kp_ids":["A2"],"difficulty":1,"type":"single_choice","family":"T3","stem":"3 KiB 等于多少字节？","options":[{"key":"A","text":"3000"},{"key":"B","text":"3072"},{"key":"C","text":"384"},{"key":"D","text":"24576"}],"answer":"B","explain":"每 KiB 等于 1024 字节。3000 用了十进制换算，384 多除了一次 8，24576 是对应的位数。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"3*1024","verified_at":"2026-11-24"},"status":"active"},{"id":"OR-2","kp_ids":["A3"],"difficulty":1,"type":"single_choice","family":"T3","stem":"二进制 101101 对应的十进制整数是？","options":[{"key":"A","text":"41"},{"key":"B","text":"44"},{"key":"C","text":"45"},{"key":"D","text":"53"}],"answer":"C","explain":"相加 32＋8＋4＋1。41 漏了 4，44 漏了 1，53 把 8 当成 16。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"parseInt('101101',2)","verified_at":"2026-11-24"},"status":"active"},{"id":"OR-3","kp_ids":["E5"],"difficulty":1,"type":"single_choice","family":"T3","stem":"5 名同学中任选 2 人组成小组，不计顺序，有多少种选法？","options":[{"key":"A","text":"5"},{"key":"B","text":"10"},{"key":"C","text":"20"},{"key":"D","text":"25"}],"answer":"B","explain":"按顺序选有 5×4 种，每组算了两次。5 只选一人，20 区分顺序，25 还允许重复。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"5*4/2","verified_at":"2026-11-24"},"status":"active"},{"id":"OR-4","kp_ids":["B7"],"difficulty":1,"type":"judge","family":"T2","stem":"12 与 10 按位异或的结果是 6。","options":[{"key":"A","text":"错误"},{"key":"B","text":"正确"}],"answer":"B","explain":"1100 和 1010 逐位异或得到 0110。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"(12^10)===6","verified_at":"2026-11-24"},"status":"active"},{"id":"OR-5","kp_ids":["E1"],"difficulty":1,"type":"judge","family":"T2","stem":"49 是素数。","options":[{"key":"A","text":"错误"},{"key":"B","text":"正确"}],"answer":"A","explain":"49 能被 7 整除。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"![2,3,4,5,6,7].some(i=>49%i===0)","verified_at":"2026-11-24"},"status":"active"},{"id":"OR-6","kp_ids":["E4"],"difficulty":1,"type":"judge","family":"T2","stem":"3 的 5 次方除以 7 的余数是 5。","options":[{"key":"A","text":"错误"},{"key":"B","text":"正确"}],"answer":"B","explain":"243＝7×34＋5。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"3**5%7===5","verified_at":"2026-11-24"},"status":"active"},{"id":"OR-7","kp_ids":["B9"],"difficulty":1,"type":"judge","family":"T2","stem":"数组 [5, 3, 8, 2] 的下标 2 对应 3。","options":[{"key":"A","text":"错误"},{"key":"B","text":"正确"}],"answer":"A","explain":"数组从下标 0 开始，下标 2 对应 8。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"[5,3,8,2][2]===3","verified_at":"2026-11-24"},"status":"active"},{"id":"OR-8","kp_ids":["C1"],"difficulty":1,"type":"judge","family":"T2","stem":"空栈依次压入 4、9，弹出一次，再压入 6。当前栈顶是 6。","options":[{"key":"A","text":"错误"},{"key":"B","text":"正确"}],"answer":"B","explain":"先弹出 9，再压入 6。","source":{"kind":"generated","name":"本站原创","url":"https://xalinchi.github.io/csp-j/","license":"self-generated","collected_at":"2026-11-24"},"verify":{"method":"solver","evidence":"(()=>{const s=[4,9];s.pop();s.push(6);return s.at(-1)===6})()","verified_at":"2026-11-24"},"status":"active"}]</script>
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const topics = JSON.parse($('#topics').textContent);
+const questions = JSON.parse($('#questions').textContent);
+const names = Object.fromEntries(topics.map(t=>[t.id,t.name]));
+const day = 86400000;
+const storageKey = 'csp-j-first-round-v1';
+const defaults = {attempts:[],wrong:{},reports:{}};
+let state;
+try { state = JSON.parse(localStorage.getItem(storageKey)) ?? defaults }
+catch { state = defaults }
+function save(){
+  try {localStorage.setItem(storageKey,JSON.stringify(state))}
+  catch { alert('浏览器无法保存记录，本次会话内仍可继续练习。') }
+}
+let page = '首页', topic = '', type = '', family = '', difficulty = '', query = '', onlyWrong = false;
+let current = null, selected = null;
+const pages = ['首页','知识地图','专项练习','错题本','整卷模拟','历年真题','覆盖率'];
+function rate(records){return records.length ? records.filter(x=>x.ok).length / records.length : null}
+function mastery(id){
+  const rows = state.attempts.filter(a=>a.topic===id);
+  if(!rows.length)return null;
+  const recent = rows.slice(-3);
+  const mean = rate(recent);
+  const age = (Date.now()-recent.at(-1).at)/day;
+  return Math.round(100*rate(rows)*Math.exp(-age/30)*(1-mean*(1-mean)));
+}
+function navigate(next){
+  page=next;
+  current=null;
+  selected=null;
+  render();
+}
+function attempt(q,key){
+  const ok = key===q.answer, at=Date.now();
+  state.attempts.push({id:q.id,topic:q.kp_ids[0],ok,at});
+  const wrong=state.wrong[q.id];
+  if(!ok)state.wrong[q.id]={streak:0,due:at+day,miss:(wrong?.miss??0)+1};
+  else if(wrong && wrong.due<=at){
+    if(wrong.streak===1)delete state.wrong[q.id];
+    else {wrong.streak=1;wrong.due=at+2*day}
+  }
+  save();
+}
+function pool(){
+  return questions.filter(q=>(!topic||q.kp_ids.includes(topic))&&(!type||q.type===type)&&(!family||q.family===family)&&(!difficulty||q.difficulty===Number(difficulty))&&(!query||q.stem.includes(query))&&(!onlyWrong||state.wrong[q.id]));
+}
+function button(label,action,cls=''){return '<button class="'+cls+'" data-action="'+action+'">'+label+'</button>'}
+function select(id,label,options,value){
+  return '<label>'+label+'<select id="'+id+'">'+options.map(([k,v])=>'<option value="'+k+'"'+(k===value?' selected':'')+'>'+v+'</option>').join('')+'</select></label>';
+}
+function question(){
+  const q=current;
+  if(!q)return '';
+  const done=selected!==null;
+  return '<article><small>'+names[q.kp_ids[0]]+' · 难度 '+q.difficulty+' · '+q.id+'</small><h2>'+q.stem+'</h2>'+
+    q.options.map(o=>'<button class="option '+(done?(o.key===q.answer?'good':o.key===selected?'bad':''):'')+'" data-action="answer:'+o.key+'" '+(done?'disabled':'')+'>'+o.key+'　'+o.text+'</button>').join('')+
+    (done?'<p role="status" class="'+(selected===q.answer?'good':'bad')+'">'+(selected===q.answer?'答对了':'正确答案 '+q.answer)+'</p><p>'+q.explain+'</p>':'')+
+    '<details><summary>题源与校验证据</summary><p>AI 生成 · 已机器校验 · '+q.source.license+' · '+q.source.collected_at+'</p><p><a href="'+q.source.url+'">原创题来源</a></p><pre>'+q.verify.evidence.replaceAll('&','&amp;').replaceAll('<','&lt;')+'</pre></details>'+
+    button(state.reports[q.id]?'已记录问题':'这题有问题','report')+'</article>';
+}
+function render(){
+  $('nav').innerHTML=pages.map(p=>'<button data-action="page:'+p+'" '+(page===p?'aria-current="true"':'')+'>'+p+'</button>').join('');
+  const view=$('#view');
+  if(page==='首页'){
+    const counts=Array.from({length:7},(_,i)=>state.attempts.filter(a=>Math.floor((Date.now()-a.at)/day)===i).length).reverse();
+    const preferred=Object.entries(state.wrong).filter(([,w])=>w.due<=Date.now()).sort((a,b)=>b[1].miss-a[1].miss)[0];
+    const recent=state.attempts.filter(a=>a.at>=Date.now()-7*day);
+    view.innerHTML='<article><h2>今日练习</h2><p>'+questions.length+' 道已校验原创题 · '+state.attempts.length+' 次作答 · '+Object.keys(state.wrong).length+' 道待巩固错题</p><p>'+(preferred?'有错题到期，先复习错题本。':'可从进制转换、位运算和基础数学开始。')+'</p><div class="row">'+button('开始专项练习','page:专项练习','primary')+button('查看题库缺口','page:覆盖率')+'</div></article><article><h2>学习看板</h2><p>最近七天作答量（从早到近） '+counts.join(' · ')+'</p><p>最近七天正确率 '+(recent.length?Math.round(100*rate(recent))+'%':'无作答')+'</p>'+
+     [...new Set(topics.map(t=>t.module))].map(m=>{const ids=topics.filter(t=>t.module===m).map(t=>t.id);const r=rate(state.attempts.filter(a=>ids.includes(a.topic)));return '<p>'+m+' · '+(r===null?'未练习':Math.round(r*100)+'%')+'</p>'}).join('')+'</article>';
+  }else if(page==='知识地图'){
+    view.innerHTML=[...new Set(topics.map(t=>t.module))].map(m=>'<details open><summary>'+m+'</summary><div class="row">'+topics.filter(t=>t.module===m).map(t=>{const v=mastery(t.id);return button(t.name+' · '+(v===null?'未练习':v+'%'),'topic:'+t.id,v===null?'':v>=80?'good':v>=50?'mid':'bad')}).join('')+'</div></details>').join('');
+  }else if(page==='专项练习'){
+    view.innerHTML='<article><h2>专项练习</h2><div class="row">'+select('topic','知识点',[['','全部'],...topics.map(t=>[t.id,t.name])],topic)+select('type','题型',[['','全部'],['single_choice','单选'],['judge','判断']],type)+select('family','题型族',[['','全部'],['T2','判断正误'],['T3','数值计算']],family)+select('difficulty','难度',[['','全部'],...[1,2,3,4,5].map(n=>[String(n),n])],difficulty)+'<label>题干搜索<input id="search" type="search"></label></div><label style="display:block"><input id="onlyWrong" type="checkbox" '+(onlyWrong?'checked':'')+'> 只练错题</label><div class="row">'+button(current?'换一道':'抽一道','draw','primary')+'<span>'+pool().length+' 道符合条件</span></div></article>'+question();
+    $('#search').value=query;
+  }else if(page==='错题本'){
+    const wrong=questions.filter(q=>state.wrong[q.id]);
+    view.innerHTML='<article><h2>错题本</h2><p>到期后作答。连续两次到期答对后移出。</p>'+(!wrong.length?'<p>目前没有错题。</p>':'')+
+      wrong.map(q=>{const w=state.wrong[q.id];return '<p>'+names[q.kp_ids[0]]+' · '+q.id+' · 错 '+w.miss+' 次 · 连对 '+w.streak+' 次 · '+(w.due<=Date.now()?button('复习','review:'+q.id):new Date(w.due).toLocaleString('zh-CN'))+'</p>'}).join('')+'</article>'+question();
+  }else if(page==='覆盖率'){
+    view.innerHTML='<article><h2>题库覆盖率</h2><p>按主考点统计。大纲编号、等级及历年频率待逐项核对。</p>'+button('导出覆盖率 CSV','csv')+'<div class="scroll"><table><thead><tr>'+header.map(h=>'<th scope="col">'+h+'</th>').join('')+'</tr></thead><tbody>'+coverage().map(row=>'<tr>'+row.map((v,i)=>'<td '+(i===row.length-1?'class="bad"':'')+'>'+v+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></article>';
+  }else if(page==='整卷模拟'){
+    view.innerHTML='<article><h2>整卷模拟</h2><p>完整卷待入库。当前练习题可在专项中使用。</p>'+button('前往专项','page:专项练习')+'</article>';
+  }else{
+    view.innerHTML='<article><h2>历年真题</h2><p>2019—2026 年逐题核验与映射待完成。</p><p><a href="https://www.noi.cn/zxzy/index.shtml">CCF NOI 历年资料入口</a></p></article>';
+  }
+}
+const header=['知识点','选择','判断','真题','难度1–2','难度3','难度4–5','题型族','校验通过率','去重净值','状态'];
+function coverage(){return topics.map(t=>{
+  const qs=questions.filter(q=>q.kp_ids[0]===t.id);
+  const n=qs.filter(q=>q.type==='single_choice').length;
+  return [t.name,n,qs.length-n,0,qs.length,0,0,new Set(qs.map(q=>q.family)).size,qs.length?'100%':'—',qs.length,'缺选择 '+(100-n)+' / 判断 '+(100-qs.length+n)];
+})}
+function download(){
+  const encode=v=>'"'+String(v).replaceAll('"','""')+'"';
+  const csv=[header,...coverage()].map(row=>row.map(encode).join(',')).join('\r\n');
+  const url=URL.createObjectURL(new Blob(['\ufeff',csv],{type:'text/csv;charset=utf-8'}));
+  const a=document.createElement('a');a.href=url;a.download='csp-j-coverage.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+document.addEventListener('change',e=>{
+  const el=e.target;
+  if(el.id==='topic')topic=el.value;
+  else if(el.id==='type')type=el.value;
+  else if(el.id==='family')family=el.value;
+  else if(el.id==='difficulty')difficulty=el.value;
+  else if(el.id==='search')query=el.value.trim();
+  else if(el.id==='onlyWrong')onlyWrong=el.checked;
+  else return;
+  current=null;selected=null;render();$('#'+el.id)?.focus();
+});
+document.addEventListener('click',e=>{
+  const action=e.target.closest('[data-action]')?.dataset.action;
+  if(!action)return;
+  const [kind,value]=action.split(':');
+  if(kind==='page')navigate(value);
+  if(kind==='topic'){topic=value;type=family=difficulty=query='';onlyWrong=false;navigate('专项练习')}
+  if(kind==='draw'){
+    const available=pool(),other=available.filter(q=>q!==current);
+    const candidates=other.length?other:available;
+    current=candidates[Math.floor(Math.random()*candidates.length)]??null;
+    selected=null;render();$('.option')?.focus();
+  }
+  if(kind==='review'){current=questions.find(q=>q.id===value);selected=null;render();$('.option')?.focus()}
+  if(kind==='answer'&&current&&selected===null){selected=value;attempt(current,value);render()}
+  if(kind==='report'&&current){state.reports[current.id]=Date.now();save();render()}
+  if(kind==='csv')download();
+});
+render();
+</script></html>
